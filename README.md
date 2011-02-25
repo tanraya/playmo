@@ -1,4 +1,4 @@
-= What is this?
+# What is this?
 This is the special kit that allows you create Rails 3 apps quick.
 It includes:
 
@@ -8,7 +8,7 @@ It includes:
 * Mootools (http://mootools.net)
 * Jquery (http://jquery.com)
 
-== What should be here?
+## What should be here?
 
 * You can install JQuery or Mootools
 * HTML5 layout instead of default rails layout

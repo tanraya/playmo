@@ -2,11 +2,11 @@
 This is the special kit that allows you create Rails 3 apps quick with pre-included few useful libs.
 It includes:
 
-* Compass http://compass-style.org/
-* HTML5 Boilerplate http://html5boilerplate.com/
-* Jammit https://github.com/documentcloud/jammit
-* Mootools http://mootools.net
-* Jquery http://jquery.com
+* [Compass](http://compass-style.org/)
+* [HTML5](Boilerplate http://html5boilerplate.com/)
+* [Jammit](https://github.com/documentcloud/jammit)
+* [Mootools](http://mootools.net)
+* [Jquery](http://jquery.com)
 
 ## What should be here (TODO)?
 

@@ -16,3 +16,4 @@ It includes:
 * Generate HomeController with index action
 * Add 404 error page (into ApplicationController)
 * Custom styles for forms (including formtastic)
+* Delete default rails css and js files

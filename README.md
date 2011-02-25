@@ -4,7 +4,6 @@ It includes:
 
 * [Compass](http://compass-style.org/)
 * [HTML5](Boilerplate http://html5boilerplate.com/)
-* [Jammit](https://github.com/documentcloud/jammit)
 * [Mootools](http://mootools.net)
 * [Jquery](http://jquery.com)
 
@@ -13,5 +12,4 @@ It includes:
 * You can install JQuery or Mootools
 * HTML5 layout instead of default rails layout
 * Customized styles for article container
-* You can install Jammit on-demand
 * Rails generator that installs playmo-rails in your app

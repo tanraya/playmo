@@ -1,0 +1,85 @@
+@charset "utf-8";
+/*==============================================================================
+
+    Title   : Playmo CSS Framework (https://github.com/tanraya/playmo)
+    Name    : default.css
+
+    ATTENTION! DO NOT ADD YOUR CUSTOM STYLES IN THIS FILE!
+
+================================================================================
+
+    1. General Elements
+    2. Headings
+    3. Lists
+    4. Tables
+    5. Article markup
+    6. Images
+    7. Other styles
+
+==============================================================================*/
+/* 1. General Elements =======================================================*/
+body {
+    background-color: #fff;
+    font: .75em/18px "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+/* 2. Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 0 0 10px 0;
+    padding: 0;
+    line-height: 1;
+}
+
+/* 3. Lists */
+ul, ol, dl { list-style: none; margin: 0; padding: 0; }
+
+/* 4. Tables */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+    caption, th, td {
+        text-align: left;
+        font-weight: normal;
+        padding: 0;
+        vertical-align: top;
+    }
+
+/* 5. Article markup */
+em { font-style: italic; }
+sup, sub { vertical-align: baseline; position: relative; }
+sup { top: -0.4em; }
+sub { bottom: -0.3em; }
+
+p {
+    margin: 18px 0;
+    zoom: 1;
+}
+    p:before, p:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        visibility: hidden;
+    }
+    
+    p:after { clear: both; }
+
+blockquote {
+    margin: 0 0 18px 30px;
+    border-left: 3px solid #ddd;
+    padding: 8px 8px 8px 16px;
+}
+
+pre, code, kbd, samp, var {
+    font: 0.9em Consolas, "Courier New", monospace, sans-serif;
+}
+
+/* 6. Images */
+a img { border: 0; }
+img.f-left { float: left; margin: 0 18px 0 0;  clear: left; }
+img.f-right { float: right; margin: 0 0 0 18px; }
+
+/* 7. Other styles */
+::-moz-selection{ background: #555; color:#fff; }
+::selection { background: #555; color:#fff; }

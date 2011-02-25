@@ -1,0 +1,19 @@
+/*===============================================================================================
+
+    Title   : Playmo CSS Framework (https://github.com/tanraya/playmo)
+    Name    : wysiwyg.css
+	
+    Styles for wysiwyg editor content zone. Include this file in your
+    wysiwyg editing area.
+
+===============================================================================================*/
+
+/* Include css framework base styles */
+@import url(./defaults/playmo.css?) screen,\(\);
+
+/* Include css framework content styles */
+@import url(./defaults/article.css?) screen,\(\);
+
+   
+
+

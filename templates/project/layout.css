@@ -1,0 +1,20 @@
+/*===============================================================================================
+
+    Title   : Playmo CSS Framework (https://github.com/tanraya/playmo)
+    Name    : layout.css
+
+    Styles for pages layout, custom CSS styles for layout containers positioning.
+    Make the separation for home, domestic and other pages by define id for the 'body' tag.
+
+    Like:
+
+    body#main-page {}, body#about-page {}, body#products-page {}
+
+===============================================================================================*/
+body { background: #ddd; }
+    div#container {
+        width: 700px;
+        margin: 20px auto;
+        padding: 30px;
+        background: #fff;
+    }

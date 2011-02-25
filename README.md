@@ -13,3 +13,6 @@ It includes:
 * HTML5 layout instead of default rails layout
 * Customized styles for article container
 * Rails generator that installs playmo-rails in your app
+* Generate HomeController with index action
+* Add 404 error page (into ApplicationController)
+* Custom styles for forms (including formtastic)

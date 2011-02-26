@@ -1,9 +1,6 @@
 # bundle exec compass init rails -r playmo-rails -u playmo-rails --sass-dir=public/stylesheets --force --trace
 description "Special kit that allows you create Rails 3 apps quick"
 
-# application layout
-#file 'rails/app/views/layouts/application.html.erb', :to => 'app/views/layouts/application.html.erb'
-
 # rails stylesheets
 stylesheet 'rails/public/stylesheets/layout.scss', :to => 'rails/layout.scss'
 stylesheet 'rails/public/stylesheets/screen.scss', :to => 'rails/screen.scss', :media => 'screen, projection'

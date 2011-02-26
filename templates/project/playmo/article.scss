@@ -31,22 +31,12 @@
     .article a[href$=pdf], content a.pdf {  }
     .article a[href$=zip], content a.zip {  }
     .article a[href$=rar], content a.rar {  }
-    .article a[href$=7z],  content a._7z {  }
     .article a[href$=tar], content a.tar {  }
-    .article a[href$=tar.gz], content a.targz {  }
     .article a[href$=mp3], content a.mp3 {  }
 
     /* Protocols */
     .article a[href^=skype], content a.skype {  }
     .article a[href^=aim], content a.aim {  }
-
-/* Headers */
-.article h1 { font-size: 2em; }   /* 100% */
-.article h2 { font-size: 1.7em; } /* -0.3 */
-.article h3 { font-size: 1.5em; } /* -0.6 */
-.article h4 { font-size: 1.1em; } /* -0.9 */
-.article h5 { font-size: 1em; }   /* -1   */
-.article h6 { font-size: 0.8em; } /* -1.2 */
 
 /* Lists */
 .article ol,

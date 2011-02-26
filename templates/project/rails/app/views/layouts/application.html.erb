@@ -11,19 +11,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <%= csrf_meta_tag %>
 
-  <title>Welcome to Ruby on Rails!</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <title><%= yield :title %></title>
+  <meta name="description" content="<%= yield :description %>">
+  <meta name="author" content="<%= yield :author %>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="shortcut icon" href="/favicon.ico">
-  <%= stylesheet_link_tag 'style', :media => 'all' %>
-  <%= stylesheet_link_tag 'playmo/playmo.scss' %>
-  <%= stylesheet_link_tag 'playmo/article.scss' %>
-  <%= stylesheet_link_tag 'layout.scss' %>
-  <%= stylesheet_link_tag 'screen.scss' %>
-  <%= stylesheet_link_tag 'print.scss', :media => 'print' %>
-  
+  <%= stylesheet_link_tag 'compiled/boilerplate/css/style.css', :media => 'all' %>
+  <%= stylesheet_link_tag 'compiled/playmo/playmo.css' %>
+  <%= stylesheet_link_tag 'compiled/playmo/article.css' %>
+  <%= stylesheet_link_tag 'compiled/rails/layout.css' %>
+  <%= stylesheet_link_tag 'compiled/rails/screen.css', :media => 'screen, projection' %>
+  <%= stylesheet_link_tag 'compiled/rails/print.css', :media => 'print' %>
+  <style><%= yield :styles %></style>
+
   <%= javascript_include_tag '/javascripts/lib/modernizr-1.6.min.js' %>
 </head>
 <body>
@@ -40,7 +41,7 @@
       </article>
 
       <aside>
-        Toolbar
+        <% yield :sidebar %>
       </aside>
 
     </div>
@@ -53,13 +54,15 @@
 <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/lib/jquery-1.4.2.js"%3E%3C/script%3E'))</script>
 
 <!-- scripts concatenated and minified via ant build script-->
-<%= javascript_include_tag 'rails', 'plugins', 'application' %>
+<%= javascript_include_tag 'rails', 'application' %>
 <!-- end concatenated and minified scripts-->
 
 <!--[if lt IE 7 ]>
   <%= javascript_include_tag '/javascripts/lib/dd_belatedpng.js' %>
   <script>DD_belatedPNG.fix('img, .png_bg');</script>
 <![endif]-->
+
+<script><%= yield :javascripts %></script>
 
 </body>
 </html>

@@ -5,7 +5,7 @@ description "Special kit that allows you create Rails 3 apps quick"
 stylesheet 'rails/public/stylesheets/layout.scss', :to => 'rails/layout.scss'
 stylesheet 'rails/public/stylesheets/screen.scss', :to => 'rails/screen.scss', :media => 'screen, projection'
 stylesheet 'rails/public/stylesheets/print.scss', :to => 'rails/print.scss',  :media => 'print'
-file 'rails/public/stylesheets/wysiwyg.scss', :to => 'public/stylesheets/rails/wysiwyg.scss'
+stylesheet 'rails/public/stylesheets/wysiwyg.scss', :to => 'public/stylesheets/rails/wysiwyg.scss'
 
 # playmo additional styles and files
 stylesheet 'playmo/playmo.scss'
@@ -22,7 +22,7 @@ stylesheet 'boilerplate/css/style.scss',    :media => 'all'
 
 javascript 'boilerplate/js/libs/dd_belatedpng.js',     :to => 'lib/dd_belatedpng.js'
 javascript 'boilerplate/js/libs/jquery-1.4.2.min.js',  :to => 'lib/jquery-1.4.2.min.js'
-javascript 'boilerplate/js/libs/modernizr-1.6.min.js', :to => 'lib/modernizr.min.js'
+javascript 'boilerplate/js/libs/modernizr-1.6.min.js', :to => 'lib/modernizr-1.6.min.js'
 javascript 'boilerplate/js/rails.js',                  :to => 'rails.js' # Add from https://github.com/rails/jquery-ujs/ later
 
 # google analytics config

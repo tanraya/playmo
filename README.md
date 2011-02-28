@@ -19,15 +19,15 @@ Then, add to your gemfile this line
 
 After that, run bundle to install necessary gems
 
-    bundle
+    $ bundle
 
 When bundler installed playmo-rails gem, we need to install playmo-rails files to our application
 
-    rails g playmo:install
+    $ rails g playmo:install
 
 That's all. Now you can run your app:
 
-    rails s
+    $ rails s
 
 ***
 

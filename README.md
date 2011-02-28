@@ -21,7 +21,7 @@ After that, run bundle to install necessary gems
 
     $ bundle
 
-When bundler installed playmo-rails gem, we need to install playmo-rails files to our application
+After gems installed, we need to install playmo-rails files to our application
 
     $ rails g playmo:install
 

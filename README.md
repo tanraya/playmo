@@ -10,24 +10,24 @@ It includes:
 ## How to install
 First, create new rails3 application:
 
-$ rails new appname
-$ cd ./appname
+    $ rails new appname
+    $ cd ./appname
 
 Then, add to your gemfile this line:
 
-gem 'playmo-rails', :git => 'git://github.com/tanraya/playmo.git'
+    gem 'playmo-rails', :git => 'git://github.com/tanraya/playmo.git'
 
 After that, run bundle to install necessary gems:
 
-bundle
+    bundle
 
 When bundler installed playmo-rails gem, we need to install playmo-rails files to our application:
 
-rails g playmo:install
+    rails g playmo:install
 
 That's all. Now you can run your app:
 
-rails s
+    rails s
 
 ## What should be here (TODO)?
 

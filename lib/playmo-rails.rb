@@ -1,3 +1,4 @@
+require 'compass'
 Compass::Frameworks.register("playmo-rails", :path => "#{File.dirname(__FILE__)}/..")
 
 if defined?(ActionController)

@@ -21,23 +21,10 @@ html 'boilerplate/files/favicon.ico',          :to => 'favicon.ico'
 stylesheet 'boilerplate/css/style.scss',    :media => 'all'
 
 javascript 'boilerplate/js/libs/dd_belatedpng.js',     :to => 'lib/dd_belatedpng.js'
-javascript 'boilerplate/js/libs/jquery-1.4.2.min.js',  :to => 'lib/jquery-1.4.2.min.js'
 javascript 'boilerplate/js/libs/modernizr-1.6.min.js', :to => 'lib/modernizr-1.6.min.js'
-javascript 'boilerplate/js/rails.js',                  :to => 'rails.js' # Add from https://github.com/rails/jquery-ujs/ later
 
 # google analytics config
 file 'google/google.yml', :to => 'config/google.yml'
-
-# need to remove (при помощи rails g playmo:install, rails g playmo:uninstall)
-# public/404.html
-# public/422.html
-# public/500.html
-# public/index.html
-# public/controls.js
-# public/dragdrop.js
-# public/effects.js
-# public/prototype.js
-# public/rail.js => mootools-ujs or jquery-ujs
 
 help %Q{
 

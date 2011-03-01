@@ -25,6 +25,7 @@ module Playmo
         remove_file 'public/javascripts/effects.js'
         remove_file 'public/javascripts/prototype.js'
 	remove_file 'public/javascripts/rails.js'
+	remove_file 'public/images/rails.png'
       end
       
       def install_js_framework

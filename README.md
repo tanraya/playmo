@@ -13,9 +13,11 @@ First, create new rails3 application
     $ rails new appname
     $ cd ./appname
 
-Then, add to your gemfile this line
+Then, add to your gemfile this
 
-    gem 'playmo-rails', :git => 'git://github.com/tanraya/playmo.git'
+    group :development do
+      gem 'playmo-rails', :git => 'git://github.com/tanraya/playmo.git'
+    end
 
 After that, run bundle to install necessary gems
 

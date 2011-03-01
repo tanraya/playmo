@@ -1,6 +1,7 @@
 require 'rails/generators/named_base'
 require 'compass'
 require 'compass/exec'
+require 'compass/exec/sub_command_ui'
 
 module Playmo
   module Generators
@@ -8,62 +9,69 @@ module Playmo
       desc "Creates a Playmo initializer and copy locale files to your application."
       source_root File.expand_path('../templates', __FILE__)
       attr_accessor :framework
-      
+
       def generate_controller
-        Rails::Generators.invoke("controller", ['home', 'index'])
+        Rails::Generators.invoke("controller", ['home', 'index', '--quiet'])
       end
       
       def remove_rails_files
-        remove_file 'app/views/layouts/application.html.erb'
-        remove_file 'config/routes.rb'
-        remove_file 'public/404.html'
-        remove_file 'public/422.html'
-        remove_file 'public/500.html'
-        remove_file 'public/index.html'
-        remove_file 'public/javascripts/controls.js'
-        remove_file 'public/javascripts/dragdrop.js'
-        remove_file 'public/javascripts/effects.js'
-        remove_file 'public/javascripts/prototype.js'
-        remove_file 'public/javascripts/rails.js'
-        remove_file 'public/images/rails.png'
+        remove 'app/views/layouts/application.html.erb'
+        remove 'config/routes.rb'
+        remove 'public/favicon.ico'
+        remove 'public/robots.txt'
+        remove 'public/404.html'
+        remove 'public/422.html'
+        remove 'public/500.html'
+        remove 'public/index.html'
+        remove 'public/javascripts/controls.js'
+        remove 'public/javascripts/dragdrop.js'
+        remove 'public/javascripts/effects.js'
+        remove 'public/javascripts/prototype.js'
+        remove 'public/javascripts/rails.js'
+        remove 'public/images/rails.png'
       end
 
       def install_js_framework
-        say "\nPlease choose JS framework you prefer to install:", :green
-        say "1. JQuery 1.5.1", :green
-        say "2. Mootools 1.3.1", :green
-        say "3. Mootools 1.3.1 with More 1.3.1.1", :green
+        say "\nPlease choose JS framework you prefer to install:", :white
+        say "\n"
+        say "1. JQuery 1.5.1", :white
+        say "2. Mootools Core 1.3.1", :white
+        say "3. Mootools Core 1.3.1 with More 1.3.1.1", :white
 
-        @framework = ask("Enter number: ").to_i
+        @framework = ask("\nPlease enter item number:").to_i
 
         case @framework
         when 1, 0
-          copy_file "jquery/jquery-1.5.1.min.js", "public/javascripts/lib/jquery-1.5.1.min.js"
-          copy_file "jquery/rails.js", "public/javascripts/rails.js"
-          say "JQuery 1.5.1 installed", :yellow
+          copy "jquery/jquery-1.5.1.min.js", "public/javascripts/lib/jquery-1.5.1.min.js"
+          copy "jquery/rails.js", "public/javascripts/rails.js"
         when 2
-          copy_file "mootools/mootools-core-1.3.1.js", "public/javascripts/lib/mootools-core-1.3.1.min.js"
-          copy_file "mootools/rails.js", "public/javascripts/rails.js"
-          say "Mootools Core 1.3.1 installed", :yellow
+          copy "mootools/mootools-core-1.3.1.js", "public/javascripts/lib/mootools-core-1.3.1.min.js"
+          copy "mootools/rails.js", "public/javascripts/rails.js"
         when 3
-          copy_file "mootools/mootools-core-1.3.1.js", "public/javascripts/lib/mootools-core-1.3.1.min.js"
-          copy_file "mootools/rails.js", "public/javascripts/rails.js"
-          copy_file "mootools/mootools-more-1.3.1.1.js", "public/javascripts/lib/mootools-more-1.3.1.1.min.js"
-          say "Mootools Core 1.3.1 installed", :yellow
-          say "Mootools More 1.3.1.1 installed", :yellow
+          copy "mootools/mootools-core-1.3.1.js", "public/javascripts/lib/mootools-core-1.3.1.min.js"
+          copy "mootools/rails.js", "public/javascripts/rails.js"
+          copy "mootools/mootools-more-1.3.1.1.js", "public/javascripts/lib/mootools-more-1.3.1.1.min.js"
         end
       end
       
       def copy_files
-        template "application.html.erb", "app/views/layouts/application.html.erb"
-        template "routes.rb", "config/routes.rb"
+        _template "application.html.erb", "app/views/layouts/application.html.erb"
+        _template "routes.rb", "config/routes.rb"
       end
 
       def init_compass
-        # TODO rewrite this
-        args = %w{init rails -r playmo-rails -u playmo-rails --sass-dir=public/stylesheets --css-dir=public/stylesheets/compiled --quiet --force}
-        command_line_class = Compass::Exec::Helpers.select_appropriate_command_line_ui(args)
-        command_line_class.new(args).run!
+        sass_dir = 'public/stylesheets'
+        css_dir  = 'public/stylesheets/compiled'
+        using    = 'playmo-rails'
+        
+        run "compass init rails --quiet -r #{using} -u #{using} --sass-dir=#{sass_dir} \
+          --css-dir=#{css_dir}", :verbose => false, :capture => true
+      end
+
+      def congrats
+        say "\n"
+        say "*******************************************************************"
+        say "Congratulations! Your playmo-rails has been installed successfully."
       end
 
     private  
@@ -73,6 +81,18 @@ module Playmo
       
       def framework
         @framework
+      end
+
+      def remove(path)
+        remove_file path, :verbose => false
+      end
+
+      def copy(from ,to)
+        copy_file from ,to, :verbose => false
+      end
+
+      def _template(from ,to)
+        template from ,to, :verbose => false
       end
     end
   end

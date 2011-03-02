@@ -14,6 +14,7 @@ module Playmo
       end
       
       def remove_rails_files
+        remove 'app/helpers/application_helper.rb'
         remove 'app/views/layouts/application.html.erb'
         remove 'config/routes.rb'
         remove 'public/favicon.ico'
@@ -56,6 +57,7 @@ module Playmo
       def copy_files
         _template "application.html.erb", "app/views/layouts/application.html.erb"
         _template "routes.rb", "config/routes.rb"
+        copy "templates/application_helper.rb", "app/helpers/application_helper.rb"
       end
 
       def init_compass

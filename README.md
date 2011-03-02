@@ -1,5 +1,5 @@
 # Playmo
-This is the special kit that allows you create Rails 3 apps quick with pre-included few useful libs in your app.
+This is the special kit that allows you create html5-ready Rails 3 apps quick with pre-included few useful libs in your app.
 It includes:
 
 * [Compass](http://compass-style.org/)

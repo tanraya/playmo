@@ -57,7 +57,7 @@ module Playmo
       def copy_files
         _template "application.html.erb", "app/views/layouts/application.html.erb"
         _template "routes.rb", "config/routes.rb"
-        copy "templates/application_helper.rb", "app/helpers/application_helper.rb"
+        copy "application_helper.rb", "app/helpers/application_helper.rb"
       end
 
       def init_compass

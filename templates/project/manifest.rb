@@ -1,4 +1,3 @@
-# bundle exec compass init rails -r playmo-rails -u playmo-rails --sass-dir=public/stylesheets --force --trace
 description "Special kit that allows you create Rails 3 apps quick"
 
 # rails stylesheets

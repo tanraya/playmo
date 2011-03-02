@@ -63,7 +63,7 @@ module Playmo
       def init_compass
         sass_dir = 'public/stylesheets'
         css_dir  = 'public/stylesheets/compiled'
-        using    = 'playmo-rails'
+        using    = 'playmo'
         
         run "compass init rails --quiet -r #{using} -u #{using} --sass-dir=#{sass_dir} \
           --css-dir=#{css_dir}", :verbose => false, :capture => true
@@ -72,7 +72,7 @@ module Playmo
       def congrats
         say "\n"
         say "*******************************************************************"
-        say "Congratulations! Your playmo-rails has been installed successfully."
+        say "Congratulations! All files has been installed successfully. Playmo!"
       end
 
     private  

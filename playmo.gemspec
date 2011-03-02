@@ -2,16 +2,16 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.version     = "0.0.1"
-  s.name        = "playmo-rails"
+  s.version     = "0.0.2"
+  s.name        = "playmo"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Andrew Kozloff"]
   s.email       = ["andrew@tanraya.com"]
-  s.homepage    = "https://github.com/tanraya/playmo-rails"
-  s.summary     = %q{Compass extension with html5 boilerplate and some tricky stuff for rails3}
-  s.description = %q{Compass extension with html5 boilerplate and some tricky stuff for rails3}
+  s.homepage    = "https://github.com/tanraya/playmo"
+  s.summary     = %q{This is the special kit that allows you create Rails 3 apps quick with pre-included few useful libs in your app.}
+  s.description = %q{This is the special kit that allows you create Rails 3 apps quick with pre-included few useful libs in your app.}
 
-  s.rubyforge_project = "playmo-rails"
+  s.rubyforge_project = "playmo"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

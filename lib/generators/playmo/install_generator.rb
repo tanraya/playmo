@@ -1,17 +1,16 @@
-require 'rails/generators/named_base'
-require 'compass'
-require 'compass/exec'
-require 'compass/exec/sub_command_ui'
-
 module Playmo
   module Generators
     class InstallGenerator < Rails::Generators::Base
-      desc "Creates a Playmo initializer and copy locale files to your application."
+      desc "Creates a Playmo initializer and copy files to your application."
       source_root File.expand_path('../templates', __FILE__)
       attr_accessor :framework
 
       def generate_controller
         Rails::Generators.invoke("controller", ['home', 'index', '--quiet'])
+        
+        gsub_file 'app/views/home/index.html.erb', '<h1>Home#index</h1>', :verbose => false do
+          '<%= heading_with_title("Home#index") %>'
+        end
       end
       
       def remove_rails_files

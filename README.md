@@ -45,5 +45,5 @@ That's all. Now you can run your app:
 * It removes default rails javascripts
 * It replaces prototype-ujs with jquery-ujs or mootools-ujs
 
-### Limitations
-Install the gem *only* in the new empty app. Installation in ready apps is not supported yet and you may accidentally damage the files in your app.
+## Limitations
+Install the gem *only* into new empty app. Installation into ready apps is *only on your risk* because you may accidentally damage the files in your app.

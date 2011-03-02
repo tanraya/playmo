@@ -73,6 +73,8 @@ module Playmo
         say "\n"
         say "*******************************************************************"
         say "Congratulations! All files has been installed successfully. Playmo!"
+        say "You can read some docs on https://github.com/tanraya/playmo"
+        say "\n"
       end
 
     private  

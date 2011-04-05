@@ -22,4 +22,5 @@ Gem::Specification.new do |s|
   s.add_dependency("compass", [">= 0.10.6"])
   s.add_dependency("devise", [">= 1.2.1"])
   s.add_dependency("cancan", [">= 1.6.4"])
+  s.add_dependency("capistrano", [">= 1.6.4"])
 end

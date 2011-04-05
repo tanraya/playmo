@@ -5,6 +5,13 @@ module Playmo
       source_root File.expand_path('../templates', __FILE__)
       attr_accessor :framework
 
+      def install_gems
+        generate "devise:install"
+        generate "devise User"
+        generate "devise:views"
+        generate "cancan:ability"
+      end
+
       def generate_controller
         Rails::Generators.invoke("controller", ['home', 'index', '--quiet'])
         

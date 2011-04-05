@@ -6,6 +6,11 @@ module Playmo
       attr_accessor :framework
 
       def install_gems
+        gem "devise", ">= 1.2.1"
+        gem "cancan", ">= 1.6.4"
+        gem "capistrano", ">= 1.6.4"
+        gem "compass", ">= 0.10.6"
+
         generate "devise:install"
         generate "devise User"
         generate "devise:views"

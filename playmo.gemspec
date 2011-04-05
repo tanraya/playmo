@@ -2,7 +2,7 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.version     = "0.0.2"
+  s.version     = "0.0.3"
   s.name        = "playmo"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Andrew Kozloff"]
@@ -19,8 +19,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.has_rdoc      = false
   s.rubygems_version = %q{1.3.7}
-  s.add_dependency("compass", [">= 0.10.6"])
-  s.add_dependency("devise", [">= 1.2.1"])
-  s.add_dependency("cancan", [">= 1.6.4"])
-  s.add_dependency("capistrano", [">= 1.6.4"])
+  #s.add_dependency("compass", [">= 0.10.6"])
 end

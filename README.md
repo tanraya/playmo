@@ -6,6 +6,8 @@ It includes:
 * [HTML5 Boilerplate](http://html5boilerplate.com/)
 * [Mootools](http://mootools.net)
 * [Jquery](http://jquery.com)
+* [Devise](https://github.com/plataformatec/devise) - flexible authentication solution for Rails
+* [Cancan](https://github.com/ryanb/cancan) - authorization gem for Rails
 * Set of useful rails helpers
 
 *Don't forget that playmo supports only Rails 3 apps*

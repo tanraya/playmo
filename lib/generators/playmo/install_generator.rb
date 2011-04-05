@@ -14,6 +14,7 @@ module Playmo
       end
       
       def remove_rails_files
+        remove 'app/controllers/application_controller.rb'
         remove 'app/helpers/application_helper.rb'
         remove 'app/views/layouts/application.html.erb'
         remove 'config/routes.rb'
@@ -58,6 +59,7 @@ module Playmo
         _template "application.html.erb", "app/views/layouts/application.html.erb"
         _template "routes.rb", "config/routes.rb"
         copy "application_helper.rb", "app/helpers/application_helper.rb"
+        copy "application_controller.rb", "app/controllers/application_controller.rb"
       end
 
       def init_compass

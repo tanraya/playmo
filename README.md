@@ -38,12 +38,14 @@ That's all. Now you can run your app:
 
 ## What it does
 
-* It installs JQuery or Mootools depending on your preference
-* It replaces default layout with HTML5-Boilerplate
-* It generates HomeController with index action and view
-* It generates a set of useful helpers in ApplicationHelper
-* It removes default rails javascripts
-* It replaces prototype-ujs with jquery-ujs or mootools-ujs
+* Installs JQuery or Mootools depending on your preference
+* Replaces default layout with HTML5-Boilerplate
+* Generates HomeController with index action and view
+* Generates a set of useful helpers in ApplicationHelper
+* Removes default rails javascripts
+* Replaces prototype-ujs with jquery-ujs or mootools-ujs
+* Installs devise, cancan and compass (and their dependencies)
+* Adds _User.current_ class method as alias for devise _current_user_ helper, thus you access to current user object from other models.
 
 ## Limitations
 Install the gem *only* into new empty app. Installation into ready apps is *only on your risk* because you may accidentally damage the files in your app.

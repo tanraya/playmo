@@ -4,7 +4,7 @@ description "Special kit that allows you create Rails 3 apps quick"
 stylesheet 'rails/public/stylesheets/layout.scss', :to => 'rails/layout.scss'
 stylesheet 'rails/public/stylesheets/screen.scss', :to => 'rails/screen.scss', :media => 'screen, projection'
 stylesheet 'rails/public/stylesheets/print.scss', :to => 'rails/print.scss',  :media => 'print'
-stylesheet 'rails/public/stylesheets/wysiwyg.scss', :to => 'public/stylesheets/rails/wysiwyg.scss'
+stylesheet 'rails/public/stylesheets/wysiwyg.scss', :to => 'rails/wysiwyg.scss'
 
 # playmo additional styles and files
 stylesheet 'playmo/playmo.scss'

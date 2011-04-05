@@ -5,15 +5,10 @@ module Playmo
       source_root File.expand_path('../templates', __FILE__)
       attr_accessor :framework
 
-      def install_gems
-        gem "devise"
+      def add_gems
+        gem "devise", "~> 1.2.0"
         gem "cancan"
         gem "compass"
-
-        generate "devise:install", '--quiet'
-        generate "devise User", '--quiet'
-        generate "devise:views", '--quiet'
-        generate "cancan:ability", '--quiet'
       end
 
       def generate_controller
@@ -73,6 +68,27 @@ module Playmo
         copy "application_controller.rb", "app/controllers/application_controller.rb"
       end
 
+      def run_gems_generators
+        generate "devise:install", '--quiet'
+        generate "devise User",    '--quiet'
+        generate "devise:views",   '--quiet'
+        generate "cancan:ability", '--quiet'
+
+        # Add :name accessor to default accessors
+        # Also add some specific methods
+        gsub_file 'app/models/user.rb', '  attr_accessible :email, :password, :password_confirmation, :remember_me', :verbose => false do
+          <<-CONTENT.gsub(/^ {10}/, '')
+            attr_accessible :email, :password, :password_confirmation, :remember_me, :name
+            cattr_accessor :current
+
+            # Return user name or user name from email address
+            def username
+              name.blank? ? email.match(/^[^@]+/)[0] : name
+            end
+          CONTENT
+        end
+      end
+
       def init_compass
         sass_dir = 'public/stylesheets'
         css_dir  = 'public/stylesheets/compiled'
@@ -85,7 +101,7 @@ module Playmo
       def congrats
         say "\n"
         say "*******************************************************************"
-        say "Congratulations! All files has been installed successfully. Playmo!"
+        say "Congratulations! All files has been installed successfully."
         say "You can read some docs on https://github.com/tanraya/playmo"
         say "\n"
       end

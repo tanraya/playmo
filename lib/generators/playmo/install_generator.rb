@@ -41,7 +41,7 @@ module Playmo
       def install_js_framework
         say "\nPlease choose JS framework you prefer to install:", :white
         say "\n"
-        say "1. JQuery 1.5.1", :white
+        say "1. JQuery 1.5.2", :white
         say "2. Mootools Core 1.3.1", :white
         say "3. Mootools Core 1.3.1 with More 1.3.1.1", :white
 
@@ -49,7 +49,7 @@ module Playmo
 
         case @framework
         when 1, 0
-          copy "jquery/jquery-1.5.1.min.js", "public/javascripts/lib/jquery-1.5.1.min.js"
+          copy "jquery/jquery-1.5.2.min.js", "public/javascripts/lib/jquery-1.5.2.min.js"
           copy "jquery/rails.js", "public/javascripts/rails.js"
         when 2
           copy "mootools/mootools-core-1.3.1.js", "public/javascripts/lib/mootools-core-1.3.1.min.js"

@@ -6,19 +6,18 @@ module Playmo
       attr_accessor :framework
 
       def install_gems
-        gem "devise", ">= 1.2.1"
-        gem "cancan", ">= 1.6.4"
-        gem "capistrano", ">= 1.6.4"
-        gem "compass", ">= 0.10.6"
+        gem "devise"
+        gem "cancan"
+        gem "compass"
 
-        generate "devise:install"
-        generate "devise User"
-        generate "devise:views"
-        generate "cancan:ability"
+        generate "devise:install", '--quiet'
+        generate "devise User", '--quiet'
+        generate "devise:views", '--quiet'
+        generate "cancan:ability", '--quiet'
       end
 
       def generate_controller
-        Rails::Generators.invoke("controller", ['home', 'index', '--quiet'])
+        generate :controller, :home, :index, '--quiet'
         
         gsub_file 'app/views/home/index.html.erb', '<h1>Home#index</h1>', :verbose => false do
           '<%= heading_with_title("Home#index") %>'

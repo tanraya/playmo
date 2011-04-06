@@ -25,7 +25,7 @@
   <%%= stylesheet_link_tag 'compiled/rails/print.css', :media => 'print' %>
   <style><%%= yield :styles %></style>
 
-  <%%= javascript_include_tag '/javascripts/lib/modernizr-1.6.min.js' %>
+  <%%= javascript_include_tag '/javascripts/lib/modernizr-1.7.min.js' %>
 </head>
 <body>
 
@@ -54,8 +54,8 @@
   </div>
 
 <% if framework == 1 %>
-<%%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js' %>
-<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/lib/jquery-1.5.1.min.js"%3E%3C/script%3E'))</script>
+<%%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js' %>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/lib/jquery-1.5.2.min.js"%3E%3C/script%3E'))</script>
 <% elsif [2,3].include?(framework) %>
 <%%= javascript_include_tag 'lib/mootools-core-1.3.1.min.js' %>
 <% if framework == 3 %><%%= javascript_include_tag 'lib/mootools-more-1.3.1.1.min.js' %><% end %>

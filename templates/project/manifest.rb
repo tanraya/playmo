@@ -20,7 +20,7 @@ html 'boilerplate/files/favicon.ico',          :to => 'favicon.ico'
 stylesheet 'boilerplate/css/style.scss',    :media => 'all'
 
 javascript 'boilerplate/js/libs/dd_belatedpng.js',     :to => 'lib/dd_belatedpng.js'
-javascript 'boilerplate/js/libs/modernizr-1.6.min.js', :to => 'lib/modernizr-1.6.min.js'
+javascript 'boilerplate/js/libs/modernizr-1.7.min.js', :to => 'lib/modernizr-1.7.min.js'
 
 # google analytics config
 file 'google/google.yml', :to => 'config/google.yml'

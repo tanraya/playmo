@@ -38,7 +38,7 @@ That's all. Now you can run your app:
 
 ***
 
-## What it does
+## What it does (details)
 
 * Installs JQuery or Mootools depending on your preference
 * Replaces default layout with HTML5-Boilerplate

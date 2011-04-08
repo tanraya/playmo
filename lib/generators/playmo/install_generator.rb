@@ -5,13 +5,13 @@ module Playmo
       source_root File.expand_path('../templates', __FILE__)
       attr_accessor :framework
 
-      def add_gems
+      def use_gems
         gem "devise", "~> 1.2.0"
         gem "cancan"
         gem "compass"
       end
 
-      def generate_controller
+      def generate_home_controller
         generate :controller, :home, :index, '--quiet'
         
         gsub_file 'app/views/home/index.html.erb', '<h1>Home#index</h1>', :verbose => false do
@@ -20,22 +20,22 @@ module Playmo
       end
       
       def remove_rails_files
-        remove 'app/controllers/application_controller.rb'
-        remove 'app/helpers/application_helper.rb'
-        remove 'app/views/layouts/application.html.erb'
-        remove 'config/routes.rb'
-        remove 'public/favicon.ico'
-        remove 'public/robots.txt'
-        remove 'public/404.html'
-        remove 'public/422.html'
-        remove 'public/500.html'
-        remove 'public/index.html'
-        remove 'public/javascripts/controls.js'
-        remove 'public/javascripts/dragdrop.js'
-        remove 'public/javascripts/effects.js'
-        remove 'public/javascripts/prototype.js'
-        remove 'public/javascripts/rails.js'
-        remove 'public/images/rails.png'
+        remove_file 'app/controllers/application_controller.rb'
+        remove_file 'app/helpers/application_helper.rb'
+        remove_file 'app/views/layouts/application.html.erb'
+        remove_file 'config/routes.rb'
+        remove_file 'public/favicon.ico'
+        remove_file 'public/robots.txt'
+        remove_file 'public/404.html'
+        remove_file 'public/422.html'
+        remove_file 'public/500.html'
+        remove_file 'public/index.html'
+        remove_file 'public/javascripts/controls.js'
+        remove_file 'public/javascripts/dragdrop.js'
+        remove_file 'public/javascripts/effects.js'
+        remove_file 'public/javascripts/prototype.js'
+        remove_file 'public/javascripts/rails.js'
+        remove_file 'public/images/rails.png'
       end
 
       def install_js_framework
@@ -49,30 +49,30 @@ module Playmo
 
         case @framework
         when 1, 0
-          copy "jquery/jquery-1.5.2.min.js", "public/javascripts/lib/jquery-1.5.2.min.js"
-          copy "jquery/rails.js", "public/javascripts/rails.js"
+          copy_file "jquery/jquery-1.5.2.min.js", "public/javascripts/lib/jquery-1.5.2.min.js"
+          copy_file "jquery/rails.js", "public/javascripts/rails.js"
         when 2
-          copy "mootools/mootools-core-1.3.1.js", "public/javascripts/lib/mootools-core-1.3.1.min.js"
-          copy "mootools/rails.js", "public/javascripts/rails.js"
+          copy_file "mootools/mootools-core-1.3.1.js", "public/javascripts/lib/mootools-core-1.3.1.min.js"
+          copy_file "mootools/rails.js", "public/javascripts/rails.js"
         when 3
-          copy "mootools/mootools-core-1.3.1.js", "public/javascripts/lib/mootools-core-1.3.1.min.js"
-          copy "mootools/rails.js", "public/javascripts/rails.js"
-          copy "mootools/mootools-more-1.3.1.1.js", "public/javascripts/lib/mootools-more-1.3.1.1.min.js"
+          copy_file "mootools/mootools-core-1.3.1.js", "public/javascripts/lib/mootools-core-1.3.1.min.js"
+          copy_file "mootools/rails.js", "public/javascripts/rails.js"
+          copy_file "mootools/mootools-more-1.3.1.1.js", "public/javascripts/lib/mootools-more-1.3.1.1.min.js"
         end
       end
       
       def copy_files
-        _template "application.html.erb", "app/views/layouts/application.html.erb"
-        _template "routes.rb", "config/routes.rb"
-        copy "application_helper.rb", "app/helpers/application_helper.rb"
-        copy "application_controller.rb", "app/controllers/application_controller.rb"
+        template "application.html.erb", "app/views/layouts/application.html.erb"
+        template "routes.rb", "config/routes.rb"
+        copy_file "application_helper.rb", "app/helpers/application_helper.rb"
+        copy_file "application_controller.rb", "app/controllers/application_controller.rb"
       end
 
       def run_gems_generators
-        generate "devise:install", '--quiet'
-        generate "devise User",    '--quiet'
-        generate "devise:views",   '--quiet'
-        generate "cancan:ability", '--quiet'
+        generate "devise:install"
+        generate "devise User"
+        generate "devise:views"
+        generate "cancan:ability"
 
         # Add :name accessor to default accessors
         # Also add some specific methods
@@ -89,7 +89,7 @@ module Playmo
         end
       end
 
-      def init_compass
+      def initialize_compass
         sass_dir = 'public/stylesheets'
         css_dir  = 'public/stylesheets/compiled'
         using    = 'playmo'
@@ -113,18 +113,6 @@ module Playmo
 
       def framework
         @framework
-      end
-
-      def remove(path)
-        remove_file path, :verbose => false
-      end
-
-      def copy(from ,to)
-        copy_file from ,to, :verbose => false
-      end
-
-      def _template(from ,to)
-        template from ,to, :verbose => false
       end
 
     end

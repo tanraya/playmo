@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'compass'
 Compass::Frameworks.register("playmo", :path => "#{File.dirname(__FILE__)}/..")
 

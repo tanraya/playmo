@@ -1,6 +1,6 @@
 module Playmo
   module Generators
-    class InstallGenerator < Base
+    class InstallGenerator < Rails::Generators::Base
       desc "Creates a Playmo initializer and copy files to your application."
       source_root File.expand_path('../templates', __FILE__)
       attr_accessor :framework
@@ -106,26 +106,27 @@ module Playmo
         say "\n"
       end
 
-#    private
-#      def app_name
-#        RAILS_ROOT.split('/').last.capitalize
-#      end
-#
-#      def framework
-#        @framework
-#      end
-#
-#      def remove(path)
-#        remove_file path, :verbose => false
-#      end
-#
-#      def copy(from ,to)
-#        copy_file from ,to, :verbose => false
-#      end
-#
-#      def _template(from ,to)
-#        template from ,to, :verbose => false
-#      end
+    private
+      def app_name
+        RAILS_ROOT.split('/').last.capitalize
+      end
+
+      def framework
+        @framework
+      end
+
+      def remove(path)
+        remove_file path, :verbose => false
+      end
+
+      def copy(from ,to)
+        copy_file from ,to, :verbose => false
+      end
+
+      def _template(from ,to)
+        template from ,to, :verbose => false
+      end
+
     end
   end
 end

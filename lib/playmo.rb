@@ -7,5 +7,5 @@ if defined?(ActionController)
 end
 
 module Playmo
-  autoload :Generators, 'playmo/generators'
+  #autoload :Generators, 'playmo/generators/base'
 end

@@ -25,7 +25,6 @@ module Playmo
         remove_file 'app/controllers/application_controller.rb'
         remove_file 'app/helpers/application_helper.rb'
         remove_file 'app/views/layouts/application.html.erb'
-        #remove_file 'config/routes.rb'
         remove_file 'public/favicon.ico'
         remove_file 'public/robots.txt'
         remove_file 'public/404.html'
@@ -65,13 +64,15 @@ module Playmo
       
       def copy_files
         template "application.html.erb", "app/views/layouts/application.html.erb"
-        #template "routes.rb", "config/routes.rb"
         copy_file "application_helper.rb", "app/helpers/application_helper.rb"
         copy_file "application_controller.rb", "app/controllers/application_controller.rb"
       end
       
       def setup_routes
 	route 'root :to => "home#index"'
+        gsub_file 'config/routes.rb', 'get "home/index"', :verbose => false do
+          ''
+        end
       end
 
       def run_gems_generators
@@ -111,19 +112,6 @@ module Playmo
         say "You can read some docs on https://github.com/tanraya/playmo"
         say "\n"
       end
-
-    private
-      #def app_name
-	#require 'rails/generators/rails/app/app_generator'
-        #RAILS_ROOT.split('/').last.capitalize
-	#ag = Rails::Generators::AppGenerator.new
-	#ag.app_name
-      #end
-
-      def framework
-        @framework
-      end
-
     end
   end
 end

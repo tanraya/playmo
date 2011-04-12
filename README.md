@@ -3,6 +3,7 @@ This is the special kit that allows you create html5-ready Rails 3 apps quick wi
 It includes:
 
 * [Compass](http://compass-style.org/)
+* [Jammit](https://github.com/documentcloud/jammit) - industrial strength asset packaging for Rails
 * [HTML5 Boilerplate](http://html5boilerplate.com/)
 * [Mootools](http://mootools.net)
 * [Jquery](http://jquery.com)

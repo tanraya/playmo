@@ -10,7 +10,8 @@ module Playmo
       def use_gems
         gem "devise", "~> 1.2.0"
         gem "cancan"
-        gem "compass"
+        gem "compass", :group => :development
+	gem "jammit", :group => :development
       end
 
       def generate_home_controller
@@ -104,6 +105,11 @@ module Playmo
         run "compass init rails --quiet -r #{using} -u #{using} --sass-dir=#{sass_dir} \
           --css-dir=#{css_dir}", :verbose => false, :capture => true
       end
+      
+      def copy_tasks
+	copy_file "tasks/sass.rake", "lib/tasks/sass.rake"
+	copy_file "tasks/assets.rake", "lib/tasks/assets.rake"
+      end
 
       def congrats
         say "\n"
@@ -111,6 +117,12 @@ module Playmo
         say "Congratulations! All files has been installed successfully."
         say "You can read some docs on https://github.com/tanraya/playmo"
         say "\n"
+      end
+      
+    private
+      
+      def framework
+	@framework
       end
     end
   end

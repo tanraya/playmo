@@ -9,3 +9,5 @@
 * Create an html5 simple template and rails application to develop playmo gem
 * Add link to homepage into "Welcome to abroad!"
 * Add default users into seeds
+* Generate assets.yml
+* Modify compass.rb

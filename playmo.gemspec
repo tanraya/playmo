@@ -8,8 +8,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Andrew Kozloff"]
   s.email       = ["andrew@tanraya.com"]
   s.homepage    = "https://github.com/tanraya/playmo"
-  s.summary     = %q{This is the special kit that allows you create Rails 3 apps quick with pre-included few useful libs in your app.}
-  s.description = %q{This is the special kit that allows you create Rails 3 apps quick with pre-included few useful libs in your app.}
+  s.summary     = %q{Special kit that allows you create Rails 3 apps quick with pre-included few useful libs in your app.}
 
   s.rubyforge_project = "playmo"
 

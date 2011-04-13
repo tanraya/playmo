@@ -14,3 +14,4 @@
 - initialize git repository
 - add capistrano and capify!
 * https://gist.github.com/280196/5c075f4a3d3a4118d1d706fce07e40572a3873c7
+- Remove scss files from public after deploy. Create special task for it.

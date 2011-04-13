@@ -2,13 +2,13 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.version     = "0.0.5"
+  s.version     = "0.0.6"
   s.name        = "playmo"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Andrew Kozloff"]
   s.email       = ["andrew@tanraya.com"]
   s.homepage    = "https://github.com/tanraya/playmo"
-  s.summary     = %q{Special kit that allows you create Rails 3 apps quick with pre-included few useful libs in your app.}
+  s.summary     = %q{Special kit that allows you create html5-ready Rails 3 apps quick with pre-included few useful libs in your app}
 
   s.rubyforge_project = "playmo"
 

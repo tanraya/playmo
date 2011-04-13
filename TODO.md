@@ -10,4 +10,4 @@
 * Add link to homepage into "Welcome to abroad!"
 * Add default users into seeds
 * Generate assets.yml
-* Modify compass.rb
+- Modify compass.rb

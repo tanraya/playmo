@@ -12,15 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="shortcut icon" href="/favicon.ico">
-    <%%= stylesheet_link_tag 'compiled/boilerplate/css/style.css', :media => 'all' %>
-    <%%= stylesheet_link_tag 'compiled/playmo/playmo.css' %>
-    <%%= stylesheet_link_tag 'compiled/playmo/article.css' %>
-    <%%= stylesheet_link_tag 'compiled/rails/layout.css' %>
-    <%%= stylesheet_link_tag 'compiled/rails/screen.css', :media => 'screen, projection' %>
-    <%%= stylesheet_link_tag 'compiled/rails/print.css', :media => 'print' %>
+    <%%= raw include_stylesheets :default, :media => 'all' %>
     <style><%%= yield :styles %></style>
 
-    <%%= javascript_include_tag '/javascripts/lib/modernizr-1.7.min.js' %>
+    <%%= raw include_javascripts :modernizr %>
   </head>
   <body>
 
@@ -48,19 +43,12 @@
       <footer></footer>
     </div>
 
-  <% if framework == 1 %>
-  <%%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js' %>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/lib/jquery-1.5.2.min.js"%3E%3C/script%3E'))</script>
-  <% elsif [2,3].include?(framework) %>
-  <%%= javascript_include_tag 'lib/mootools-core-1.3.1.min.js' %>
-  <% if framework == 3 %><%%= javascript_include_tag 'lib/mootools-more-1.3.1.1.min.js' %><% end %>
-  <% end %>
 
-  <%%= javascript_include_tag 'rails', 'application' %>
+  <%%= raw include_javascripts :default %>
   <script><%%= yield :javascripts %></script>
 
   <!--[if lt IE 7 ]>
-    <%%= javascript_include_tag '/javascripts/lib/dd_belatedpng.js' %>
+    <%%= raw include_javascripts :bb_delated_png %>
     <script>DD_belatedPNG.fix('img, .png_bg');</script>
   <![endif]-->
 

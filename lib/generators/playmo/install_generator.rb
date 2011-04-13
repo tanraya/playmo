@@ -11,7 +11,7 @@ module Playmo
         gem "devise", "~> 1.2.0"
         gem "cancan"
         gem "compass", :group => :development
-	gem "jammit", :group => :development
+	gem "jammit"
       end
 
       def generate_home_controller
@@ -99,7 +99,7 @@ module Playmo
 
       def initialize_compass
         sass_dir = 'public/stylesheets'
-        css_dir  = 'public/stylesheets/compiled'
+        css_dir  = 'public/assets/compiled/stylesheets'
         using    = 'playmo'
         
         run "compass init rails --quiet -r #{using} -u #{using} --sass-dir=#{sass_dir} \
@@ -110,12 +110,18 @@ module Playmo
 	copy_file "tasks/sass.rake", "lib/tasks/sass.rake"
 	copy_file "tasks/assets.rake", "lib/tasks/assets.rake"
       end
+      
+      def copy_assets_config
+	template "assets.yml", "config/assets.yml"
+      end
 
       def congrats
         say "\n"
         say "*******************************************************************"
         say "Congratulations! All files has been installed successfully."
         say "You can read some docs on https://github.com/tanraya/playmo"
+	say "\n"
+	say "Don't forget to configure config/initializers/devise.rb!"
         say "\n"
       end
       

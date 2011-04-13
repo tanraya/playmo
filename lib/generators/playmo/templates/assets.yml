@@ -1,0 +1,32 @@
+package_assets:        on # (on, off, always)
+embed_assets:          off # (on, off, datauri)
+compress_assets:       on # (on, off)
+gzip_assets:           on # (on, off)
+package_path:          assets # (defaults to assets)
+javascript_compressor: yui # (yui, closure)
+
+javascripts:
+  default:
+  <% if framework == 1 %>
+    - public/javascripts/lib/jquery-1.5.2.min.js
+  <% elsif [2,3].include?(framework) %>
+    - public/javascripts/lib/mootools-core-1.3.1.min.js
+    <% if framework == 3 %>
+    - public/javascripts/lib/mootools-more-1.3.1.1.min.js
+    <% end %>
+  <% end %>
+    - public/javascripts/rails.js
+    - public/javascripts/application.js
+  modernizr:
+    - public/javascripts/lib/modernizr-1.7.min.js
+  bb_delated_png:
+    - public/javascripts/lib/dd_belatedpng.js
+
+stylesheets:
+  default:
+    - public/assets/compiled/stylesheets/boilerplate/css/style.css
+    - public/assets/compiled/stylesheets/playmo/playmo.css
+    - public/assets/compiled/stylesheets/playmo/article.css
+    - public/assets/compiled/stylesheets/rails/layout.css
+    - public/assets/compiled/stylesheets/rails/screen.css
+    - public/assets/compiled/stylesheets/rails/print.css

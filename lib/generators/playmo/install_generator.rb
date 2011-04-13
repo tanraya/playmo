@@ -126,9 +126,10 @@ module Playmo
       
       def capify
 	capify!
+	copy_file "deploy.rb", "config/deploy.rb"
       end
       
-      def setup_git
+      def setup_git_repo
 	file '.gitignore', <<-CONTENT.gsub(/^ {10}/, '')
           .DS_Store
           log/*.log

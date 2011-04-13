@@ -1,25 +1,24 @@
-# cap deploy:setup
-# cap deploy
-require 'thinking_sphinx/deploy/capistrano'
+# Uncomment line below if you are using thinking_sphinx
+# require 'thinking_sphinx/deploy/capistrano'
 
 set :application, "lowjob"
 
-set :repository,     'gitosis@109.74.2.126:lowjob.git'
+set :repository,     'git@example.com:yourproject.git'
 set :scm,            :git
 set :deploy_via,     :remote_cache
 set :branch,         :master
-#set :scm_verbose,    true
-set :scm_username,   'demerest'
-#set :scm_passphrase, ''
+set :scm_username,   'scm_username_here'
 
-#ssh_options[:paranoid]      = false
+# Uncomment line below if you are using username in your scm
+# set :scm_passphrase, ''
+
 ssh_options[:forward_agent] = true
 
-set :user, "root"
+set :user, "root" # Username on the remote server
 set :use_sudo, false
-server "109.74.2.126", :app, :web, :db, :primary => true
+server "example.com", :app, :web, :db, :primary => true
 
-set :deploy_to, "/home/projects/#{application}"
+set :deploy_to, "/var/www/#{application}" # Path to your on the remote server
 set :rails_env, "production"
 
 namespace :deploy do
@@ -43,7 +42,8 @@ namespace :bundle do
   end
 end
 
-after 'deploy:setup',   'thinking_sphinx:shared_sphinx_folder'
+# Uncomment line below if you are using thinking_sphinx
+# after 'deploy:setup',   'thinking_sphinx:shared_sphinx_folder'
 after 'deploy:symlink', 'deploy:precache_assets'
 after 'deploy:symlink', 'bundle:install'
 after 'bundle:install', 'deploy:migrate'

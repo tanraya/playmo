@@ -11,3 +11,4 @@
 * Add default users into seeds
 - Generate assets.yml
 - Modify compass.rb
+* https://gist.github.com/280196/5c075f4a3d3a4118d1d706fce07e40572a3873c7

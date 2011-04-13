@@ -152,7 +152,7 @@ module Playmo
         say "Congratulations! All files has been installed successfully."
         say "You can read some docs on https://github.com/tanraya/playmo"
 	say "\n"
-	say "Don't forget to configure config/initializers/devise.rb!"
+	say "Don't forget to configure config/initializers/devise.rb and config/deploy.rb!"
         say "\n"
       end
       

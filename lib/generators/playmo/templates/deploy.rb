@@ -28,7 +28,7 @@ namespace :deploy do
 
   desc 'Bundle and minify javascripts and stylesheets'
   task :precache_assets, :roles => :app do
-    run_locally "rake assets:update"
+    run_locally "rake assets:compile"
     #root_path   = File.expand_path(File.dirname(__FILE__) + '/..')
     #assets_path = "#{root_path}/public/assets"
     #gem_path    = ENV['GEM_PATH']

@@ -12,6 +12,10 @@ module Playmo
         gem "cancan"
         gem "compass", :group => :development
 	gem "jammit"
+	
+        gsub_file 'Gemfile', "# gem 'capistrano'", :verbose => false do
+          "gem 'capistrano'"
+        end
       end
 
       def generate_home_controller
@@ -118,6 +122,10 @@ module Playmo
       
       def copy_assets_config
 	template "assets.yml", "config/assets.yml"
+      end
+      
+      def capify
+	capify!
       end
       
       def setup_git

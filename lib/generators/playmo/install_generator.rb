@@ -121,17 +121,14 @@ module Playmo
       end
       
       def setup_git
-	file '.gitignore', <<-FILE
-	.DS_Store
-	log/*.log
-	tmp/**/*
-	config/database.yml
-	db/*.sqlite3
-	public/uploads/*
-	gems/*
-	!gems/cache
-	!gems/bundler
-	FILE
+	file '.gitignore', <<-CONTENT.gsub(/^ {10}/, '')
+          .DS_Store
+          log/*.log
+          tmp/**/*
+          db/*.sqlite3
+          nbproject/
+          .idea/
+	CONTENT
 
 	git :init
 	git :submodule => "init"

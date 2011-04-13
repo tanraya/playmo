@@ -38,6 +38,7 @@ module Playmo
         remove_file 'public/javascripts/prototype.js'
         remove_file 'public/javascripts/rails.js'
         remove_file 'public/images/rails.png'
+	run 'touch README'
       end
 
       def install_js_framework
@@ -104,6 +105,10 @@ module Playmo
         
         run "compass init rails --quiet -r #{using} -u #{using} --sass-dir=#{sass_dir} \
           --css-dir=#{css_dir}", :verbose => false, :capture => true
+	
+        append_to_file 'config/compass.rb' do
+          'output_style = :compact'
+        end
       end
       
       def copy_tasks
@@ -113,6 +118,25 @@ module Playmo
       
       def copy_assets_config
 	template "assets.yml", "config/assets.yml"
+      end
+      
+      def setup_git
+	file '.gitignore', <<-FILE
+	.DS_Store
+	log/*.log
+	tmp/**/*
+	config/database.yml
+	db/*.sqlite3
+	public/uploads/*
+	gems/*
+	!gems/cache
+	!gems/bundler
+	FILE
+
+	git :init
+	git :submodule => "init"
+	git :add => '.'
+	git :commit => "-a -m 'Initial commit'"
       end
 
       def congrats

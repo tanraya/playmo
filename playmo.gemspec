@@ -22,4 +22,5 @@ Gem::Specification.new do |s|
   s.add_dependency("devise", ["~> 1.2.0"])
   s.add_dependency("jammit")
   s.add_dependency("cancan")
+  s.add_dependency("capistrano")
 end

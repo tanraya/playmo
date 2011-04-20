@@ -18,5 +18,5 @@
 - Remove scss files from public after deploy. Create special task for it.
 * Add dynamic processing for 500, 404, 422 errors
 * Generate models with useful comments that define code order (like: associations, validations, constants, etc.)
-* That's what I need to customize generators templates: http://www.railsdispatch.com/posts/building-or-updating-a-rails-3-plugin
+- That's what I need to customize generators templates: http://www.railsdispatch.com/posts/building-or-updating-a-rails-3-plugin
 * Replace default forms by formtastic or simple_form

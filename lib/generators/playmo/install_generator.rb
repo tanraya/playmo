@@ -27,6 +27,7 @@ module Playmo
       end
       
       def remove_rails_files
+        remove_file '.gitignore'
         remove_file 'app/controllers/application_controller.rb'
         remove_file 'app/helpers/application_helper.rb'
         remove_file 'app/views/layouts/application.html.erb'

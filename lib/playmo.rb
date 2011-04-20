@@ -9,4 +9,7 @@ end
 
 module Playmo
   #autoload :Generators, 'playmo/generators/base'
+  class Railtie < ::Rails::Railtie
+    config.generators.scaffold_controller = :playmo_controller
+  end
 end

@@ -74,11 +74,20 @@ module Playmo
           copy_file "mootools/mootools-more-1.3.1.1.js", "public/javascripts/lib/mootools-more-1.3.1.1.min.js"
         end
       end
+
+      def create_uploads_dir
+        run "mkdir public/uploads && chmod 777 public/uploads"
+      end
+
+      def create_shared_folder
+        empty_directory "app/views/shared"
+      end
       
       def copy_files
         template "application.html.erb", "app/views/layouts/application.html.erb"
         copy_file "application_helper.rb", "app/helpers/application_helper.rb"
         copy_file "application_controller.rb", "app/controllers/application_controller.rb"
+        copy_file "_sidebar.html.erb", "app/views/shared/_sidebar.html.erb"
       end
       
       def setup_routes
@@ -120,10 +129,6 @@ module Playmo
         append_to_file 'config/compass.rb' do
           'output_style = :compact'
         end
-      end
-
-      def create_uploads_dir
-        run "mkdir public/uploads && chmod 777 public/uploads"
       end
       
       def copy_tasks

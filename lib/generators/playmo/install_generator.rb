@@ -132,6 +132,18 @@ module Playmo
 	remove_file 'config/deploy.rb'
 	copy_file "deploy.rb", "config/deploy.rb"
       end
+
+      def add_default_user
+        append_to_file 'db/seeds.rb' do
+          <<-CONTENT.gsub(/^ {12}/, '')
+            User.create!(
+              :email                 => 'johndoe@example.com',
+              :password              => 'secret',
+              :password_confirmation => 'secret'
+            )
+          CONTENT
+        end
+      end
       
       def setup_git_repo
 	create_file '.gitignore', <<-CONTENT.gsub(/^ {10}/, '')

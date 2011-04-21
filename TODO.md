@@ -1,6 +1,6 @@
 # TODO
 - Integrates with jammit
-* Add content for sidebar
+- Add content for sidebar
 * Add links to devise controllers into layout
 * Add footer content
 * Modify default layout styles

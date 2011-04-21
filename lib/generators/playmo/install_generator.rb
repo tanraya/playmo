@@ -17,7 +17,7 @@ module Playmo
       end
 
       def generate_home_controller
-        generate :controller, :home, :index, '--quiet'
+        generate :controller, :home, :index
         
         gsub_file 'app/views/home/index.html.erb', '<h1>Home#index</h1>', :verbose => false do
           <<-CONTENT.gsub(/^ {12}/, '')

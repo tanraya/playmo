@@ -35,7 +35,7 @@
 	</article>
 
 	<aside>
-	  <%% yield :sidebar %>
+	  <%%= yield(:sidebar) || render(:partial => 'shared/sidebar') %> 
 	</aside>
 
       </div>

@@ -162,6 +162,13 @@ module Playmo
 	git :commit    => "-am 'Initial commit'"
       end
 
+      # Move all migrations into schema.rb and run db:setup instead of this code
+      def setup_database
+        rake("db:create")
+        rake("db:migrate")
+        rake("db:seed")
+      end
+
       def congrats
         say "\n"
         say "*******************************************************************"

@@ -18,9 +18,9 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.has_rdoc      = false
   s.rubygems_version = %q{1.3.7}
-  s.add_dependency("compass", [">= 0.10.6"])
-  s.add_dependency("devise", ["~> 1.2.0"])
-  s.add_dependency("jammit")
-  s.add_dependency("cancan")
-  s.add_dependency("capistrano")
+  s.add_dependency("compass", ["~> 0.10.6"])
+  s.add_dependency("devise", ["~> 1.3.1"])
+  s.add_dependency("jammit", ["~> 0.6.0"])
+  s.add_dependency("cancan", ["~> 1.6.4"])
+  s.add_dependency("capistrano", ["~> 2.5.21"])
 end

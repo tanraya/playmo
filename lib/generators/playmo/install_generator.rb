@@ -1,7 +1,5 @@
 module Playmo
   module Generators
-    #extend Rails::Generators::AppGenerator
-    
     class InstallGenerator < Rails::Generators::Base
       desc "Creates a Playmo initializer and copy files to your application."
       source_root File.expand_path('../templates', __FILE__)
@@ -114,6 +112,10 @@ module Playmo
         append_to_file 'config/compass.rb' do
           'output_style = :compact'
         end
+      end
+
+      def create_uploads_dir
+        run "mkdir public/uploads && chmod 777 public/uploads"
       end
       
       def copy_tasks

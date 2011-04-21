@@ -20,7 +20,15 @@ module Playmo
         generate :controller, :home, :index, '--quiet'
         
         gsub_file 'app/views/home/index.html.erb', '<h1>Home#index</h1>', :verbose => false do
-          '<%= heading_with_title("Home#index") %>'
+          <<-CONTENT.gsub(/^ {12}/, '')
+            <%= heading_with_title("Home#index") %>
+
+            <% content_for :sidebar do %>
+              <h3>Sidebar</h3>
+              <p>Content for sidebar.</p>
+              <p>This content displayed only at home page.</p>
+            <% end %>
+          CONTENT
         end
       end
       

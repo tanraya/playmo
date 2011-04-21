@@ -3,7 +3,7 @@
 - Add content for sidebar
 - Add links to devise controllers into layout
 - Add name column to users table
-* Add scoped_link_to helper
+- Add scoped_link_to helper
 - Add footer content
 - Modify default layout styles
 * Add styles for formtastic

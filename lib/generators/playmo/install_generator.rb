@@ -8,10 +8,10 @@ module Playmo
       attr_accessor :framework
 
       def use_gems
-        gem "devise", "~> 1.2.0"
-        gem "cancan"
-        gem "compass", :group => :development
-	gem "jammit"
+        gem "devise", "~> 1.3.1"
+        gem "cancan", "~> 1.6.4"
+        gem "compass", "~> 0.10.6", :group => :development
+	gem "jammit", "~> 0.6.0"
 	
         gsub_file 'Gemfile', "# gem 'capistrano'", :verbose => false do
           "gem 'capistrano'"

@@ -23,3 +23,4 @@
 - That's what I need to customize generators templates: http://www.railsdispatch.com/posts/building-or-updating-a-rails-3-plugin
 * Replace default forms by formtastic or simple_form
 * Generate HomesController in rails3 style
+* Do not copy playmo & boilerplate css styles into app - keep its inside gem

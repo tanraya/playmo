@@ -118,6 +118,23 @@ module Playmo
         end
       end
 
+      def add_name_to_users_table
+        timestamp = Time.now.strftime("%Y%m%d%H%M%S")
+        filename  = "db/migrate/#{timestamp}_add_name_to_users.rb"
+
+        create_file filename, <<-CONTENT.gsub(/^ {10}/, '')
+          class AddNameToUsers < ActiveRecord::Migration
+            def self.up
+              add_column :users, :name, :string
+            end
+          
+            def self.down
+              remove_column :users, :name
+            end
+          end
+        CONTENT
+      end
+
       def initialize_compass
         sass_dir = 'public/stylesheets'
         css_dir  = 'public/assets/compiled/stylesheets'

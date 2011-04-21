@@ -21,7 +21,21 @@
 
     <div id="container">
       <header>
-	<h1><%%= link_to 'Welcome abroad!', root_path %></h1>
+	<h1><%%= link_to_unless_current 'Welcome abroad!', root_path %></h1>
+        <div id="user-info">
+          <ul>
+            <%% if user_signed_in? %>
+              <li>
+                Hello, Dear <strong><%%= current_user.username %></strong>!
+                Maybe, you want to <%%= link_to 'logout', destroy_user_session_path %>?
+              </li>
+            <%% else %>
+              <li>
+                Hello Guest, maybe you want to <%%= link_to 'Join us', new_user_registration_path %> or <%%= link_to 'login', new_user_session_path %>?
+              </li>
+            <%% end %>
+          </ul>
+        </div>
       </header>
 
       <div id="main">
@@ -35,7 +49,7 @@
 	</article>
 
 	<aside>
-	  <%%= yield(:sidebar) || render(:partial => 'shared/sidebar') %> 
+	  <%%= content_for?(:sidebar) ? yield(:sidebar) : render("shared/sidebar") %>
 	</aside>
 
       </div>

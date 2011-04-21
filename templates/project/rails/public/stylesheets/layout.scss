@@ -18,3 +18,10 @@ body { background: #ddd; }
         padding: 30px;
         background: #fff;
     }
+
+    header { position: relative; margin: 0 0 50px 0; }
+      #user-info { position: absolute; top: 0; right: 0; }
+
+    #main { overflow: hidden; }
+      article { float: left; width: 480px; }
+      aside { float: right; width: 200px; }

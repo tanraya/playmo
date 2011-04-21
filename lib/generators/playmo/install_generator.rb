@@ -153,12 +153,13 @@ module Playmo
           db/*.sqlite3
           nbproject/
           .idea/
+          public/uploads/*
 	CONTENT
 
 	git :init
 	git :submodule => "init"
-	git :add => '.'
-	git :commit => "-a -m 'Initial commit'"
+	git :add       => '.'
+	git :commit    => "-am 'Initial commit'"
       end
 
       def congrats

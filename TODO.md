@@ -27,4 +27,4 @@
 * Include google code into layout and copy google.yml into config dir
 - Make styles for rails flashes
 - It seems override styles are not OK
-* Do not copy helpers into app!
+- Do not copy helpers into app!

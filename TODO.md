@@ -7,10 +7,10 @@
 - Add footer content
 - Modify default layout styles
 * Add styles for formtastic if formtastic installed
-* Transform boilerplate & other styles to scss
+- Transform boilerplate & other styles to scss
 - Templates customizing (http://zigzag.github.com/2010/01/18/customizing-your-scaffold-template-become-easier-in-rails3.html)
 - Create an html5 simple template and rails application to develop playmo gem
-- Add link to homepage into "Welcome to abroad!"
+- Add link to homepage into "Welcome to aboard!"
 - Add default users into seeds
 - Generate assets.yml
 - Modify compass.rb
@@ -28,3 +28,41 @@
 - Make styles for rails flashes
 - It seems override styles are not OK
 - Do not copy helpers into app!
+- Asks for most popular gems installation (Do you Want to install some popular gems right now?)
+
+## What a gems
+* will_paginate or kaminari
+* dragonfly or paperclip
+* simple_form or formtastic
+* cancan or (?)
+* devise or authlogic
+* meta_where
+* carrierwave or (?)
+* nifty_generators or rails3-generators (?)
+
+## What next
+* Add default user when install devise or authlogic.
+* Replace default form generator with simple_form or formtastic generator
+* Configure dragonfly (like in lowjob). Also we can create polymorphic Image model
+* CSS styles for will_paginate or kaminari pagination
+* CSS styles for devise templates
+* Configure generators in application.rb
+
+=== Forms
+
+1. simple_form
+2. formtastic
+
+Enter number you choice (or press 'n' to skip): 
+
+=== Pagination
+
+1. will_paginate
+2. kaminari
+
+=== Generators
+=== Authentification
+=== Authorization
+=== Image processing
+=== Uploads
+

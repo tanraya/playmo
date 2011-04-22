@@ -6,7 +6,7 @@
 - Add scoped_link_to helper
 - Add footer content
 - Modify default layout styles
-* Add styles for formtastic
+* Add styles for formtastic if formtastic installed
 * Transform boilerplate & other styles to scss
 - Templates customizing (http://zigzag.github.com/2010/01/18/customizing-your-scaffold-template-become-easier-in-rails3.html)
 - Create an html5 simple template and rails application to develop playmo gem
@@ -17,7 +17,7 @@
 - initialize git repository
 - add capistrano and capify!
 - https://gist.github.com/280196/5c075f4a3d3a4118d1d706fce07e40572a3873c7
-* Remove scss files from public after deploy. Create special task for it.
+- Remove scss files from public after deploy. Create special task for it.
 * Add dynamic processing for 500, 404, 422 errors
 * Generate models with useful comments that define code order (like: associations, validations, constants, etc.)
 - That's what I need to customize generators templates: http://www.railsdispatch.com/posts/building-or-updating-a-rails-3-plugin

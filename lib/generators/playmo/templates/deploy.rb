@@ -36,8 +36,10 @@ namespace :deploy do
     #top.upload assets_path, "#{current_release}/public", :via => :scp, :recursive => true
   end
 
+  desc "Remove scss files from public stylesheets directory"
   task :remove_scss do
-    run "rm -r #{current_path}/public/stylesheets/*.scss"
+    require 'fileutils'
+    FileUtils.rm_rf Dir["#{current_path}/public/stylesheets/**/*.scss"]
   end
 end
 

@@ -24,9 +24,4 @@ javascripts:
 
 stylesheets:
   default:
-    - public/assets/compiled/stylesheets/boilerplate/css/style.css
-    - public/assets/compiled/stylesheets/playmo/playmo.css
-    - public/assets/compiled/stylesheets/playmo/article.css
-    - public/assets/compiled/stylesheets/rails/layout.css
     - public/assets/compiled/stylesheets/rails/screen.css
-    - public/assets/compiled/stylesheets/rails/print.css

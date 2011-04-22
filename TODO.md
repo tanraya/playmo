@@ -26,4 +26,4 @@
 - Do not copy playmo & boilerplate css styles into app - keep its inside gem
 * Include google code into layout and copy google.yml into config dir
 * Make styles for rails flashes
-* It seems override styles are not OK
+- It seems override styles are not OK

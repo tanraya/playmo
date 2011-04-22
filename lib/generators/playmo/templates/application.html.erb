@@ -13,7 +13,9 @@
 
     <link rel="shortcut icon" href="/favicon.ico">
     <%%= raw include_stylesheets :default, :media => 'all' %>
-    <style><%%= yield :styles %></style>
+    <%%= if content_for?(:styles) %>
+      <style><%%= yield :styles %></style>
+    <%% end %>
 
     <%%= raw include_javascripts :modernizr %>
   </head>
@@ -39,14 +41,7 @@
       </header>
 
       <div id="main">
-
-        <div id="notice">
-          <ul>
-            <%% flash.each do |name, msg| %>
-              <%%= content_tag :li, msg, :id => "flash_#{name}" %>
-            <%% end %>
-          </ul>
-        </div>
+        <%%= flash_messages %>
 
 	<article class="article">
 	  <%%= yield %>
@@ -63,7 +58,9 @@
 
 
   <%%= raw include_javascripts :default %>
-  <script><%%= yield :javascripts %></script>
+  <%%= if content_for?(:javascripts) %>
+    <script><%%= yield :javascripts %></script>
+  <%% end %>
 
   <!--[if lt IE 7 ]>
     <%%= raw include_javascripts :bb_delated_png %>

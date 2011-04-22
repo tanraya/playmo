@@ -1,6 +1,19 @@
 module PlaymoHelper
   attr_accessor :page_title
 
+  def flash_messages
+    return unless flash.any?
+
+    items = []
+    flash.each do |name, msg|
+      items << content_tag(:li, msg, :id => "flash-#{name}")
+    end
+
+    content_tag :div, :class => 'flash-messages' do
+      content_tag :ul, raw(items.join)
+    end
+  end
+
   # Set page title. Use this method in your views
   def title(page_title)
     @page_title = page_title

@@ -25,3 +25,14 @@
 * Generate HomesController in rails3 style
 * Do not copy playmo & boilerplate css styles into app - keep its inside gem
 * Include google code into layout and copy google.yml into config dir
+
+
+## Big changes:
+* Move boilerplate & playmo stylesheets into gem, do not copy into new app!
+* Move screen, print, layout, wysiwyg stylesheets into public/stylesheets.
+* Split boilerplate stylesheet on 2 files: screen and print
+* Import boilerplate screen, playmo, layout stylesheets into screen (on top of file).
+* Import boilerplate screen, print, playmo, layout stylesheets into print (on top of file)
+* Import boilerplate screen, print, playmo stylesheets into wysiwyg (on top of file)
+
+

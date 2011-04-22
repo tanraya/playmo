@@ -25,3 +25,5 @@ javascripts:
 stylesheets:
   default:
     - public/assets/compiled/stylesheets/screen.css
+  wysiwyg:
+    - public/assets/compiled/stylesheets/wysiwyg_screen.css

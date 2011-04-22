@@ -1,18 +1,24 @@
-/*===============================================================================================
+// Here's where we define some default constants
+@import "partials/constants";
 
-    Title   : Playmo CSS Framework (https://github.com/tanraya/playmo)
-    Name    : wysiwyg.css
-	
-    Styles for wysiwyg editor content zone. Include this file in your
-    wysiwyg editing area.
+// Then we'll import the compass extension
+@import "html5-boilerplate";
 
-===============================================================================================*/
+// Now, you can simply include everything
+// (except media) by uncommeting this line
+@include html5-boilerplate;
 
-/* Include css framework base styles */
-@import "./playmo.css";
+// Or, you can import the "overrides" partial if
+// you want more control over individual mixins
+@import "partials/overrides";
 
-/* Include css framework content styles */
-@import "./article.css";
+// Finally, put your own styles in these partials
+// and add more as needed (i.e. forms, tables, nav)
+@import "partials/article";
+
+// Media should come last
+@import "media";
+
 
    
 

@@ -29,7 +29,8 @@
 - It seems override styles are not OK
 - Do not copy helpers into app!
 - Asks for most popular gems installation (Do you Want to install some popular gems right now?)
-
+* Add js and close button for flash notices
+* Add color coding for flash notices (maybe with icons)
 ## What a gems
 * will_paginate or kaminari
 * dragonfly or paperclip

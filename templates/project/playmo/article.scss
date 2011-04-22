@@ -13,57 +13,57 @@
     ATTENTION! DO NOT ADD YOUR CUSTOM STYLES INTO THIS FILE!
 
 ===============================================================================================*/
-
+.article {
 /* Hyperlinks */
 
     /* Outgoing links */
-    .article a[href^=http] {
+    a[href^=http] {
         background: url(./icons/outgoing.png) no-repeat right center;
         padding-right: 13px;
     }
 
     /* Email links */
-    .article a[href^=mailto] {
+    a[href^=mailto] {
         
     }
 
     /* Direct links to files */
-    .article a[href$=pdf], content a.pdf {  }
-    .article a[href$=zip], content a.zip {  }
-    .article a[href$=rar], content a.rar {  }
-    .article a[href$=tar], content a.tar {  }
-    .article a[href$=mp3], content a.mp3 {  }
+    a[href$=pdf], content a.pdf {  }
+    a[href$=zip], content a.zip {  }
+    a[href$=rar], content a.rar {  }
+    a[href$=tar], content a.tar {  }
+    a[href$=mp3], content a.mp3 {  }
 
     /* Protocols */
-    .article a[href^=skype], content a.skype {  }
-    .article a[href^=aim], content a.aim {  }
+    a[href^=skype], content a.skype {  }
+    a[href^=aim], content a.aim {  }
 
-/* Lists */
-.article ol,
-.article ul,
-.article dl {
-    padding: 0;
-    margin: 0 0 18px 30px;
+    /* Lists */
+    ol,
+    ul,
+    dl {
+        padding: 0;
+        margin: 0 0 18px 30px;
+    }
+
+    ul { list-style: square; }
+    ol { list-style: decimal; }
+
+    dl {}
+    dt {}
+    dd { margin: 0 0 0 30px; }
+
+    /* Tables */
+    table {
+        border-top: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        width: 100%;
+        margin: 0 0 18px 0;
+    }
+
+    caption { font-style: italic; padding: 3px; }
+    th, td { padding: 3px; }
+    th { background: #eee; }
+    td { border-bottom: 1px solid #ddd; }
 }
-
-.article ul { list-style: square; }
-.article ol { list-style: decimal; }
-
-.article dl {}
-.article dt {}
-.article dd { margin: 0 0 0 30px; }
-
-/* Tables */
-.article table {
-    border-top: 1px solid #ddd;
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    width: 100%;
-    margin: 0 0 18px 0;
-}
-
-.article caption { font-style: italic; padding: 3px; }
-.article th, .article td { padding: 3px; }
-.article th { background: #eee; }
-.article td { border-bottom: 1px solid #ddd; }
-

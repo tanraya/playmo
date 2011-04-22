@@ -35,6 +35,10 @@ namespace :deploy do
     #run_locally "jammit"
     #top.upload assets_path, "#{current_release}/public", :via => :scp, :recursive => true
   end
+
+  task :remove_scss do
+    run "rm -r #{current_path}/public/stylesheets/*.scss"
+  end
 end
 
 namespace :bundle do
@@ -46,5 +50,6 @@ end
 # Uncomment line below if you are using thinking_sphinx
 # after 'deploy:setup',   'thinking_sphinx:shared_sphinx_folder'
 after 'deploy:symlink', 'deploy:precache_assets'
+after 'deploy:symlink', 'deploy:remove_scss'
 after 'deploy:symlink', 'bundle:install'
 after 'bundle:install', 'deploy:migrate'

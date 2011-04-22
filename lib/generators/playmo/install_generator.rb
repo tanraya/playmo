@@ -35,7 +35,6 @@ module Playmo
       def remove_rails_files
         remove_file '.gitignore'
         remove_file 'app/controllers/application_controller.rb'
-        remove_file 'app/helpers/application_helper.rb'
         remove_file 'app/views/layouts/application.html.erb'
         remove_file 'public/favicon.ico'
         remove_file 'public/robots.txt'
@@ -85,7 +84,6 @@ module Playmo
       
       def copy_files
         template "application.html.erb", "app/views/layouts/application.html.erb"
-        copy_file "application_helper.rb", "app/helpers/application_helper.rb"
         copy_file "application_controller.rb", "app/controllers/application_controller.rb"
         copy_file "_sidebar.html.erb", "app/views/shared/_sidebar.html.erb"
       end

@@ -13,7 +13,7 @@
 
     <link rel="shortcut icon" href="/favicon.ico">
     <%%= raw include_stylesheets :default, :media => 'all' %>
-    <%%= if content_for?(:styles) %>
+    <%% if content_for?(:styles) %>
       <style><%%= yield :styles %></style>
     <%% end %>
 
@@ -58,7 +58,7 @@
 
 
   <%%= raw include_javascripts :default %>
-  <%%= if content_for?(:javascripts) %>
+  <%% if content_for?(:javascripts) %>
     <script><%%= yield :javascripts %></script>
   <%% end %>
 

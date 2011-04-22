@@ -24,7 +24,7 @@ body {
 }
 
 /* 2. Headings */
-h1, h2, h3, h4, h5, h6 {
+headings(all) {
     margin: 0 0 10px 0;
     padding: 0;
 }
@@ -43,13 +43,15 @@ ul, ol, dl { list-style: none; margin: 0; padding: 0; }
 table {
     border-collapse: collapse;
     border-spacing: 0;
-}
+
     caption, th, td {
         text-align: left;
         font-weight: normal;
         padding: 0;
         vertical-align: top;
     }
+}
+
 
 /* 5. Article markup */
 em { font-style: italic; }
@@ -86,5 +88,6 @@ img.f-left { float: left; margin: 0 18px 0 0;  clear: left; }
 img.f-right { float: right; margin: 0 0 0 18px; }
 
 /* 7. Other styles */
-::-moz-selection{ background: #555; color:#fff; }
-::selection { background: #555; color:#fff; }
+.text-selection { background: #555; color:#fff; }
+::-moz-selection{ @extend .text-selection; }
+::selection { @extend .text-selection; }

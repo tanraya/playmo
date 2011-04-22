@@ -16,6 +16,31 @@
 body {
     background: #ddd;
 
+    #notice {
+        z-index: 65000;
+        position: fixed;
+        width: 100%;
+        left: 0;
+        top: 0;
+    
+        ul {
+            width: 700px;
+            margin: 0 auto;
+            padding: 5px;
+            color: #fff;
+            text-align: center;
+            background: #555;
+            -moz-border-radius: 0 0 7px 7px;
+            box-shadow: 1px 1px 10px #555;
+            -webkit-box-shadow: 1px 1px 10px #555;
+            -moz-box-shadow: 1px 1px 10px #555;
+            font-size: 120%;
+            opacity: 0.9;
+            
+            li { @include no-nav-margins; }
+        }
+    }
+
     div#container {
         width: 700px;
         margin: 20px auto;

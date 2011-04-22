@@ -40,9 +40,13 @@
 
       <div id="main">
 
-	<%% flash.each do |name, msg| %>
-	  <%%= content_tag :div, msg, :id => "flash_#{name}" %>
-	<%% end %>
+        <div id="notice">
+          <ul>
+            <%% flash.each do |name, msg| %>
+              <%%= content_tag :li, msg, :id => "flash_#{name}" %>
+            <%% end %>
+          </ul>
+        </div>
 
 	<article class="article">
 	  <%%= yield %>

@@ -9,7 +9,7 @@ module PlaymoHelper
       items << content_tag(:li, msg, :id => "flash-#{name}")
     end
 
-    content_tag :div, :class => 'flash-messages' do
+    content_tag :div, :id => 'flash-messages' do
       content_tag :ul, raw(items.join)
     end
   end

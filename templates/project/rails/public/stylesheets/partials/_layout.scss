@@ -12,6 +12,8 @@
 
 ===============================================================================================*/
 @import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/css3/opacity";
 
 body {
     background: #ddd;
@@ -26,16 +28,14 @@ body {
         ul {
             width: 700px;
             margin: 0 auto;
-            padding: 5px;
+            padding: 15px 5px;
             color: #fff;
             text-align: center;
             background: #555;
-            -moz-border-radius: 0 0 7px 7px;
-            box-shadow: 1px 1px 10px #555;
-            -webkit-box-shadow: 1px 1px 10px #555;
-            -moz-box-shadow: 1px 1px 10px #555;
             font-size: 120%;
-            opacity: 0.9;
+            @include border-radius(0 0 7px 7px);
+            @include box-shadow(#555, 1px, 1px, 10px, 1px);
+            @include opacity(0.9);
             
             li { @include no-nav-margins; }
         }
@@ -47,6 +47,7 @@ body {
         padding: 30px;
         background: #fff;
         @include border-radius(5px);
+        @include box-shadow(#333, 0px, 0px, 5px, 0);
 
         header {
             position: relative;

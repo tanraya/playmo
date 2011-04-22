@@ -24,4 +24,4 @@ javascripts:
 
 stylesheets:
   default:
-    - public/assets/compiled/stylesheets/rails/screen.css
+    - public/assets/compiled/stylesheets/screen.css

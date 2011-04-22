@@ -69,6 +69,5 @@ img.f-left { float: left; margin: 0 18px 0 0;  clear: left; }
 img.f-right { float: right; margin: 0 0 0 18px; }
 
 /* 7. Other styles */
-.text-selection { background: #555; color:#fff; }
-::-moz-selection{ @extend .text-selection; }
-::selection { @extend .text-selection; }
+::-moz-selection{ background: #555; color:#fff; }
+::selection { background: #555; color:#fff; }

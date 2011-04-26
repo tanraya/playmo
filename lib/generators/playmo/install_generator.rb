@@ -83,9 +83,13 @@ module Playmo
       end
       
       def copy_files
-        template "application.html.erb", "app/views/layouts/application.html.erb"
+        #template "application.html.erb", "app/views/layouts/application.html.erb"
         copy_file "application_controller.rb", "app/controllers/application_controller.rb"
         copy_file "_sidebar.html.erb", "app/views/shared/_sidebar.html.erb"
+      end
+
+      def generate_application_layout
+        generate :layout
       end
       
       def setup_routes

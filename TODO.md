@@ -32,6 +32,7 @@
 * Add js and close button for flash notices
 * Add color coding for flash notices (maybe with icons)
 * Own layout generator; generate default application layout with generator.
+* Use rails3-generators to generate scaffolding & stuff
 
 ## What a gems
 * will_paginate or kaminari

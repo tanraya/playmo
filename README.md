@@ -1,7 +1,7 @@
 # Playmo (under development)
 This is the special kit that allows you create html5-ready Rails 3 apps quick with pre-included few useful libs in your app.
 
-__Currently under construction, so do not use it in production. Please wait for release.__
+__Currently under development, so do not use it in production. Please wait for release.__
 
 It includes:
 
@@ -25,9 +25,7 @@ First, create new Rails 3 application
 
 Then add to your Gemfile these lines
 
-    group :development do
-      gem 'playmo', :git => 'git://github.com/tanraya/playmo.git'
-    end
+    gem 'playmo', :git => 'git://github.com/tanraya/playmo.git'
 
 After that, run bundle to install necessary gems
 

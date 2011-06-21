@@ -1,5 +1,8 @@
-# Playmo
+# Playmo (under development)
 This is the special kit that allows you create html5-ready Rails 3 apps quick with pre-included few useful libs in your app.
+
+__Currently under construction, so do not use it in production. Please wait for release.__
+
 It includes:
 
 * [Compass](http://compass-style.org/)

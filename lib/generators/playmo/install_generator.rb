@@ -1,6 +1,46 @@
+require 'active_support'
+
+module Playmo::Generators
+ INSTALLERS = [
+   :Capistrano,
+#   :Compass,
+#   :DefaultUser,
+#   :Gems,
+#   :Git,
+#   :HomeController,
+#   :JavascriptFramework,
+#   :NecessaryFiles,
+#   :UnnecessaryFiles,
+#   :RakeTasks
+ ]
+
+ INSTALLERS.each do |installer|
+   require "#{File.dirname(__FILE__)}/installers/#{installer.to_s.underscore}"
+ end
+
+ class InstallGenerator < Rails::Generators::Base
+   desc "Creates a Playmo initializer and copy files to your application."
+   
+   def install
+     INSTALLERS.each { |installer| Installers.const_get(installer).new }
+   end
+ end
+end
+
+
+
+
+
+
+
+
+
+
 module Playmo
   module Generators
     class InstallGenerator < Rails::Generators::Base
+      #JsFrameworkGenerator.install
+=begin
       desc "Creates a Playmo initializer and copy files to your application."
       source_root File.expand_path('../templates', __FILE__)
       attr_accessor :framework
@@ -10,7 +50,7 @@ module Playmo
         gem "cancan", "~> 1.6.4"
         gem "compass", "~> 0.10.6", :group => :development
 	gem "jammit", "~> 0.6.0"
-	
+
         gsub_file 'Gemfile', "# gem 'capistrano'", :verbose => false do
           "gem 'capistrano'"
         end
@@ -18,7 +58,7 @@ module Playmo
 
       def generate_home_controller
         generate :controller, :home, :index
-        
+
         gsub_file 'app/views/home/index.html.erb', '<h1>Home#index</h1>', :verbose => false do
           <<-CONTENT.gsub(/^ {12}/, '')
             <%= heading_with_title("Home#index") %>
@@ -31,7 +71,7 @@ module Playmo
           CONTENT
         end
       end
-      
+
       def remove_rails_files
         remove_file '.gitignore'
         remove_file 'app/controllers/application_controller.rb'
@@ -81,7 +121,7 @@ module Playmo
       def create_shared_folder
         empty_directory "app/views/shared"
       end
-      
+
       def copy_files
         #template "application.html.erb", "app/views/layouts/application.html.erb"
         copy_file "application_controller.rb", "app/controllers/application_controller.rb"
@@ -91,7 +131,7 @@ module Playmo
       def generate_application_layout
         generate :layout
       end
-      
+
       def setup_routes
 	route 'root :to => "home#index"'
         gsub_file 'config/routes.rb', 'get "home/index"', :verbose => false do
@@ -129,7 +169,7 @@ module Playmo
             def self.up
               add_column :users, :name, :string
             end
-          
+
             def self.down
               remove_column :users, :name
             end
@@ -141,24 +181,24 @@ module Playmo
         sass_dir = 'public/stylesheets'
         css_dir  = 'public/assets/compiled/stylesheets'
         using    = 'playmo'
-        
+
         run "compass init rails --quiet -r #{using} -u #{using} --sass-dir=#{sass_dir} \
           --css-dir=#{css_dir}", :verbose => false, :capture => true
-	
+
         append_to_file 'config/compass.rb' do
           'output_style = :compact'
         end
       end
-      
+
       def copy_tasks
 	copy_file "tasks/sass.rake", "lib/tasks/sass.rake"
 	copy_file "tasks/assets.rake", "lib/tasks/assets.rake"
       end
-      
+
       def copy_assets_config
 	template "assets.yml", "config/assets.yml"
       end
-      
+
       def capify
 	capify!
 	remove_file 'config/deploy.rb'
@@ -176,7 +216,7 @@ module Playmo
           CONTENT
         end
       end
-      
+
       def setup_git_repo
 	create_file '.gitignore', <<-CONTENT.gsub(/^ {10}/, '')
           .DS_Store
@@ -210,12 +250,13 @@ module Playmo
 	say "Don't forget to configure config/initializers/devise.rb and config/deploy.rb!"
         say "\n"
       end
-      
+
     private
-      
+
       def framework
 	@framework
       end
+=end
     end
   end
 end

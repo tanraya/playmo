@@ -1,30 +1,28 @@
 require 'active_support'
+require "#{File.dirname(__FILE__)}/installers/base"
 
-module Playmo::Generators
- INSTALLERS = [
-   :Capistrano,
-#   :Compass,
-#   :DefaultUser,
-#   :Gems,
-   :Git,
-#   :HomeController,
-   :JavascriptFramework,
-#   :NecessaryFiles,
-#   :UnnecessaryFiles,
-#   :RakeTasks
- ]
+module Playmo
+  module Generators
+    INSTALLERS = [
+      :JavascriptFramework,
+#      :HomeController,
+#      :DefaultUser,
+#      :Compass,
+#      :Capistrano,
+#      :Git,
+    ]
 
- INSTALLERS.each do |installer|
-   require "#{File.dirname(__FILE__)}/installers/#{installer.to_s.underscore}"
- end
-
- class InstallGenerator < Rails::Generators::Base
-   desc "Creates a Playmo initializer and copy files to your application."
+    class InstallGenerator < Rails::Generators::Base
+      desc "Creates a Playmo initializer and copy files to your application."
    
-   def install
-     INSTALLERS.each { |installer| Installers.const_get(installer).new }
-   end
- end
+      def install
+        INSTALLERS.each do |installer|
+          require "#{File.dirname(__FILE__)}/installers/#{installer.to_s.underscore}"
+          Installers.const_get(installer).new
+        end
+      end
+    end
+  end
 end
 
 
@@ -35,12 +33,12 @@ end
 
 
 
-
+=begin
 module Playmo
   module Generators
     class InstallGenerator < Rails::Generators::Base
       #JsFrameworkGenerator.install
-=begin
+
       desc "Creates a Playmo initializer and copy files to your application."
       source_root File.expand_path('../templates', __FILE__)
       attr_accessor :framework
@@ -256,7 +254,8 @@ module Playmo
       def framework
 	@framework
       end
-=end
+
     end
   end
 end
+=end

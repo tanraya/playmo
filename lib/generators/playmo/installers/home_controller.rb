@@ -1,5 +1,5 @@
 module Playmo::Generators::Installers
-  class HomeController
+  class HomeController < Base
     def initialize
       question "Do you want to create HomeController in this project?" => :create_home_controller
     end

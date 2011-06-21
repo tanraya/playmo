@@ -1,11 +1,14 @@
 module Playmo::Generators::Installers
-  class JavascriptFramework
+  class JavascriptFramework < Base
     def initialize
-      title "Please choose JS framework you prefer to install"
+      # Если вопрос без вариантов ответов - генерить (y/n), в
+      # противном случае - (1, 2 or 3)
+      question "Please choose JS framework you prefer to install"
 
       answer "JQuery 1.5.2 (with Jquery UI)"   => :install_jquery
       answer "Mootools Core 1.3.1 (with More)" => :install_mootools
       answer "Prototype"                       => :install_prototype
+      answer "No one"
     end
 
   protected

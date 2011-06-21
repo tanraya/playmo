@@ -1,9 +1,5 @@
 module Playmo::Generators::Installers
   class RakeTasks
-    class << self
-      def install
-        puts "RakeTasks"
-      end
-    end
+    # Наверно это не нужно
   end
 end

@@ -6,9 +6,9 @@ module Playmo::Generators
 #   :Compass,
 #   :DefaultUser,
 #   :Gems,
-#   :Git,
+   :Git,
 #   :HomeController,
-#   :JavascriptFramework,
+   :JavascriptFramework,
 #   :NecessaryFiles,
 #   :UnnecessaryFiles,
 #   :RakeTasks

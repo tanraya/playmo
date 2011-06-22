@@ -13,13 +13,28 @@ module Playmo
     ]
 
     class InstallGenerator < Rails::Generators::Base
+      source_root File.expand_path('../templates', __FILE__)
       desc "Creates a Playmo initializer and copy files to your application."
    
       def install
+        #@@installers_instances ||= []
+
         INSTALLERS.each do |installer|
           require "#{File.dirname(__FILE__)}/installers/#{installer.to_s.underscore}"
-          Installers.const_get(installer).new
+          installer = Installers.const_get(installer).new
+          installer.setup
+          say installer.question_instance
+
+          installer.question_instance.request_choice(ask Playmo::Choice::CAPTION)
+          #@@installers_instances << installer
         end
+
+        #@@installers_instances.each ||
+
+        #Playmo::Generators::Installers::Base.question_stack.each do |question|
+        #  say question
+        #end
+
       end
     end
   end

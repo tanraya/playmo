@@ -1,46 +1,45 @@
+require 'playmo/question'
+require 'playmo/answer'
+require 'playmo/choice'
+
 module Playmo
   module Generators
     module Installers
-      class Base
-        # Here we put all questions with proc's
-        attr_accessor :questions_stack
-
-      protected
+      class Base < Rails::Generators::Base
+        attr_accessor :question_instance
 
         def question(arg, &block)
+          question, method = arg, nil
+
           if arg.respond_to? :keys
-            ask_question(arg.first.first, arg.first.last)
-          else
-            ask_question(arg)
+            question, method = nil, nil#arg.first.first, self.method(arg.first.last)
           end
 
-          instance_eval(&block) if block_given?
-          wait_for_user_input
+          @question_instance = Playmo::Question.new(question, method)
+          @question_instance.instance_eval(&block) if block_given?
+          #@question_instance.choice = Proc.new {  }
+
+          
+          #@@question_stack ||= []
+          #@@question_stack << @question
         end
 
+        # Move into Playmo::Question
+=begin
         def answer(arg)
+          answer, method = arg, nil
+
           if arg.respond_to? :keys
-            give_answer(arg.first.first, arg.first.last)
-          else
-            give_answer(arg)
+            answer, method = arg.first.first, method(arg.first.last)
           end
-        end
 
-        def notify(text)
-          puts "Notify: #{text}"
+          @question.answers << Playmo::Answer.new(answer, method)
         end
+=end
 
-        def ask_question(question, method = nil)
-          puts "Question: #{question}"
-        end
-
-        def give_answer(answer, method = nil)
-          puts "Answer: #{answer}"
-        end
-
-        def wait_for_user_input
-          puts "Your choice:"
-        end
+        #def self.question_stack
+        #  @@question_stack
+        #end
       end
     end
   end

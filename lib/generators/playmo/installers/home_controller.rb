@@ -1,13 +1,17 @@
-module Playmo::Generators::Installers
-  class HomeController < Base
-    def initialize
-      question "Do you want to create HomeController in this project?" => :create_home_controller
-    end
+module Playmo
+  module Generators
+    module Installers
+      class HomeController < Base
+        def setup
+          question "Do you want to create HomeController in this project?" => :create_home_controller
+        end
 
-  protected
+      protected
 
-    def create_home_controller
-
+        def create_home_controller
+          1
+        end
+      end
     end
   end
 end

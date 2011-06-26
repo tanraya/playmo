@@ -9,14 +9,7 @@ module Playmo
         attr_accessor :question_instance
 
         def question(arg, &block)
-          question, method = arg, nil
-
-          if arg.respond_to? :keys
-            question, method = arg.first.first, arg.first.last
-          end
-
-          @question_instance = Playmo::Question.new(question, method)
-          @question_instance.instance_eval(&block) if block_given?
+          @question_instance = Playmo::Question.new(arg, self, &block)
         end
       end
     end

@@ -1,44 +1,56 @@
 module Playmo
-  class Question
-    attr_accessor :answers, :choice, :question, :deferred_method
+  class Question < Thor::Shell::Basic
+    attr_accessor :answers, :choice, :question_text, :caller
 
-    def initialize(question, proc)
+    def initialize(arg, caller, &block)
+      @question_text, method_name = arg, nil
+      @caller    = caller
       @answers ||= []
-      @question  = question
-      @proc      = proc
-      @choice    = Playmo::Choice.new(self)
+      @padding   = 0
+
+      # Question with no answers
+      if arg.respond_to? :keys
+        @question_text, method_name = arg.first.first, arg.first.last
+        answer(nil => method_name)
+      end
+
+      # Multiple answers
+      self.instance_eval(&block) if block_given?
     end
 
     def answer(arg)
-      answer, proc = arg, nil
-
-      if arg.respond_to? :keys
-        answer, proc = arg.first.first, arg.first.last
-      end
-
-      @answers << Playmo::Answer.new(answer, proc, @answers.size + 1)
+      @answers << Playmo::Answer.new(arg.first.first, arg.first.last, @answers.size + 1)
     end
 
-    #def request_choice(choice)
-    #  @choice = Playmo::Choice.new(choice, self)
-    #end
+    def has_answers?
+      @answers.size > 1
+    end
+
+    def ask_question!
+      say render
+    end
 
     # Render question with answers
-    def to_s
-      result = "\n#{@question}"
+    def render
+      result = "\n#{@question_text}"
 
-      if @answers.any?
+      if has_answers?
         result += ":\n\n"
         num     = 1
         @answers.each do |answer|
-          result += answer.to_s
+          result += answer.render
           num    += 1
         end
       else
         result += "\n"
       end
 
+      # Create choice
+      @choice = Playmo::Choice.new(self, @caller)
+
       result
     end
+
+    alias :to_s :render
   end
 end

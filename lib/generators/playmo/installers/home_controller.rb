@@ -9,7 +9,7 @@ module Playmo
       protected
 
         def create_home_controller
-          1
+          gem 'unicorn'
         end
       end
     end

@@ -7,10 +7,9 @@ module Playmo
 
         def setup
           question "Please choose JS framework you prefer to install" do
-            answer "JQuery 1.5.2 (with Jquery UI)"   => Proc.new { self.install_jquery    }
-            answer "Mootools Core 1.3.1 (with More)" => Proc.new { self.install_mootools  }
-            answer "Prototype"                       => Proc.new { self.install_prototype }
-            answer "No one"
+            answer "JQuery 1.5.2 (with Jquery UI)"   => :install_jquery
+            answer "Mootools Core 1.3.1 (with More)" => :install_mootools
+            answer "Prototype"                       => :install_prototype
           end
         end
 

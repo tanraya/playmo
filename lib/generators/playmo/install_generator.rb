@@ -19,11 +19,18 @@ module Playmo
       def install
         INSTALLERS.each do |installer|
           require "#{File.dirname(__FILE__)}/installers/#{installer.to_s.underscore}"
+
+          # Setup installer
           installer = Installers.const_get(installer).new
           installer.setup
-          
-          say installer.question_instance
-          ask installer.question_instance.choice
+
+          q = installer.question_instance
+
+          # Ask question
+          q.ask_question!
+
+          # Ask for choice and make choice
+          q.choice.make_choice!
         end
       end
     end

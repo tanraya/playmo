@@ -7,7 +7,7 @@ module Playmo::Generators::Installers
   protected
 
     def add_compass
-
+      gem 'compass'
     end
   end
 end

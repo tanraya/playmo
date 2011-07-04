@@ -5,9 +5,9 @@ module Playmo
   module Generators
     INSTALLERS = [
       :JavascriptFramework,
-      :HomeController,
+#      :HomeController,
 #      :DefaultUser,
-#      :Compass,
+      :Compass,
 #      :Capistrano,
 #      :Git,
     ]

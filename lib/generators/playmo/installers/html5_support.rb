@@ -15,8 +15,7 @@ module Playmo
         end
 
         def install_layout
-          #remove_file "app/views/layouts/application.html.erb"
-          #copy_file "application.html.erb", "app/views/layouts/application.html.erb"
+          remove_file "app/views/layouts/application.html.erb"
           generate :layout
         end
       end

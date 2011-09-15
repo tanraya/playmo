@@ -27,9 +27,14 @@ module PlaymoHelper
 
   # Print heading (h1 by default) and set page title
   # at the same time. Use this method in your views
-  def heading_with_title(heading, tag=:h1)
+  def heading_with_title(heading, tag=nil)
     title(heading)
-    content_tag tag, heading
+    heading(heading, tag)
+  end
+
+  def heading(heading, tag=:h1)
+    tag = :h1 if tag.nil?
+    content_tag(tag, heading)
   end
 
   def admin_area(&block)

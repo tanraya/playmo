@@ -12,18 +12,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="shortcut icon" href="/favicon.ico">
-    <%%= raw include_stylesheets :default, :media => 'all' %>
+    <%%#= raw include_stylesheets :default, :media => 'all' %>
     <%% if content_for?(:styles) %>
       <style><%%= yield :styles %></style>
     <%% end %>
 
-    <%%= raw include_javascripts :modernizr %>
+    <%%= javascript_include_tag 'modernizr-1.7.min' %>
   </head>
   <body id="<%%= page_id %>">
 
     <div id="container">
       <header>
-	<h1><%%= link_to_unless_current 'Welcome aboard!', root_path %></h1>
+	    <h1><%%= link_to_unless_current 'Welcome aboard!', root_path %></h1>
+
+        <% if defined?(Devise) -%>
         <div id="user-info">
           <ul>
             <%% if user_signed_in? %>
@@ -38,6 +40,7 @@
             <%% end %>
           </ul>
         </div>
+        <% end -%>
       </header>
 
       <div id="main">
@@ -57,13 +60,13 @@
     </div>
 
 
-  <%%= raw include_javascripts :default %>
+  <%%#= raw include_javascripts :default %>
   <%% if content_for?(:javascripts) %>
     <script><%%= yield :javascripts %></script>
   <%% end %>
 
   <!--[if lt IE 7 ]>
-    <%%= raw include_javascripts :bb_delated_png %>
+    <%%= javascript_include_tag 'dd_belatedpng' %>
     <script>DD_belatedPNG.fix('img, .png_bg');</script>
   <![endif]-->
 

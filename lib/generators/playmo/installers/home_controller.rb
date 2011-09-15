@@ -23,12 +23,15 @@ module Playmo
               <%= heading_with_title("Home#index") %>
 
               <% content_for :sidebar do %>
-                <h3>Sidebar</h3>
+                <%= heading "Sidebar" %>
                 <p>Content for sidebar.</p>
                 <p>This content displayed only at home page.</p>
               <% end %>
             CONTENT
           end
+
+          # Remove default rails index file
+          remove_file 'public/index.html'
         end
       end
     end

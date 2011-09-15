@@ -1,13 +1,17 @@
-module Playmo::Generators::Installers
-  class Compass < Base
-    def initialize
-      question "Do you want to use Compass in this project?" => :add_compass
-    end
+module Playmo
+  module Generators
+    module Installers
+      class Compass < Base
+        def setup
+          question "Do you want to use Compass in this app?" => :add_compass
+        end
 
-  protected
+      protected
 
-    def add_compass
-      gem 'compass'
+        def add_compass
+          gem 'compass'
+        end
+      end
     end
   end
 end

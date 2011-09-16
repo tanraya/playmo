@@ -5,13 +5,15 @@ module Playmo
   module Generators
     INSTALLERS = [
       :JavascriptFramework,
-      #:HomeController,
+      :HomeController,
       :Html5Support,
 #      :DefaultUser,
       #:Compass,
 #      :Capistrano,
 #      :Git,
+      #:Rvm (Проверять, есть ли rvm на машине, устанавливает .rvmrc, создает гемсет)
     ]
+
 
     module Callbacks
       def self.extended(base)
@@ -31,7 +33,11 @@ module Playmo
       end
     end
 
-
+    # TODO:
+    # - Создать систему хуков, чтобы можно было выполнять отложенные задачи из инсталлера
+    # - Поддержка инсталлеров, которые не задают вопросов
+    # - При запуске генератора рисовать кол-во вопросов и небольшое вступление
+    # - Убрать source_root отсюда
     class InstallGenerator < Rails::Generators::Base
       extend Callbacks
       

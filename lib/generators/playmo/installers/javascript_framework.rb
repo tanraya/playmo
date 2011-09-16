@@ -15,22 +15,20 @@ module Playmo
         # See https://github.com/rails/jquery-rails for detailt
         def install_jquery
           gem "jquery-rails"
-          # delayed_generate "jquery:install --ui"
+          #after_bundle_install { generate "jquery:install --ui" }
         end
 
         # See https://github.com/neonlex/mootools-rails for detailt
+        # TODO: Заменить delayed_generate на after_bundle_install { generate 'mootools:install --more' }
         def install_mootools
           gem 'mootools-rails'
-
-          # Здесь нужно чтото типа
-          # delayed_generate 'mootools:install --more'
-          # чтобы установка происходила после bundle install
-          # generate 'mootools:install --more'
+          #after_bundle_install { generate 'mootools:install --more' }
         end
 
         # See https://github.com/rails/prototype-rails for details
         def install_prototype
           gem "prototype-rails"
+
           # Нужно добавлять самому, либо, написать для гема prototype-rails инсталлер
           #    //= require prototype
           # //= require prototype_ujs

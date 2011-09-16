@@ -19,7 +19,6 @@ module Playmo
       def self.extended(base)
         base.class_eval do
           include ActiveSupport::Callbacks
-          define_callbacks :bundle_install
         end
       end
 
@@ -28,9 +27,9 @@ module Playmo
         set_callback(:bundle_install, :after, method, &block)
       end
 
-      def before_bundle_install(method, &block)
-        set_callback(:bundle_install, :before, method, &block)
-      end
+      #def before_bundle_install(method, &block)
+      #  set_callback(:bundle_install, :before, method, &block)
+      #end
     end
 
     # TODO:
@@ -39,11 +38,17 @@ module Playmo
     # - При запуске генератора рисовать кол-во вопросов и небольшое вступление
     # - Убрать source_root отсюда
     class InstallGenerator < Rails::Generators::Base
-      extend Callbacks
+      #extend Callbacks
       
-      after_bundle_install :run_delayed_generators!
+      #after_bundle_install :run_delayed_generators!
       #source_root File.expand_path('../templates', __FILE__)
       #desc "Creates a Playmo initializer and copy files to your application."
+
+  include ActiveSupport::Callbacks
+
+  define_callbacks :validate
+
+  #set_callback :validate, :after, :validate!
 
       def install
         INSTALLERS.each do |installer|
@@ -68,10 +73,17 @@ module Playmo
       end
 
       def install_gems!
-        run_callbacks(:bundle_install) do
-          puts 'bundle install'
-        end
+#    run_callbacks :validate do
+ #     puts 'install_gems!'
+  #  end
+        #run_callbacks(:bundle_install) do
+        #  puts 'bundle install'
+        #end
       end
+
+  def validate!
+    puts 'validate!'
+  end
 
       def run_delayed_generators!
         puts 'Here we run all delayed generators'

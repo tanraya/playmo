@@ -30,9 +30,6 @@ module Playmo
     end
     
     # Adds the new recipe before the specified existing recipe in the Cookbook stack.
-    # TODO: Write own exception class
-    # TODO: raise "Registered recipe must be an instance of Playmo::Recipe class" unless existing_recipe.is_a?(Playmo::Recipe)
-    # TODO: raise "Recipe you register must be an instance of Playmo::Recipe class" unless new_recipe.is_a?(Playmo::Recipe)
     def insert(existing_recipe, new_recipe)
       index = assert_index(existing_recipe, :before)
       recipes.insert(index, new_recipe)

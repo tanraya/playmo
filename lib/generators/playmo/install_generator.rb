@@ -3,14 +3,19 @@ require "#{File.dirname(__FILE__)}/installers/base"
 
 module Playmo
   module Generators
+    # Вместо инсталлеров - рецепты
+    # Рецепт регистрирует сам себя в спец объекте, если объект доступен
+    # Рецепт содержит разные колбэки
+    # Рецепт можно зарегистрировать в Cookbook после другого рецепта (как middleware)
+    # Все доступные рецепты загружаются автоматически
     INSTALLERS = [
-      :JavascriptFramework,
-      :HomeController,
-      :Html5Support,
-#      :DefaultUser,
+      #:JavascriptFramework,
+      #:HomeController,
+      #:Html5Support,
+      #:DefaultUser,
       #:Compass,
-#      :Capistrano,
-#      :Git,
+      #:Capistrano,
+      ##:Git,
       #:Rvm (Проверять, есть ли rvm на машине, устанавливает .rvmrc, создает гемсет)
     ]
 

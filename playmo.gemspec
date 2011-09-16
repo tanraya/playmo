@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.has_rdoc      = false
   s.rubygems_version = %q{1.3.7}
   s.add_dependency("compass", ["= 0.11.5"])
+  #s.add_dependency("hooks", ["= 0.1.4"])
   #s.add_dependency("devise", ["= 1.4.5"])
   #s.add_dependency("jammit", ["= 0.6.2"])
   #s.add_dependency("cancan", ["~> 1.6.4"])

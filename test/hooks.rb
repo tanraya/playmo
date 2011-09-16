@@ -1,16 +1,11 @@
 require 'active_support'
-require "#{File.dirname(__FILE__)}/installers/base"
 
+# http://thomasmango.com/2011/09/02/getting-to-know-active-support-callbacks/
 module Playmo
   module Generators
     INSTALLERS = [
       :JavascriptFramework,
-      #:HomeController,
       :Html5Support,
-#      :DefaultUser,
-      #:Compass,
-#      :Capistrano,
-#      :Git,
     ]
 
     module Callbacks
@@ -31,31 +26,13 @@ module Playmo
       end
     end
 
-
-    class InstallGenerator < Rails::Generators::Base
+    class InstallGenerator
       extend Callbacks
-      
       after_bundle_install :run_delayed_generators!
-      #source_root File.expand_path('../templates', __FILE__)
-      #desc "Creates a Playmo initializer and copy files to your application."
 
       def install
         INSTALLERS.each do |installer|
-=begin
-          require "#{File.dirname(__FILE__)}/installers/#{installer.to_s.underscore}"
-
-          # Setup installer
-          installer = Installers.const_get(installer).new
-          installer.setup
-
-          q = installer.question_instance
-
-          # Ask question
-          q.ask_question!
-
-          # Ask for choice and make choice
-          q.choice.make_choice!
-=end
+          puts installer
         end
 
         install_gems!
@@ -73,3 +50,6 @@ module Playmo
     end
   end
 end
+
+x = Playmo::Generators::InstallGenerator.new
+x.install

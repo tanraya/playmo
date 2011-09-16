@@ -33,4 +33,3 @@ group :test do
 end
 gem 'playmo', :path => '../../', :branch => 'rails3.1'
 gem 'therubyracer'
-gem "mootools-rails"

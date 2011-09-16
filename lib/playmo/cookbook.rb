@@ -1,6 +1,6 @@
 module Playmo
   # This class contains all registered recipes.
-  # You can register own recipe in this class with Cookbook.write_down method
+  # You can register own recipe in this class
   class Cookbook
     include Enumerable
     attr_accessor :recipes

@@ -3,6 +3,10 @@ module Playmo
     module Recipes
       class HomeControllerRecipe < Playmo::Recipe
         # Cook the recipe
+        # TODO: recipe without questions - force do ... or something
+        # TODO: Add rspec tests
+        # TODO: Recipe with more than one question
+        # TODO: You can create own gem and redefine Playmo behavior by removing or adding recipes
         question "Do you want to create HomeController in this project?" do # TODO: Add this into Thor namespace (?)
           # Generate home_controller
           generate :controller, :home, :index
@@ -34,4 +38,4 @@ module Playmo
 end
 
 # Write down this recipe into our Cookbook if it's available
-Playmo::Cookbook.write_down(Playmo::Generators::Recipes::HomeControllerRecipe) if defined?(Playmo::Cookbook)
+Playmo::Cookbook.use(Playmo::Generators::Recipes::HomeControllerRecipe) if defined?(Playmo::Cookbook)

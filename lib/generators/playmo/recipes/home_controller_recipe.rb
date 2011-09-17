@@ -9,15 +9,32 @@ module Playmo
         # TODO: You can create own gem and redefine Playmo behavior by removing or adding recipes
         # TODO: Create a web service built on top of Playmo to prepare new app and putting it to Github or download in archive
         # TODO: A playmo bin file that generate rails app and do all the stuff as altennative to manually installing rails app and include playmo into this app
+        # TODO: Require playmo to the app only when in development mode
+        # TODO: Copy Playmo view heplers into the app
 
         silently do
-          # do something withoun any questions
+          # do something without any questions
         end
 
         question "What's up Doc?" => :do_something_for_doc
 
         def do_something_for_doc
           
+        end
+
+        question "What's up Doc?" do
+          answer "So-so" => :so_so
+          answer "Nice!" => :nice
+        end
+
+        question "What's up Doc?" do
+          answer "So-so" do
+            # do something
+          end
+
+          answer "Nice!" do
+            # do something
+          end
         end
 
         question "Do you want to create HomeController in this project?" do # TODO: Add this into Thor namespace (?)

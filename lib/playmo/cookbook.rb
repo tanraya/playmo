@@ -5,6 +5,10 @@ module Playmo
     include Enumerable
     attr_accessor :recipes
 
+    def self.instance
+      @@instance ||= Playmo::Cookbook.new
+    end
+
     def initialize
       @recipes = []
     end

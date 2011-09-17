@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.has_rdoc      = false
   s.rubygems_version = %q{1.3.7}
-  s.add_dependency("compass", ["= 0.11.5"])
+  s.add_dependency("rails", ["~> 3.0"])
   s.add_development_dependency("rspec-rails", ["~> 2.5"])
 end

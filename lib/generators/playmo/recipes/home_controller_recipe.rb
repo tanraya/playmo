@@ -42,6 +42,7 @@ module Playmo
 
           after :bundle_install do
             # callback
+            # generate "rake ts:run"
           end
 
           before :bundle_install do

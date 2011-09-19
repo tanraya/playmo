@@ -1,5 +1,6 @@
 module Playmo
   class Question < Thor::Shell::Basic
+    include Callbacks
     attr_accessor :answers, :choice, :question_text, :caller
 
     def initialize(arg, caller, &block)
@@ -14,7 +15,7 @@ module Playmo
         answer(nil => method_name)
       end
 
-      # Multiple answers
+      # Multiple answers (or just one question with block)
       self.instance_eval(&block) if block_given?
     end
 

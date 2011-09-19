@@ -12,12 +12,17 @@ end
 module Playmo
   extend ActiveSupport::Autoload
 
+  autoload :Callbacks
   autoload :Question
   autoload :Answer
   autoload :Silent
   autoload :Choice
   autoload :Cookbook
   autoload :Recipe
+
+  # Require all available recipes
+  Dir["#{File.dirname(__FILE__)}/generators/playmo/recipes/*_recipe.rb"].each { |file| require file }
+
   
   #autoload :Generators, 'playmo/generators/base'
   #class Railtie < ::Rails::Railtie

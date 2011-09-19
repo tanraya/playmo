@@ -13,18 +13,11 @@ describe Playmo::Cookbook do
   end
 
   context "when insert recipes" do
-    it "should inserts recipe before another recipe class" do
-      pending "Why I'm not drink beer right now?"
-    end
-
-    
-  end
-
-=begin
-  it "raise an error on invalid index" do
-    assert_raise RuntimeError do
-      @cookbook.insert_after("HiyaMiddleware", BazMiddleware)
+    context "when insert one recipe" do
+      it "should be with one recipe" do
+        @cookbook.use(Playmo::Generators::Recipes::HomeControllerRecipe)
+        @cookbook.size.should eq(1)
+      end
     end
   end
-=end
 end

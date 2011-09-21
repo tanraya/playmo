@@ -1,6 +1,6 @@
 module Playmo
   class Question < Thor::Shell::Basic
-    include Callbacks
+    include Playmo::Callbacks
     attr_accessor :answers, :choice, :question_text, :caller
 
     def initialize(arg, caller, &block)

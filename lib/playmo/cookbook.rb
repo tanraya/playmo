@@ -51,6 +51,13 @@ module Playmo
     def use(new_recipe)
       recipes.push(new_recipe)
     end
+
+    def cook_recipes!
+      recipes.each do |recipe|
+         # TODO: recipe.cook!
+         puts recipe
+      end
+    end
     
   protected
 

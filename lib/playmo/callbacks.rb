@@ -1,30 +1,25 @@
+require 'active_support'
+
 module Playmo
   module Callbacks
-    include ActiveSupport::Callbacks
-
-    #def after_bundle_install(method, &block)
-      define_callbacks :bundle_install
-      set_callback(:bundle_install, :after, method, &block)
-    #end
-
     def self.included(base)
-      base.extend(ClassMethods)
-    end
-
-    module ClassMethods
-
-    end
-
-    def after(name, &block)
-      run_callbacks name do
-        yield &block
-        puts "after #{name}"
+      base.class_eval do
+        include ActiveSupport::Callbacks
+        alias :fire :run_callbacks
       end
     end
 
-    def before(name, &block)
+    def method_missing(m, *args, &block)
+      raise NoMethodError unless [:before, :after].include?(m)
+      event = args.first
 
+      class_eval do
+        define_callbacks(event) unless respond_to? "_#{event}_callbacks"
+
+        set_callback event, m do
+          block.call
+        end
+      end
     end
-
   end
 end

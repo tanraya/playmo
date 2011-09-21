@@ -23,6 +23,10 @@ module Playmo
     end
   end
 
+  class SampleRecipe
+    
+  end
+
   class Installer
     include Callbacks
 

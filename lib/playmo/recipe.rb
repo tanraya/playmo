@@ -3,6 +3,7 @@ require 'rails/generators'
 module Playmo
   # Base class for all recipes
   class Recipe < Rails::Generators::Base
+    include Playmo::Callbacks
     attr_accessor :question_instance, :silents
 
     def self.question(arg, &block)

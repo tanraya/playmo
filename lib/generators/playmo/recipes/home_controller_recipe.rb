@@ -38,15 +38,16 @@ module Playmo
         end
 =end
 
-        question "Do you want to create HomeController in this project?" do # TODO: Add this into Thor namespace (?)
+        #question "Do you want to create HomeController in this project?" do # TODO: Add this into Thor namespace (?)
+        def initialize
 
-          after :bundle_install do
-            # callback
-            # generate "rake ts:run"
+          # Нужно подписывать этот рецепт на событие playmo_install
+          Playmo::Event.events.listen(:after_playmo_install) do |event_data|
+            puts "after_playmo_install"
           end
 
-          before :bundle_install do
-            # callback
+          Playmo::Event.events.listen(:before_playmo_install) do |event_data|
+            puts "before_playmo_install"
           end
 
 =begin
@@ -81,4 +82,4 @@ module Playmo
 end
 
 # Write down this recipe to our Cookbook if it's available
-Playmo::Cookbook.instance.use(Playmo::Generators::Recipes::HomeControllerRecipe) if defined?(Playmo::Cookbook)
+Playmo::Cookbook.instance.use(Playmo::Generators::Recipes::HomeControllerRecipe.new) if defined?(Playmo::Cookbook)

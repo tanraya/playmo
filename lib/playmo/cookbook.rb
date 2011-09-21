@@ -1,4 +1,5 @@
 module Playmo
+
   # This class contains all registered recipes.
   # You can register own recipe in this class
   class Cookbook
@@ -53,10 +54,14 @@ module Playmo
     end
 
     def cook_recipes!
+      Playmo::Event.events.fire :before_playmo_install, "blah bla"
+
       recipes.each do |recipe|
-         # TODO: recipe.cook!
-         puts recipe
+        # TODO: recipe.cook!
+        puts recipe
       end
+
+      Playmo::Event.events.fire :after_playmo_install, "blah"
     end
     
   protected

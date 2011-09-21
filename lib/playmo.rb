@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require 'rails/all'
+
 #require 'compass'
 #Compass::Frameworks.register("playmo", :path => "#{File.dirname(__FILE__)}/..")
 
@@ -12,7 +13,7 @@ end
 module Playmo
   extend ActiveSupport::Autoload
 
-  autoload :Callbacks
+  autoload :Event
   autoload :Question
   autoload :Answer
   autoload :Silent

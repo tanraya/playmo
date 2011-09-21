@@ -19,5 +19,6 @@ Gem::Specification.new do |s|
   s.has_rdoc      = false
   s.rubygems_version = %q{1.3.7}
   s.add_dependency("rails", ["~> 3.0"])
+  s.add_dependency("ruby_events")
   s.add_development_dependency("rspec-rails", ["~> 2.5"])
 end

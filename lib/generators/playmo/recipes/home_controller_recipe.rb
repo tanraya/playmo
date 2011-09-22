@@ -2,23 +2,23 @@ module Playmo
   module Generators
     module Recipes
       class HomeControllerRecipe < Playmo::Recipe
-        def initialize
+        def setup
           question "Do you want to create HomeController in this project?" => :install_home_controller
         end
 
         def install_home_controller
           # Нужно подписывать этот рецепт на событие playmo_install
-          #Playmo::Event.events.listen(:after_playmo_install) do |event_data|
-          #  puts "after_playmo_install"
-          #end
+          Playmo::Event.events.listen(:after_playmo_install) do |event_data|
+            puts "after_playmo_install"
+          end
 
           #Playmo::Event.events.listen(:before_playmo_install) do |event_data|
           #  puts "before_playmo_install"
           #end
-
+          
           # Generate home_controller
           generate :controller, :home, :index
-=begin
+
           # Change generated routes
           gsub_file 'config/routes.rb', 'get "home/index"' do
             'root :to => "home#index"'
@@ -39,7 +39,6 @@ module Playmo
 
           # Remove default rails index file
           remove_file 'public/index.html'
-=end
         end
       end
     end

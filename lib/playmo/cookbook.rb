@@ -59,6 +59,7 @@ module Playmo
       recipes.each do |recipe|
         # TODO: recipe.cook!
         r = recipe.new
+        r.setup
         q = r.question_instance
 
         q.set_caller(r)

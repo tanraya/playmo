@@ -4,7 +4,6 @@ module Playmo
 
     def initialize(arg, &block)
       @question_text, method_name = arg, nil
-      #@caller    = caller
       @answers ||= []
       @padding   = 0
 
@@ -14,7 +13,7 @@ module Playmo
         answer(nil => method_name)
       end
 
-      # Multiple answers (or just one question with block)
+      # Multiple answers
       self.instance_eval(&block) if block_given?
     end
 

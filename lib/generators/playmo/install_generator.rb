@@ -7,6 +7,7 @@ module Playmo
     # - При запуске генератора рисовать кол-во вопросов и небольшое вступление (сделать отдельным рецептом)
     # - М.б. поддержку колбэков тут нужно делать при помощи обсервера
     class InstallGenerator < Rails::Generators::Base
+      source_root File.expand_path('../templates', __FILE__)
       desc "Creates a Playmo initializer and copy files to your application."
 
       def install

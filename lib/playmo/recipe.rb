@@ -3,15 +3,16 @@ require 'rails/generators'
 module Playmo
   # Base class for all recipes
   class Recipe < Rails::Generators::Base
-    cattr_accessor :question_instance, :silents
+    source_root File.expand_path('../generators/playmo/recipes/templates', __FILE__)
+    attr_accessor :question_instance, :silents
 
-    def self.question(arg, &block)
-      @@question_instance = Playmo::Question.new(arg, &block)
+    def question(arg, &block)
+      @question_instance = Playmo::Question.new(arg, &block)
     end
 
-    def self.silently(&block)
-      @@silents ||= []
-      @@silents << Playmo::Silent.new(self, &block)
+    def silently(&block)
+      @silents ||= []
+      @silents << Playmo::Silent.new(self, &block)
     end
   end
 end

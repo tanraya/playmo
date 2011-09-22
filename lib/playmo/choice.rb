@@ -23,18 +23,20 @@ module Playmo
       end
 
       if @user_input
+
         if @question.has_answers?
           answer = @question.answers.find { |answer| answer.num.to_s == @user_input }
           @caller.send(answer.method_name)
         else
           answer = @question.answers.first
-          #@caller.send(answer.method_name) if %w/y yes/.include?(@user_input)
-          puts @caller.inspect
+          @caller.send(answer.method_name) if %w/y yes/.include?(@user_input)
+          #puts @caller.inspect
 
-          @caller.instance_eval do
-            send(answer.method_name)
-          end
+          #@caller.instance_eval do
+          #  @callersend(answer.method_name)
+          #end
         end
+
       end
     end
 

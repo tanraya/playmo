@@ -10,7 +10,6 @@ module Playmo
         # TODO: A playmo bin file that generate rails app and do all the stuff as altennative to manually installing rails app and include playmo into this app
         # TODO: Require playmo to the app only when in development mode
         # TODO: Copy Playmo view heplers into the app
-
 =begin
         silently do
           # do something without any questions
@@ -37,20 +36,18 @@ module Playmo
           end
         end
 =end
+        question "Do you want to create HomeController in this project?" => :install
 
-        #question "Do you want to create HomeController in this project?" do # TODO: Add this into Thor namespace (?)
-        def initialize
-
+        def install
           # Нужно подписывать этот рецепт на событие playmo_install
-          Playmo::Event.events.listen(:after_playmo_install) do |event_data|
-            puts "after_playmo_install"
-          end
+          #Playmo::Event.events.listen(:after_playmo_install) do |event_data|
+          #  puts "after_playmo_install"
+          #end
 
-          Playmo::Event.events.listen(:before_playmo_install) do |event_data|
-            puts "before_playmo_install"
-          end
+          #Playmo::Event.events.listen(:before_playmo_install) do |event_data|
+          #  puts "before_playmo_install"
+          #end
 
-=begin
           # Generate home_controller
           generate :controller, :home, :index
 
@@ -74,7 +71,6 @@ module Playmo
 
           # Remove default rails index file
           remove_file 'public/index.html'
-=end
         end
       end
     end

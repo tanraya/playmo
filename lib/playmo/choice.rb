@@ -28,7 +28,12 @@ module Playmo
           @caller.send(answer.method_name)
         else
           answer = @question.answers.first
-          @caller.send(answer.method_name) if %w/y yes/.include?(@user_input)
+          #@caller.send(answer.method_name) if %w/y yes/.include?(@user_input)
+          puts @caller.inspect
+
+          @caller.instance_eval do
+            send(answer.method_name)
+          end
         end
       end
     end

@@ -2,9 +2,9 @@ module Playmo
   class Question < Thor::Shell::Basic
     attr_accessor :answers, :choice, :question_text, :caller
 
-    def initialize(arg, caller, &block)
+    def initialize(arg, &block)
       @question_text, method_name = arg, nil
-      @caller    = caller
+      #@caller    = caller
       @answers ||= []
       @padding   = 0
 
@@ -16,6 +16,10 @@ module Playmo
 
       # Multiple answers (or just one question with block)
       self.instance_eval(&block) if block_given?
+    end
+
+    def set_caller(recipe)
+     @caller = recipe
     end
 
     def answer(arg)

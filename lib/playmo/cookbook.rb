@@ -57,18 +57,18 @@ module Playmo
       Playmo::Event.events.fire :before_playmo_install, "blah bla"
 
       recipes.each do |recipe|
-        # TODO: recipe.cook!
-        r = recipe.new
-        r.setup
-        q = r.question_instance
+        recipe.new.cook!
+        #r = recipe.new
+        #r.setup
+        #q = r.question_instance
 
-        q.set_caller(r)
+        #q.set_caller(r)
 
         # Ask question
-        q.ask_question!
+        #q.ask_question!
 
         # Ask for choice and make choice
-        q.choice.make_choice!
+        #q.choice.make_choice!
       end
 
       Playmo::Event.events.fire :after_playmo_install, "blah"

@@ -33,4 +33,4 @@ module Playmo
 end
 
 # Write down this recipe to our Cookbook if it's available
-Playmo::Cookbook.instance.use(Playmo::Generators::Recipes::GitRecipe) if defined?(Playmo::Cookbook)
+#Playmo::Cookbook.instance.use(Playmo::Generators::Recipes::GitRecipe) if defined?(Playmo::Cookbook)

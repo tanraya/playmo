@@ -1,8 +1,5 @@
-.DS_Store
-log/*.log
-tmp/**/*
-db/*.sqlite3
-.idea/
-public/uploads/*
 .bundle
+db/*.sqlite3
+log/*.log
+tmp/
 .sass-cache/

@@ -3,10 +3,12 @@ require 'rails/generators'
 module Playmo
   # Base class for all recipes
   class Recipe < Rails::Generators::Base
-    attr_accessor :question_instance, :silents
+    attr_accessor :question_instance, :silents, :application_name
 
     # Приготовление рецепта
-    def cook!
+    def cook!(application_name)
+      self.destination_root = application_name
+      self.application_name = application_name
       setup
 
       unless question_instance.nil?

@@ -8,8 +8,6 @@ module Playmo
     # - М.б. поддержку колбэков тут нужно делать при помощи обсервера
     class InstallGenerator < Rails::Generators::Base
       source_root File.expand_path('../templates', __FILE__)
-      #source_root '/home/tanraya/sandbox/playmo/lib/generators/playmo/recipes'
-
       desc "Creates a Playmo initializer and copy files to your application."
 
       def install
@@ -24,7 +22,12 @@ module Playmo
         # Вот схема: http://www.oodesign.com/observer-pattern.html
         # Мне нужно сделать модуль EventSubscriber, который буду подмешивать в нужные классы, чтобы классы смогли подписываться на события.
         # Тогда рецепты будут одновременно оbservable и subscribers?
-        Playmo::Cookbook.instance.cook_recipes!
+        #Playmo::Cookbook.instance.cook_recipes!
+
+                  gem "devise"
+                  if yes? "Bundle?"
+          run "bundle install --gemfile=/home/tanraya/sandbox/playmo/test/dummy/Gemfile"
+                    end
       end
     end
   end

@@ -2,21 +2,15 @@ module Playmo
   module Generators
     module Recipes
       class HomeControllerRecipe < Playmo::Recipe
+        source_root File.expand_path('../templates/home_controller_recipe', __FILE__)
+
         def setup
           question "Do you want to create HomeController in this project?" => :install_home_controller
         end
 
         def install_home_controller
-          # Нужно подписывать этот рецепт на событие playmo_install
-          Playmo::Event.events.listen(:after_playmo_install) do |event_data|
-            puts "after_playmo_install"
-          end
-
-          #Playmo::Event.events.listen(:before_playmo_install) do |event_data|
-          #  puts "before_playmo_install"
-          #end
-          
           # Generate home_controller
+          Event.events.listen(:after_install) do |event_data|
           generate :controller, :home, :index
 
           # Change generated routes
@@ -37,8 +31,13 @@ module Playmo
             CONTENT
           end
 
+          # Copy sidebar template
+          empty_directory "app/views/shared"
+          copy_file "_sidebar.html.erb", "app/views/shared/_sidebar.html.erb"
+
           # Remove default rails index file
           remove_file 'public/index.html'
+          end
         end
       end
     end
@@ -46,4 +45,4 @@ module Playmo
 end
 
 # Write down this recipe to our Cookbook if it's available
-#Playmo::Cookbook.instance.use(Playmo::Generators::Recipes::HomeControllerRecipe) if defined?(Playmo::Cookbook)
+Playmo::Cookbook.instance.use(Playmo::Generators::Recipes::HomeControllerRecipe) if defined?(Playmo::Cookbook)

@@ -3,7 +3,10 @@ module Playmo
     module Recipes
       class BundleInstallRecipe < Playmo::Recipe
         def setup
+          gem "devise"
+          run "bundle install"
 
+=begin
           silently do
             Event.events.listen(:after_install) do
 
@@ -17,6 +20,7 @@ module Playmo
             end
             
           end
+=end
 
         end
       end
@@ -25,5 +29,5 @@ module Playmo
 end
 
 # Write down this recipe to our Cookbook if it's available
-puts "BundleInstallRecipe"
-Playmo::Cookbook.instance.use(Playmo::Generators::Recipes::BundleInstallRecipe) if defined?(Playmo::Cookbook)
+#puts "BundleInstallRecipe"
+#Playmo::Cookbook.instance.use(Playmo::Generators::Recipes::BundleInstallRecipe) if defined?(Playmo::Cookbook)

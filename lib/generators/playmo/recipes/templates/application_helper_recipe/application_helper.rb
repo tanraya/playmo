@@ -1,4 +1,4 @@
-module PlaymoHelper
+module ApplicationHelper
   attr_accessor :page_title
 
   def flash_messages
@@ -62,7 +62,7 @@ module PlaymoHelper
 
   def link_to_website(url, html_options = {})
     return nil if url.blank?
-    
+
     url = "http://#{url}" unless url =~ /^(ht|f)tps?:\/\//i
     html_options[:href] = url
     content_tag(:a, url, html_options)
@@ -77,11 +77,11 @@ module PlaymoHelper
     result += "<!--[if IE 8 ]>    #{ tag(name, add_class('ie8', attrs), true) } <![endif]-->\n".html_safe
     result += "<!--[if IE 9 ]>    #{ tag(name, add_class('ie9', attrs), true) } <![endif]-->\n".html_safe
     result += "<!--[if (gte IE 9)|!(IE)]><!-->".html_safe
-    
+
     result += content_tag name, attrs do
       "<!--<![endif]-->\n".html_safe + with_output_buffer(&block)
     end
-    
+
     result
   end
 

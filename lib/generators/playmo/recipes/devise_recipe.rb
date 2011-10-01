@@ -2,26 +2,16 @@ module Playmo
   module Generators
     module Recipes
       class DeviseRecipe < Playmo::Recipe
+        source_root File.expand_path('../templates/devise_recipe', __FILE__)
+
         def setup
           question "Would you like to use Devise in this project?" => :install_devise
         end
 
         def install_devise
+          gem 'devise'
+
           Event.events.listen(:after_install) do |event_data|
-            puts "after_install yay"
-          end
-
-          #Playmo::Event.events.listen(:before_bundle_install) do |event_data|
-            gem "devise", "1.4.7"
-
-          Event.events.listen(:after_install) do
-            Event.events.listen(:after_bundle_install) do
-              run "bundle"
-            end
-          end
-=begin
-
-          Playmo::Event.events.listen(:after_bundle_install) do |event_data|
             # Generate Devise stuff
             generate "devise:install"
             generate "devise User"
@@ -40,19 +30,18 @@ module Playmo
                 end
               CONTENT
             end
-          end
 
-          # Create migration that adds name field to users table
-          timestamp = Time.now.strftime("%Y%m%d%H%M%S")
-          filename  = "db/migrate/#{timestamp}_add_name_to_users.rb"
+            # Create migration that adds name field to users table
+            filename  = "db/migrate/#{(Time.now - 3600).strftime("%Y%m%d%H%M%S")}_add_name_to_users.rb"
 
-          create_file filename, <<-CONTENT.gsub(/^ {12}/, '')
-            class AddNameToUsers < ActiveRecord::Migration
-              def change
-                add_column :users, :name, :string
+            create_file filename, <<-CONTENT.gsub(/^ {12}/, '')
+              class AddNameToUsers < ActiveRecord::Migration
+                def change
+                  add_column :users, :name, :string
+                end
               end
-            end
-          CONTENT
+            CONTENT
+          end
 
           # Create default user
           append_to_file 'db/seeds.rb' do
@@ -64,7 +53,6 @@ module Playmo
               )
             CONTENT
           end
-=end
           
         end
       end
@@ -73,5 +61,4 @@ module Playmo
 end
 
 # Write down this recipe to our Cookbook if it's available
-puts "DeviseRecipe"
 Playmo::Cookbook.instance.use(Playmo::Generators::Recipes::DeviseRecipe) if defined?(Playmo::Cookbook)

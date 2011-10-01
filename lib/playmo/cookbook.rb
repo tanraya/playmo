@@ -53,28 +53,14 @@ module Playmo
       recipes.push(new_recipe)
     end
 
-    def cook_recipes!
-
-
+    def cook_recipes!(application_name)
       prepared_recipes = []
+      
       recipes.each do |recipe|
         prepared_recipes << recipe.new
-        #recipe.new.cook!
-        #r = recipe.new
-        #r.setup
-        #q = r.question_instance
-
-        #q.set_caller(r)
-
-        # Ask question
-        #q.ask_question!
-
-        # Ask for choice and make choice
-        #q.choice.make_choice!
       end
 
-      prepared_recipes.each { |recipe| recipe.cook! }
-      Event.events.fire :after_install
+      prepared_recipes.each { |recipe| recipe.cook!(application_name) }
     end
     
   protected

@@ -4,7 +4,7 @@ module Playmo
       class GitRecipe < Playmo::Recipe
         def setup
           silently do
-            Event.events.listen(:after_install) do |event_data|
+            Event.events.listen(:before_exit) do |event_data|
               remove_file '.gitignore'
 
               create_file '.gitignore', <<-CONTENT.gsub(/^ {16}/, '')
@@ -18,7 +18,6 @@ module Playmo
               CONTENT
 
               git :init
-              git :submodule => "init"
               git :add       => '.'
               git :commit    => "-am 'Initial commit for #{application_name}'"
             end

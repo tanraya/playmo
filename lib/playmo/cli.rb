@@ -18,6 +18,7 @@ module Playmo
       system "cd #{application_name} && bundle install"
 
       Event.events.fire :after_install
+      Event.events.fire :before_exit
     end
 
   end

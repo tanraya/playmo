@@ -12,7 +12,7 @@ module Playmo
             #copy_file 'images/input-bg.gif', 'app/assets/images/input-bg.gif'
 
             #empty_directory 'app/assets/stylesheets/partials'
-            remove_file 'stylesheets/application.css'
+            remove_file 'app/assets/stylesheets/application.css'
 
             #copy_file 'stylesheets/application.css.scss', 'app/assets/stylesheets/application.css.scss'
             #copy_file 'stylesheets/media.css.scss', 'app/assets/stylesheets/media.css.scss'

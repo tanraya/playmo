@@ -1,0 +1,81 @@
+@import "compass/typography/links/link-colors";
+
+/* 1. General Elements =======================================================*/
+body {
+    background-color: #fff;
+    font: .75em/18px $base-font-family;
+}
+
+a { @include link-colors($link-color, $link-hover-color, $link-active-color, $link-color, $link-hover-color); }
+
+/* 2. Headings */
+#{headings(all)} {
+    margin: 0 0 10px 0;
+    padding: 0;
+    line-height: 1.2em;
+}
+
+h1 { font-size: 2em; }   /* 100% */
+h2 { font-size: 1.7em; } /* -0.3 */
+h3 { font-size: 1.5em; } /* -0.6 */
+h4 { font-size: 1.1em; } /* -0.9 */
+h5 { font-size: 1em; }   /* -1   */
+h6 { font-size: 0.8em; } /* -1.2 */
+
+/* 3. Lists */
+ul, ol, dl { list-style: none; margin: 0; padding: 0; }
+
+/* 4. Tables */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    caption, th, td {
+        text-align: left;
+        font-weight: normal;
+        padding: 0;
+        vertical-align: top;
+    }
+}
+
+
+/* 5. Article markup */
+strong { font-weight: bold; }
+em { font-style: italic; }
+sup, sub { vertical-align: baseline; position: relative; }
+sup { top: -0.4em; }
+sub { bottom: -0.3em; }
+
+p {
+    margin: 18px 0;
+    zoom: 1;
+}
+    p:before, p:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        visibility: hidden;
+    }
+
+    p:after { clear: both; }
+
+blockquote {
+    margin: 0 0 18px 30px;
+    border-left: 3px solid #ddd;
+    padding: 8px 8px 8px 16px;
+}
+
+pre, code, kbd, samp, var {
+    font: 0.9em Consolas, "Courier New", monospace, sans-serif;
+}
+
+pre { margin: 0 0 18px 0; padding: 0; }
+
+/* 6. Images */
+a img { border: 0; }
+img.f-left { float: left; margin: 0 18px 0 0;  clear: left; }
+img.f-right { float: right; margin: 0 0 0 18px; }
+
+/* 7. Other styles */
+::-moz-selection{ background: #555; color:#fff; }
+::selection { background: #555; color:#fff; }

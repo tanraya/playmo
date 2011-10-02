@@ -11,6 +11,9 @@ module Playmo
             empty_directory "app/views/application"
             copy_file "internal_error.html.erb", "app/views/application/internal_error.html.erb"
             copy_file "not_found.html.erb", "app/views/application/not_found.html.erb"
+
+            # To catch routing errors
+            route 'match "*catch_all" => "application#not_found"'
           end
         end
       end

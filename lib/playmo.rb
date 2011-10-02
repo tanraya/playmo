@@ -23,7 +23,7 @@ module Playmo
   autoload :Recipe
 
   # Require all available recipes
-  Dir["#{File.dirname(__FILE__)}/generators/playmo/recipes/*_recipe.rb"].each { |file| require file }
+  Dir["#{File.dirname(__FILE__)}/playmo/recipes/*_recipe.rb"].each { |file| require file }
 
   #autoload :Generators, 'playmo/generators/base'
   #class Railtie < ::Rails::Railtie

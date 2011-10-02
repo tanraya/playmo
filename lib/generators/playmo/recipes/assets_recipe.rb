@@ -6,20 +6,9 @@ module Playmo
 
         def setup
           silently do
-            directory 'images/',      'app/assets/images/'
-            directory 'stylesheets/', 'app/assets/stylesheets/'
-            #copy_file 'images/bg.jpg', 'app/assets/images/bg.jpg'
-            #copy_file 'images/input-bg.gif', 'app/assets/images/input-bg.gif'
-
-            #empty_directory 'app/assets/stylesheets/partials'
+            directory   'images/',      'app/assets/images/'
+            directory   'stylesheets/', 'app/assets/stylesheets/'
             remove_file 'app/assets/stylesheets/application.css'
-
-            #copy_file 'stylesheets/application.css.scss', 'app/assets/stylesheets/application.css.scss'
-            #copy_file 'stylesheets/media.css.scss', 'app/assets/stylesheets/media.css.scss'
-            #copy_file 'stylesheets/partials/', 'app/assets/stylesheets/partials/'
-            #copy_file 'stylesheets/partials/', 'app/assets/stylesheets/partials/'
-            #copy_file 'stylesheets/partials/', 'app/assets/stylesheets/partials/'
-            #copy_file 'stylesheets/partials/', 'app/assets/stylesheets/partials/'
           end
         end
       end

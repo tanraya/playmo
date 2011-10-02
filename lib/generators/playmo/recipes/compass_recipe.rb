@@ -9,7 +9,7 @@ module Playmo
         end
 
         def install_compass
-          gem 'compass'
+          gem 'compass', :git => 'git://github.com/chriseppstein/compass.git'
         end
       end
     end

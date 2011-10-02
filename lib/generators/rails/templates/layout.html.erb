@@ -17,10 +17,11 @@
     <%%= javascript_include_tag "application" %>
   </head>
   <body id="<%%= page_id %>">
-
-    <div id="container">
+    <%%= flash_messages %>
+    
+    <div id="main-wrapper">
       <header>
-	<h1><%%= link_to_unless_current 'Welcome aboard!', root_path %></h1>
+	    <h1><%%= link_to_unless_current 'Welcome aboard!', root_path %></h1>
         <div id="user-info">
           <ul>
             <%% if user_signed_in? %>
@@ -37,21 +38,23 @@
         </div>
       </header>
 
-      <div id="main">
-        <%%= flash_messages %>
+      <div id="body">
 
-	<article class="article">
-	  <%%= yield %>
-	</article>
+        <section id="content">
+          <%%= yield %>
+        </section>
 
-	<aside>
-	  <%%= content_for?(:sidebar) ? yield(:sidebar) : render("shared/sidebar") %>
-	</aside>
+	    <aside>
+	      <%%= content_for?(:sidebar) ? yield(:sidebar) : render("shared/sidebar") %>
+	    </aside>
 
       </div>
-
-      <footer>This application was generated with Playmo gem.</footer>
     </div>
 
+    <footer>
+      <p>
+        This application was generated with <%%= link_to 'Playmo', 'http://github.com/tanraya/playmo' %> gem
+      </p>
+    </footer>
   </body>
 <%% end %>

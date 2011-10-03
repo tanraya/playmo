@@ -6,7 +6,7 @@ module Playmo
       def setup
         silently do
           remove_file 'app/views/layouts/application.html.erb'
-          #copy_file   'application.html.erb', 'app/views/layouts/application.html.erb'
+          
           Event.events.listen(:after_install) do |event_data|
             generate :layout
           end

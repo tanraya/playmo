@@ -27,7 +27,7 @@
             <%% if user_signed_in? %>
               <li>
                 Hello, Dear <strong><%%= current_user.username %></strong>!
-                Maybe, you want to <%%= link_to 'logout', destroy_user_session_path %>?
+                Maybe, you want to <%%= link_to 'logout', destroy_user_session_path, :method => :destroy %>?
               </li>
             <%% else %>
               <li>

@@ -2,7 +2,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   rescue_from Exception, :with => :handle_exceptions
 
+  before_filter :set_current_user
+
 protected
+
+  def set_current_user
+    User.current = current_user
+  end
 
   def not_found!
     raise ActiveRecord::RecordNotFound.new('Not Found')
@@ -10,6 +16,8 @@ protected
 
   def handle_exceptions(e)
     case e
+    when CanCan::AccessDenied
+      not_found
     when ActiveRecord::RecordNotFound
       not_found
     else

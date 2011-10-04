@@ -50,6 +50,12 @@ module Playmo
               :password              => 'secret',
               :password_confirmation => 'secret'
             )
+
+            user2 = User.create!(
+              :email                 => 'annadoe@example.com',
+              :password              => 'secret',
+              :password_confirmation => 'secret'
+            )
           CONTENT
         end
 

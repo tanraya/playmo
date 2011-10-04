@@ -8,7 +8,7 @@ module Playmo
       end
 
       def install_compass
-        gem 'compass', :git => 'git://github.com/chriseppstein/compass.git'
+        gem "compass", "~> 0.12.alpha.0"
       end
     end
   end

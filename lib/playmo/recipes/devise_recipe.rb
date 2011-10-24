@@ -19,10 +19,10 @@ module Playmo
           # Add :name accessor to default accessors
           # Also add some specific methods
           gsub_file 'app/models/user.rb', ' attr_accessible :email, :password, :password_confirmation, :remember_me', :verbose => false do
-            <<-CONTENT.gsub(/^ {16}/, '')
+            <<-CONTENT.gsub(/^ {14}/, '')
               attr_accessible :email, :password, :password_confirmation, :remember_me, :name
               cattr_accessor :current
-
+              
               # Return user name or user name from email address
               def username
                 name.blank? ? email.match(/^[^@]+/)[0] : name

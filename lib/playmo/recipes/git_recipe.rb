@@ -6,7 +6,7 @@ module Playmo
           Event.events.listen(:before_exit) do |event_data|
             remove_file '.gitignore'
 
-            create_file '.gitignore', <<-CONTENT.gsub(/^ {16}/, '')
+            create_file '.gitignore', <<-CONTENT.gsub(/^ {14}/, '')
               .DS_Store
               log/*.log
               tmp/**/*

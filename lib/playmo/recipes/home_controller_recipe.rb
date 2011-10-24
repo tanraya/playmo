@@ -4,7 +4,7 @@ module Playmo
       source_root File.expand_path('../templates/home_controller_recipe', __FILE__)
 
       def setup
-        question "Do you want to create HomeController in this project?" => :install_home_controller
+        question "Would you want to create HomeController in this project?" => :install_home_controller
       end
 
       def install_home_controller
@@ -43,4 +43,5 @@ module Playmo
 end
 
 # Write down this recipe to our Cookbook if it's available
-Playmo::Cookbook.instance.use(Playmo::Recipes::HomeControllerRecipe) if defined?(Playmo::Cookbook)
+require File.dirname(__FILE__) + '/layout_recipe'
+Playmo::Cookbook.instance.insert_after(Playmo::Recipes::LayoutRecipe, Playmo::Recipes::HomeControllerRecipe) if defined?(Playmo::Cookbook)

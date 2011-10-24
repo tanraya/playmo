@@ -21,4 +21,5 @@ module Playmo
 end
 
 # Write down this recipe to our Cookbook if it's available
-Playmo::Cookbook.instance.use(Playmo::Recipes::CapistranoRecipe) if defined?(Playmo::Cookbook)
+require File.dirname(__FILE__) + '/rspec_recipe'
+Playmo::Cookbook.instance.insert_after(Playmo::Recipes::RspecRecipe, Playmo::Recipes::CapistranoRecipe) if defined?(Playmo::Cookbook)

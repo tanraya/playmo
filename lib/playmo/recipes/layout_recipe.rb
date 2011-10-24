@@ -17,4 +17,5 @@ module Playmo
 end
 
 # Write down this recipe to our Cookbook if it's available
-Playmo::Cookbook.instance.use(Playmo::Recipes::LayoutRecipe) if defined?(Playmo::Cookbook)
+require File.dirname(__FILE__) + '/devise_recipe'
+Playmo::Cookbook.instance.insert_after(Playmo::Recipes::DeviseRecipe, Playmo::Recipes::LayoutRecipe) if defined?(Playmo::Cookbook)

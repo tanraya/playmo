@@ -15,4 +15,5 @@ module Playmo
 end
 
 # Write down this recipe to our Cookbook if it's available
-Playmo::Cookbook.instance.use(Playmo::Recipes::AssetsRecipe) if defined?(Playmo::Cookbook)
+require File.dirname(__FILE__) + '/markup_recipe'
+Playmo::Cookbook.instance.insert_after(Playmo::Recipes::MarkupRecipe, Playmo::Recipes::AssetsRecipe) if defined?(Playmo::Cookbook)

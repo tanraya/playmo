@@ -16,4 +16,5 @@ module Playmo
 end
 
 # Write down this recipe to our Cookbook if it's available
-#Playmo::Cookbook.instance.use(Playmo::Recipes::CongratsRecipe) if defined?(Playmo::Cookbook)
+require File.dirname(__FILE__) + '/git_recipe'
+Playmo::Cookbook.instance.insert_after(Playmo::Recipes::GitRecipe, Playmo::Recipes::CongratsRecipe) if defined?(Playmo::Cookbook)

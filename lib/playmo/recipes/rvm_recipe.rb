@@ -13,4 +13,5 @@ module Playmo
 end
 
 # Write down this recipe to our Cookbook if it's available
-Playmo::Cookbook.instance.use(Playmo::Recipes::RvmRecipe) if defined?(Playmo::Cookbook)
+require File.dirname(__FILE__) + '/capistrano_recipe'
+Playmo::Cookbook.instance.insert_after(Playmo::Recipes::CapistranoRecipe, Playmo::Recipes::RvmRecipe) if defined?(Playmo::Cookbook)

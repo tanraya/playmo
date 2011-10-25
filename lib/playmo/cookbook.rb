@@ -4,7 +4,7 @@ module Playmo
   # You can register own recipe in this class
   class Cookbook
     include Enumerable
-    attr_accessor :recipes
+    attr_accessor :recipes, :cooked_recipes
 
     def self.instance
       @@instance ||= Playmo::Cookbook.new
@@ -12,6 +12,7 @@ module Playmo
 
     def initialize
       @recipes = []
+      @cooked_recipes = []
     end
 
     def each
@@ -32,6 +33,11 @@ module Playmo
 
     def delete(target)
       recipes.delete target
+    end
+
+    # Is recipe already cooked?
+    def cooked?(recipe)
+      @cooked_recipes.includes?(recipe)
     end
     
     # Adds the new recipe before the specified existing recipe in the Cookbook stack.
@@ -60,7 +66,10 @@ module Playmo
         prepared_recipes << recipe.new
       end
 
-      prepared_recipes.each { |recipe| recipe.cook!(application_name) }
+      prepared_recipes.each do |recipe|
+        recipe.cook!(application_name)
+        @cooked_recipes << recipe
+      end
     end
     
   protected

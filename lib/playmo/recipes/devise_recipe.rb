@@ -18,7 +18,7 @@ module Playmo
 
           # Add :name accessor to default accessors
           # Also add some specific methods
-          gsub_file 'app/models/user.rb', 'attr_accessible :email, :password, :password_confirmation, :remember_me', :verbose => false do
+          gsub_file 'app/models/user.rb', 'attr_accessible :email, :password, :password_confirmation, :remember_me' do
             <<-CONTENT.gsub(/^ {12}/, '')
               attr_accessible :email, :password, :password_confirmation, :remember_me, :name
               cattr_accessor :current
@@ -27,6 +27,27 @@ module Playmo
               def username
                 name.blank? ? email.match(/^[^@]+/)[0] : name
               end
+            CONTENT
+          end
+
+          # Add links into layout
+          gsub_file 'app/views/layouts/application.html.erb', '</header>' do
+            <<-CONTENT.gsub(/^ {12}/, '')
+                <div id="user-info">
+                  <ul>
+                    <% if user_signed_in? %>
+                      <li>
+                        Hello, Dear <strong><%= current_user.username %></strong>!
+                        Maybe, you want to <%= link_to 'logout', destroy_user_session_path %>?
+                      </li>
+                    <% else %>
+                      <li>
+                        Hello Guest, maybe you want to <%= link_to 'Join us', new_user_registration_path %> or <%= link_to 'login', new_user_session_path %>?
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </header>
             CONTENT
           end
 
@@ -65,5 +86,5 @@ module Playmo
 end
 
 # Write down this recipe to our Cookbook if it's available
-require File.dirname(__FILE__) + '/javascript_framework_recipe'
-Playmo::Cookbook.instance.insert_after(Playmo::Recipes::JavascriptFrameworkRecipe, Playmo::Recipes::DeviseRecipe) if defined?(Playmo::Cookbook)
+require File.dirname(__FILE__) + '/layout_recipe'
+Playmo::Cookbook.instance.insert_after(Playmo::Recipes::LayoutRecipe, Playmo::Recipes::DeviseRecipe) if defined?(Playmo::Cookbook)

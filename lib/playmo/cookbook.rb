@@ -37,7 +37,7 @@ module Playmo
 
     # Is recipe already cooked?
     def cooked?(recipe)
-      @cooked_recipes.includes?(recipe)
+      @cooked_recipes.include?(recipe)
     end
     
     # Adds the new recipe before the specified existing recipe in the Cookbook stack.

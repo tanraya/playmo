@@ -8,7 +8,8 @@ module Playmo
           remove_file 'app/views/layouts/application.html.erb'
           
           Event.events.listen(:after_install) do |event_data|
-            generate :layout
+            markup = 'haml'
+            generate :layout, "application #{markup}"
           end
         end
       end

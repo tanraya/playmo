@@ -12,15 +12,15 @@ module Playmo
     protected
 
       def install_erb
-
+        # Do nothing
       end
 
       def install_haml
-
+        gem "haml-rails"
       end
 
       def install_slim
-
+        gem "slim-rails"
       end
 
     end

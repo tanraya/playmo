@@ -16,6 +16,9 @@ module Playmo
           generate "devise User"
           generate "devise:views"
 
+          # Add sign_up/login links into layout
+          add_layout_links
+
           # Add :name accessor to default accessors
           # Also add some specific methods
           gsub_file 'app/models/user.rb', 'attr_accessible :email, :password, :password_confirmation, :remember_me' do
@@ -27,27 +30,6 @@ module Playmo
               def username
                 name.blank? ? email.match(/^[^@]+/)[0] : name
               end
-            CONTENT
-          end
-
-          # Add links into layout
-          gsub_file 'app/views/layouts/application.html.erb', '</header>' do
-            <<-CONTENT.gsub(/^ {12}/, '')
-                <div id="user-info">
-                  <ul>
-                    <% if user_signed_in? %>
-                      <li>
-                        Hello, Dear <strong><%= current_user.username %></strong>!
-                        Maybe, you want to <%= link_to 'logout', destroy_user_session_path %>?
-                      </li>
-                    <% else %>
-                      <li>
-                        Hello Guest, maybe you want to <%= link_to 'Join us', new_user_registration_path %> or <%= link_to 'login', new_user_session_path %>?
-                      </li>
-                    <% end %>
-                  </ul>
-                </div>
-              </header>
             CONTENT
           end
 
@@ -81,6 +63,64 @@ module Playmo
         end
 
       end
+
+    private
+
+      # Add links into layout
+      def add_layout_links
+        markup = 'erb'
+        
+        case markup
+          when 'erb'  then add_layout_links_with_erb
+          when 'haml' then add_layout_links_with_haml
+          when 'slim' then add_layout_links_with_slim
+        end
+      end
+
+      def add_layout_links_with_erb
+        gsub_file 'app/views/layouts/application.html.erb', '</header>' do
+          <<-CONTENT.gsub(/^ {10}/, '')
+              <div id="user-info">
+                <ul>
+                  <% if user_signed_in? %>
+                    <li>
+                      Hello, Dear <strong><%= current_user.username %></strong>!
+                      Maybe, you want to <%= link_to 'logout', destroy_user_session_path %>?
+                    </li>
+                  <% else %>
+                    <li>
+                      Hello Guest, maybe you want to <%= link_to 'Join us', new_user_registration_path %> or <%= link_to 'login', new_user_session_path %>?
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </header>
+          CONTENT
+        end
+      end
+
+      def add_layout_links_with_haml
+        gsub_file 'app/views/layouts/application.html.erb', '      #body' do
+          <<-CONTENT.gsub(/^ {6}/, '')
+                %ul
+                  - if user_signed_in?
+                    %li
+                      Hello, Dear
+                      = succeed "!" do
+                        %strong= current_user.username
+                      Maybe, you want to #{link_to 'logout', destroy_user_session_path}?
+                  - else
+                    %li
+                      Hello Guest, maybe you want to #{link_to 'Join us', new_user_registration_path} or #{link_to 'login', new_user_session_path}?
+            #body
+          CONTENT
+        end
+      end
+
+      def add_layout_links_with_slim
+
+      end
+
     end
   end
 end

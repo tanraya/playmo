@@ -38,5 +38,13 @@ module Playmo
       @silents ||= []
       @silents << Playmo::Silent.new(&block)
     end
+
+    def store(*args)
+      Options.instance.set(*args)
+    end
+
+    def retrieve(*args)
+      Options.instance.get(*args)
+    end
   end
 end

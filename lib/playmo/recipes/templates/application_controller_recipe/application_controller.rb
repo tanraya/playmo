@@ -16,8 +16,8 @@ protected
 
   def handle_exceptions(e)
     case e
-    when CanCan::AccessDenied
-      not_found
+    #when CanCan::AccessDenied
+    #  not_found
     when ActiveRecord::RecordNotFound
       not_found
     else

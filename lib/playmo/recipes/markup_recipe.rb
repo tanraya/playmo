@@ -13,14 +13,17 @@ module Playmo
 
       def install_erb
         # Do nothing
+        store(:markup, :erb)
       end
 
       def install_haml
         gem "haml-rails"
+        store(:markup, :haml)
       end
 
       def install_slim
         gem "slim-rails"
+        store(:markup, :slim)
       end
 
     end

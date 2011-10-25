@@ -68,12 +68,10 @@ module Playmo
 
       # Add links into layout
       def add_layout_links
-        markup = 'erb'
-        
-        case markup
-          when 'erb'  then add_layout_links_with_erb
-          when 'haml' then add_layout_links_with_haml
-          when 'slim' then add_layout_links_with_slim
+        case retrieve(:markup)
+          when :erb  then add_layout_links_with_erb
+          when :haml then add_layout_links_with_haml
+          when :slim then add_layout_links_with_slim
         end
       end
 
@@ -100,8 +98,9 @@ module Playmo
       end
 
       def add_layout_links_with_haml
-        gsub_file 'app/views/layouts/application.html.erb', '      #body' do
-          <<-CONTENT.gsub(/^ {6}/, '')
+        gsub_file 'app/views/layouts/application.html.haml', '      #body' do
+          <<-'CONTENT'.gsub(/^ {6}/, '')
+              #user-info
                 %ul
                   - if user_signed_in?
                     %li
@@ -118,7 +117,11 @@ module Playmo
       end
 
       def add_layout_links_with_slim
+        gsub_file 'app/views/layouts/application.html.slim', '' do
+          <<-CONTENT.gsub(/^ {6}/, '')
 
+          CONTENT
+        end
       end
 
     end

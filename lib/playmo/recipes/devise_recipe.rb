@@ -19,6 +19,9 @@ module Playmo
           # Add sign_up/login links into layout
           add_layout_links
 
+          # Process Devise views to choosen markup
+          process_views
+
           # Add :name accessor to default accessors
           # Also add some specific methods
           gsub_file 'app/models/user.rb', 'attr_accessible :email, :password, :password_confirmation, :remember_me' do
@@ -72,6 +75,14 @@ module Playmo
           when :erb  then add_layout_links_with_erb
           when :haml then add_layout_links_with_haml
           when :slim then add_layout_links_with_slim
+        end
+      end
+
+      # Process Devise views to choosen markup
+      def process_views
+        case retrieve(:markup)
+          when :haml then process_views_with_haml
+          when :slim then process_views_with_slim
         end
       end
 
@@ -131,6 +142,24 @@ module Playmo
                       | Hello Guest, maybe you want to #{link_to 'Join us', new_user_registration_path} or #{link_to 'login', new_user_session_path}?  
             #body
           CONTENT
+        end
+      end
+
+      def process_views_with_haml
+        Dir["#{destination_root}/app/views/devise/**/*.erb"].each do |erb_file|
+          haml_file = erb_file.gsub(/\.erb$/, '.haml')
+          run "html2haml #{erb_file} #{haml_file}"
+          run "rm #{erb_file}"
+        end
+      end
+
+      def process_views_with_slim
+        process_views_with_haml
+
+        Dir["#{destination_root}/app/views/devise/**/*.haml"].each do |haml_file|
+          slim_file = haml_file.gsub(/\.haml$/, '.slim')
+          run "haml2slim #{haml_file} #{slim_file}"
+          run "rm #{haml_file}"
         end
       end
 

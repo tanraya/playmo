@@ -117,9 +117,19 @@ module Playmo
       end
 
       def add_layout_links_with_slim
-        gsub_file 'app/views/layouts/application.html.slim', '' do
-          <<-CONTENT.gsub(/^ {6}/, '')
-
+        gsub_file 'app/views/layouts/application.html.slim', '      #body' do
+          <<-'CONTENT'.gsub(/^ {6}/, '')
+              #user-info
+                ul
+                  - if user_signed_in?
+                    li
+                      ' Hello, Dear
+                      strong= current_user.username
+                      ' ! Maybe, you want to #{link_to 'logout', destroy_user_session_path}?
+                  - else
+                    li
+                      | Hello Guest, maybe you want to #{link_to 'Join us', new_user_registration_path} or #{link_to 'login', new_user_session_path}?  
+            #body
           CONTENT
         end
       end

@@ -12,13 +12,14 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "playmo"
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  s.require_paths = ["lib"]
-  s.has_rdoc      = false
+  s.files          = `git ls-files`.split("\n")
+  s.test_files     = `git ls-files -- {test,spec,features}/*`.split("\n")
+  #s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.executables    = ['playmo']
+  s.require_paths  = ["lib"]
+  s.has_rdoc       = false
   s.rubygems_version = %q{1.3.7}
-  s.add_dependency("rails", ["~> 3.0"])
+  s.add_dependency("rails", ["~> 3.1"])
   s.add_dependency("ruby_events")
   s.add_dependency("haml2slim", ["=0.4.6"])
   s.add_dependency("haml", ["=3.1.3"])

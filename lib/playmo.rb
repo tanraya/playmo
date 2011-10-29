@@ -33,6 +33,7 @@ module Playmo
 
   autoload :Cli
   autoload :Event
+  autoload :Options
   autoload :Question
   autoload :Answer
   autoload :Silent

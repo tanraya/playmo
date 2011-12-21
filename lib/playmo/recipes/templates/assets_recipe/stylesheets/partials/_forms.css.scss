@@ -15,7 +15,7 @@ form {
         margin: 0 0 7px 0;
     }
 
-    /* Fields */
+    // Fields
     input[type=text],
     input[type=password],
     input[type=search],
@@ -33,7 +33,7 @@ form {
         background: #fff asset-url("input-bg.gif", image);
         @include border-radius(4px);
         @include single-box-shadow(#bbb, 1px, 1px, 3px, 0px, true);
-	@include box-sizing(border-box);
+	    @include box-sizing(border-box);
     }
 
     input[type=text]:focus,
@@ -57,7 +57,7 @@ form {
         resize: vertical;
     }
 
-    /* Buttons */
+    // Buttons
     input[type=submit],
     input[type=button] {
         font-size: 140%;

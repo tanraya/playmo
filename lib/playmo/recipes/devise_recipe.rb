@@ -24,7 +24,7 @@ module Playmo
 
           # Add :name accessor to default accessors
           # Also add some specific methods
-          gsub_file 'app/models/user.rb', 'attr_accessible :email, :password, :password_confirmation, :remember_me' do
+          gsub_file 'app/models/user.rb', '  attr_accessible :email, :password, :password_confirmation, :remember_me' do
             <<-CONTENT.gsub(/^ {12}/, '')
               attr_accessible :email, :password, :password_confirmation, :remember_me, :name
               cattr_accessor :current

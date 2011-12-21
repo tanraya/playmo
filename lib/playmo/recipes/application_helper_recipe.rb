@@ -8,6 +8,19 @@ module Playmo
           remove_file 'app/helpers/application_helper.rb'
           copy_file   'application_helper.rb', 'app/helpers/application_helper.rb'
 
+          # TODO: Add version for prototype and Jquery
+          # TODO: Translate flash_messages.js to CoffeeScript
+          copy_file   'flash_messages.js', 'app/assets/javascripts/flash_messages.js'
+
+          Event.events.listen(:after_install) do
+            gsub_file 'app/assets/javascripts/application.js', '//= require_tree .' do
+              <<-CONTENT.gsub(/^ {16}/, '')
+                //= require flash_messages
+                //= require_tree .
+              CONTENT
+            end
+          end
+
           gsub_file 'config/locales/en.yml', 'en:' do
             <<-CONTENT.gsub(/^ {14}/, '')
               en:

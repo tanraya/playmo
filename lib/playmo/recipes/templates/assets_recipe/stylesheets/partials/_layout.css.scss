@@ -31,19 +31,19 @@ body {
     margin: 0;
     background: #222 asset-url("bg.jpg", image);
 
-    #notice {
+    #flash-messages {
         left: 0;
         position: fixed;
         top: 0;
         width: 100%;
         z-index: 65000;
 
-        div {
+        ul {
             @include border-radius(0 0 7px 7px);
-            @include box-shadow(#000, 1px, 1px, 10px, 1px);
+            @include single-box-shadow(#555, 1px, 1px, 10px, 1px);
             @include opacity(0.9);
-            background: none repeat scroll 0 0 #555555;
-            color: #FFFFFF;
+            background: #555;
+            color: #fff;
             font-size: 120%;
             margin: 0 auto;
             padding: 5px;
@@ -52,23 +52,23 @@ body {
             width: 700px;
         }
 
-        p {
+        li {
             margin: 18px 50px;
-        }
 
-        a {
-            color: #FFFFFF;
-            display: inline-block;
-            font-size: 200%;
-            left: 670px;
-            padding: 5px;
-            position: absolute;
-            text-decoration: none;
-            top: 17px;
-        }
+            a {
+                color: #fff;
+                display: inline-block;
+                font-size: 200%;
+                left: 670px;
+                padding: 5px;
+                position: absolute;
+                text-decoration: none;
+                top: 17px;
 
-        a:hover {
-            color: maroon;
+                &:hover {
+                    color: maroon;
+                }
+            }
         }
     }
 
@@ -78,7 +78,7 @@ body {
         padding: 0 0 30px 0;
         background: #f4f4f4;
         @include border-radius(12px);
-        @include box-shadow(#010101, 0px,0px, 35px, 0px);
+        @include single-box-shadow(#222, 0px,0px, 35px, 0px);
         @include background-image(linear-gradient(#e9e9e9, #fff 40%, #fff));
         border: 1px solid #fff;
     }
@@ -183,7 +183,7 @@ body {
                         margin: 0 5px 0 0;
                         @include border-radius(4px);
                         @include background-image(linear-gradient(#fff, #fff 40%, #e9e9e9));
-                        @include box-shadow(#aaa, 0px, 0px, 2px, 0px);
+                        @include single-box-shadow(#aaa, 0px, 0px, 2px, 0px);
                         @include single-text-shadow(#fff, 1px, 1px, 0);
                     }
 

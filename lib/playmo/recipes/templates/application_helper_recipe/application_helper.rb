@@ -21,7 +21,8 @@ module ApplicationHelper
 
     items = []
     flash.each do |name, msg|
-      items << content_tag(:li, msg, :id => "flash-#{name}")
+      msg   << content_tag(:a, raw('&times;'), :href => "#")
+      items << content_tag(:li, raw(msg), :id => "flash-#{name}")
     end
 
     content_tag :div, :id => 'flash-messages' do

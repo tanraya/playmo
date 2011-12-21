@@ -71,6 +71,16 @@ pre, code, kbd, samp, var {
 
 pre { margin: 0 0 18px 0; padding: 0; }
 
+article, .content {
+    ul, ol {
+        padding-bottom: 1.5em;
+        padding-left: 1.5em;
+        list-style: disc;
+    }
+
+    ol { list-style: decimal; }
+}
+
 /* 6. Images */
 a img { border: 0; }
 img.f-left { float: left; margin: 0 18px 0 0;  clear: left; }

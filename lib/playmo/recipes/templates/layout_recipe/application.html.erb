@@ -17,19 +17,19 @@
 
     <div id="container">
       <header>
-	      <h1><%%= link_to_unless_current 'Welcome aboard!', root_path %></h1>
+        <h1><%%= link_to_unless_current 'Welcome aboard!', root_path %></h1>
       </header>
 
       <div id="main">
         <%%= flash_messages %>
 
-	      <article class="article">
-	        <%%= yield %>
-	      </article>
+        <article class="article">
+          <%%= yield %>
+        </article>
 
-	      <aside>
-	        <%%= content_for?(:sidebar) ? yield(:sidebar) : render("shared/sidebar") %>
-	      </aside>
+        <aside>
+          <%%= content_for?(:sidebar) ? yield(:sidebar) : render("shared/sidebar") %>
+        </aside>
 
       </div>
 

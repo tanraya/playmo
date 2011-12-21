@@ -21,19 +21,17 @@
     
     <div id="main-wrapper">
       <header>
-	      <h1><%%= link_to_unless_current 'Welcome aboard!', root_path %></h1>
+        <h1><%%= link_to_unless_current 'Welcome aboard!', main_app.root_path %></h1>
       </header>
 
       <div id="body">
-
-        <section id="content">
+        <section id="content" class="content">
           <%%= yield %>
         </section>
 
-	    <aside>
-	      <%%= content_for?(:sidebar) ? yield(:sidebar) : render("shared/sidebar") %>
-	    </aside>
-
+        <aside>
+          <%%= content_for?(:sidebar) ? yield(:sidebar) : render("shared/sidebar") %>
+        </aside>
       </div>
     </div>
 

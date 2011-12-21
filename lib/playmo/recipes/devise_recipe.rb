@@ -72,9 +72,9 @@ module Playmo
       # Add links into layout
       def add_layout_links
         case retrieve(:markup)
-          when :erb  then add_layout_links_with_erb
-          when :haml then add_layout_links_with_haml
-          when :slim then add_layout_links_with_slim
+          when :erb  then create_userbar_with_erb
+          when :haml then create_userbar_with_haml
+          when :slim then create_userbar_with_slim
         end
       end
 
@@ -86,61 +86,79 @@ module Playmo
         end
       end
 
-      def add_layout_links_with_erb
-        gsub_file 'app/views/layouts/application.html.erb', '</header>' do
-          <<-CONTENT.gsub(/^ {10}/, '')
-              <div id="user-info">
-                <ul>
-                  <% if user_signed_in? %>
-                    <li>
-                      Hello, Dear <strong><%= current_user.username %></strong>!
-                      Maybe, you want to <%= link_to 'logout', destroy_user_session_path %>?
-                    </li>
-                  <% else %>
-                    <li>
-                      Hello Guest, maybe you want to <%= link_to 'Join us', new_user_registration_path %> or <%= link_to 'login', new_user_session_path %>?
-                    </li>
-                  <% end %>
-                </ul>
-              </div>
+      def create_userbar_with_erb
+        gsub_file 'app/views/layouts/application.html.erb', '      </header>' do
+          <<-CONTENT.gsub(/^ {6}/, '')
+              <%= render 'shared/userbar' %>
             </header>
           CONTENT
         end
-      end
 
-      def add_layout_links_with_haml
-        gsub_file 'app/views/layouts/application.html.haml', '      #body' do
-          <<-'CONTENT'.gsub(/^ {6}/, '')
-              #user-info
-                %ul
-                  - if user_signed_in?
-                    %li
-                      Hello, Dear
-                      = succeed "!" do
-                        %strong= current_user.username
-                      Maybe, you want to #{link_to 'logout', destroy_user_session_path}?
-                  - else
-                    %li
-                      Hello Guest, maybe you want to #{link_to 'Join us', new_user_registration_path} or #{link_to 'login', new_user_session_path}?
-            #body
+        create_file 'app/views/shared/_userbar.html.erb' do
+          <<-CONTENT.gsub(/^ {12}/, '')
+            <div id="user-info">
+              <ul>
+                <% if user_signed_in? %>
+                  <li>
+                    Hello, Dear <strong><%= current_user.username %></strong>!
+                    Maybe, you want to <%= link_to 'logout', main_app.destroy_user_session_path, :method => :delete %>?
+                  </li>
+                <% else %>
+                  <li>
+                    Hello Guest, maybe you want to <%= link_to 'Join us', main_app.new_user_registration_path %> or <%= link_to 'login', main_app.new_user_session_path %>?
+                  </li>
+                <% end %>
+              </ul>
+            </div>
           CONTENT
         end
       end
 
-      def add_layout_links_with_slim
+      def create_userbar_with_haml
+        gsub_file 'app/views/layouts/application.html.haml', '      #body' do
+          <<-CONTENT.gsub(/^ {6}/, '')
+              = render 'shared/userbar'
+            #body
+          CONTENT
+        end
+
+        create_file 'app/views/shared/_userbar.html.haml' do
+          <<-'CONTENT'.gsub(/^ {12}/, '')
+            #user-info
+              %ul
+                - if user_signed_in?
+                  %li
+                    Hello, Dear
+                    = succeed "!" do
+                      %strong= current_user.username
+                    Maybe, you want to #{link_to 'logout', main_app.destroy_user_session_path, :method => :delete}?
+                - else
+                  %li
+                    Hello Guest, maybe you want to #{link_to 'Join us', main_app.new_user_registration_path} or #{link_to 'login', main_app.new_user_session_path}?
+          CONTENT
+        end
+      end
+
+      def create_userbar_with_slim
         gsub_file 'app/views/layouts/application.html.slim', '      #body' do
           <<-'CONTENT'.gsub(/^ {6}/, '')
-              #user-info
-                ul
-                  - if user_signed_in?
-                    li
-                      ' Hello, Dear
-                      strong= current_user.username
-                      ' ! Maybe, you want to #{link_to 'logout', destroy_user_session_path}?
-                  - else
-                    li
-                      | Hello Guest, maybe you want to #{link_to 'Join us', new_user_registration_path} or #{link_to 'login', new_user_session_path}?  
+              = render 'shared/userbar'
             #body
+          CONTENT
+        end
+
+        create_file 'app/views/shared/_userbar.html.slim' do
+          <<-'CONTENT'.gsub(/^ {12}/, '')
+            #user-info
+              ul
+                - if user_signed_in?
+                  li
+                    ' Hello, Dear
+                    strong= current_user.username
+                    ' ! Maybe, you want to #{link_to 'logout', main_app.destroy_user_session_path, :method => :delete}?
+                - else
+                  li
+                    | Hello Guest, maybe you want to #{link_to 'Join us', main_app.new_user_registration_path} or #{link_to 'login', main_app.new_user_session_path}?  
           CONTENT
         end
       end

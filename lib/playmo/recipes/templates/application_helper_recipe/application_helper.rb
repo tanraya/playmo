@@ -1,5 +1,20 @@
+# coding: utf-8
+
 module ApplicationHelper
   attr_accessor :page_title
+
+  def link_to_delete(link, title, heading_tag = :h3)
+    content_for :sidebar do
+      content_tag :div, :class => 'danger-zone' do
+        result       = content_tag heading_tag, raw(title)
+        link_text    = t('helpers.application.link_to_delete.link_text')
+        confirmation = t('helpers.application.link_to_delete.confirmation')
+
+        result << link_to(link_text, link, confirm: confirmation, method: :delete)
+        result
+      end
+    end
+  end
 
   def flash_messages
     return unless flash.any?

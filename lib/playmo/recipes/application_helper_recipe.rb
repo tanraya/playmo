@@ -7,6 +7,17 @@ module Playmo
         silently do
           remove_file 'app/helpers/application_helper.rb'
           copy_file   'application_helper.rb', 'app/helpers/application_helper.rb'
+
+          gsub_file 'config/locales/en.yml', 'en:' do
+            <<-CONTENT.gsub(/^ {14}/, '')
+              en:
+                helpers:
+                  application:
+                    link_to_delete:
+                      link_text: Delete?
+                      confirmation: Are you sure?
+            CONTENT
+          end
         end
       end
     end

@@ -14,7 +14,7 @@ module Playmo
       Playmo::Cookbook.instance.cook_recipes!(application_name)
 
       system %Q{echo "gem 'therubyracer'" >> ./#{application_name}/Gemfile}
-      #system %Q{echo "gem 'playmo', :path => '../../playmo'" >> ./#{application_name}/Gemfile}
+      system %Q{echo "gem 'playmo', :group => :development" >> ./#{application_name}/Gemfile}
       system "cd #{application_name} && bundle install"
 
       Event.events.fire :after_install

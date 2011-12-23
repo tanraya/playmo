@@ -2,7 +2,7 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.version     = "0.0.11"
+  s.version     = "0.0.12"
   s.name        = "playmo"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Andrew Kozloff"]

@@ -18,6 +18,7 @@ require 'rails/all'
 # LayoutRecipe
 # HomeControllerRecipe
 # ApplicationHelperRecipe
+# UnicornRecipe
 # RspecRecipe
 # CapistranoRecipe
 # RvmRecipe

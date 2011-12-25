@@ -11,9 +11,9 @@ module Playmo
         gem 'capistrano'
 
         # TODO: Copy deploy.rb
-
         Event.events.listen(:after_install) do |event_data|
           capify!
+          copy_file "deploy.rb", "config/deploy.rb"
         end
       end
     end

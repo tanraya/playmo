@@ -43,7 +43,7 @@ module ApplicationHelper
 
   # Print heading (h1 by default) and set page title
   # at the same time. Use this method in your views
-  def heading_with_title(heading, tag=nil)
+  def heading_with_title(heading, tag=:h1)
     title(heading)
     heading(heading, tag)
   end

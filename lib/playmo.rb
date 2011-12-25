@@ -19,6 +19,7 @@ require 'rails/all'
 # HomeControllerRecipe
 # ApplicationHelperRecipe
 # UnicornRecipe
+# ThinkingSphinxRecipe
 # RspecRecipe
 # CapistranoRecipe
 # RvmRecipe

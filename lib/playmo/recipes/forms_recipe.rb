@@ -21,7 +21,7 @@ module Playmo
         gem 'simple_form'
 
         Event.events.listen(:after_install) do |event_data|
-          # generate
+          generate "simple_form:install"
         end
       end
 
@@ -29,7 +29,7 @@ module Playmo
         gem 'formtastic'
 
         Event.events.listen(:after_install) do |event_data|
-          # generate
+          generate "formtastic:install"
         end
       end
 

@@ -13,7 +13,7 @@ module Playmo
         gem 'rspec-rails'
 
         Event.events.listen(:after_install) do |event_data|
-          generate rspec:install
+          generate "rspec:install"
         end
         
         # TODO: copy helpers etc

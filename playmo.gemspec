@@ -2,7 +2,7 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.version     = "0.0.14"
+  s.version     = Playmo::VERSION
   s.name        = "playmo"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Andrew Kozloff"]
@@ -14,7 +14,6 @@ Gem::Specification.new do |s|
 
   s.files          = `git ls-files`.split("\n")
   s.test_files     = `git ls-files -- {test,spec,features}/*`.split("\n")
-  #s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.executables    = ['playmo']
   s.require_paths  = ["lib"]
   s.has_rdoc       = false

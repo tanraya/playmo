@@ -10,8 +10,12 @@ module Playmo
     protected
 
       def install_rspec
-        gem 'rspec'
+        gem 'rspec-rails'
 
+        Event.events.listen(:after_install) do |event_data|
+          generate rspec:install
+        end
+        
         # TODO: copy helpers etc
         # TODO: factory_girl etc
       end

@@ -35,6 +35,7 @@ module Playmo
     end 
   end
 
+  autoload :Version
   autoload :Cli
   autoload :Event
   autoload :Options

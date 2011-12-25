@@ -12,7 +12,7 @@ module Playmo
       def install_ts
         gem 'thinking-sphinx', '~> 2.0.10'
 
-        # TODO Add Whenever integration
+        # TODO Add Whenever integration (see https://github.com/nesquena/cap-recipes)
         Event.events.listen(:after_install) do |event_data|
           template 'sphinx.yml', 'config/sphinx.yml'
         end

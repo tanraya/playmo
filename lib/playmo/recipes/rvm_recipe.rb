@@ -5,7 +5,9 @@ module Playmo
 
       def setup
         silently do
-
+          if system 'which rvm'
+            run "cd #{application_name} && rvm #{RUBY_VERSION}@#{application_name} --rvmrc --create"
+          end
         end
       end
     end

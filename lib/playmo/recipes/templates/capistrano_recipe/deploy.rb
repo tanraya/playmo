@@ -12,9 +12,9 @@ require 'bundler/capistrano'
 #set :whenever_command, "bundle exec whenever"
 #require "whenever/capistrano"
 
-set :application,  'appname'
-set :domain,       'user@example.com'
-set :repository,   'https://github.com/exampleuser/examplerepo.git'
+set :application,  '<%= application_name %>'
+set :domain,       'user@<%= application_name %>'
+set :repository,   'https://github.com/exampleuser/<%= application_name %>.git'
 set :scm,          :git
 set :deploy_via,   :remote_cache
 set :branch,       :master
@@ -37,7 +37,7 @@ role :web, domain
 role :app, domain
 role :db,  domain, :primary => true
 
-set(:database_username,    "bwu_ru")
+set(:database_username,    "<%= application_name %>")
 set(:development_database) { application + "_development" }
 set(:test_database)        { application + "_test" }
 set(:production_database)  { application }

@@ -14,7 +14,7 @@ module Playmo
         Event.events.listen(:after_install) do |event_data|
           capify!
           remove_file "config/deploy.rb"
-          copy_file   "deploy.rb", "config/deploy.rb"
+          template    "deploy.rb", "config/deploy.rb"
         end
       end
     end

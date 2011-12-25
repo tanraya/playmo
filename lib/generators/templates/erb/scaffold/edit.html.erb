@@ -1,0 +1,8 @@
+<%%= heading_with_title "Editing <%= singular_table_name.camelize %>" %>
+
+<%%= render 'form' %>
+
+<%%= admin_area do %>
+  <%%= link_to_delete(@<%= singular_table_name %>, "Destroy <%= singular_table_name.camelize %>?") %>
+<%%= end %>
+

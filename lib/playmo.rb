@@ -27,6 +27,7 @@ require 'rails/all'
 
 module Playmo
   extend ActiveSupport::Autoload
+  require "#{File.dirname(__FILE__)}/playmo/railtie"
 
   autoload :Cli
   autoload :Event
@@ -37,7 +38,6 @@ module Playmo
   autoload :Choice
   autoload :Cookbook
   autoload :Recipe
-  autoload :Railtie
 
   Dir["#{File.dirname(__FILE__)}/playmo/recipes/*_recipe.rb"].each { |file| require file }
 end

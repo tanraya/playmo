@@ -25,6 +25,7 @@ require 'rails/all'
 # RvmRecipe
 # SetupDatabaseRecipe
 # GitRecipe
+# GemfileRecipe
 # CongratsRecipe
 
 module Playmo

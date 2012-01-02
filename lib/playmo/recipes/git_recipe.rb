@@ -14,6 +14,7 @@ module Playmo
               db/*.sqlite3
               .idea/
               public/uploads/*
+              public/assets/*
               .sass-cache/
             CONTENT
 

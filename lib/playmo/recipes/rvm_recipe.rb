@@ -7,7 +7,6 @@ module Playmo
         silently do
           if system 'which rvm'
             in_root do
-              remove_file '.rvmrc'
               run "rvm #{RUBY_VERSION}@#{application_name} --rvmrc --create" # cd #{application_name} && 
             end
           end

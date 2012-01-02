@@ -1,38 +1,62 @@
 # TODO
-- Integrates with jammit
-- Add content for sidebar
-- Add links to devise controllers into layout
-- Add name column to users table
 - Add scoped_link_to helper
-- Add footer content
-- Modify default layout styles
-* Add styles for formtastic if formtastic installed
-- Transform boilerplate & other styles to scss
-- Templates customizing (http://zigzag.github.com/2010/01/18/customizing-your-scaffold-template-become-easier-in-rails3.html)
-- Create an html5 simple template and rails application to develop playmo gem
-- Add link to homepage into "Welcome to aboard!"
-- Add default users into seeds
-- Generate assets.yml
-- Modify compass.rb
-- initialize git repository
-- add capistrano and capify!
-- https://gist.github.com/280196/5c075f4a3d3a4118d1d706fce07e40572a3873c7
-- Remove scss files from public after deploy. Create special task for it.
-* Add dynamic processing for 500, 404, 422 errors
-* Generate models with useful comments that define code order (like: associations, validations, constants, etc.)
-- That's what I need to customize generators templates: http://www.railsdispatch.com/posts/building-or-updating-a-rails-3-plugin
-* Replace default forms by formtastic or simple_form
-* Generate HomesController in rails3 style
-- Do not copy playmo & boilerplate css styles into app - keep its inside gem
-* Include google code into layout and copy google.yml into config dir
-- Make styles for rails flashes
-- It seems override styles are not OK
-- Do not copy helpers into app!
-- Asks for most popular gems installation (Do you Want to install some popular gems right now?)
-* Add js and close button for flash notices
-* Add color coding for flash notices (maybe with icons)
-* Own layout generator; generate default application layout with generator.
-* Use rails3-generators to generate scaffolding & stuff
+
+recipe :js_framework do
+  after :forms
+  description 'Javascript Framework'
+
+  question "Please choose JS framework you prefer to install" do
+    answer "JQuery (with Jquery UI)"   => :install_jquery, :default => true
+    answer "Mootools Core (with More)" => :install_mootools
+  end
+
+  def install_jquery
+
+  end
+
+  def install_mootools
+
+  end
+end
+
+recipe :js_framework do
+  description 'Javascript Framework'
+
+  question "Please choose JS framework you prefer to install" do
+    answer "JQuery (with Jquery UI)", :default => true do
+      
+    end
+
+    answer "Mootools Core (with More)" do
+      
+    end
+  end
+end
+
+recipe :js_framework do
+  description 'Javascript Framework'
+
+  question "Would you like to use Mootools?" do
+    gem 'mootools-rails'
+  end
+end
+
+recipe :locale do
+  description 'Default locale'
+
+  request "Please specify locale you prefer (en, de, ru, etc.)", :default => :en do |locale|
+    # Do something with 'locale' variable
+  end
+end
+
+!!! RECIPES ORDER IS IMPORTANT !!!
+
+## Methods
+
+git - before_exif
+gem - after_install
+generate - after_install
+
 
 ## What a gems
 * will_paginate or kaminari

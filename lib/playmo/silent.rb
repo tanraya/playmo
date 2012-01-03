@@ -1,5 +1,15 @@
 module Playmo
   class Silent
+    def initialize(&block)
+      
+    end
+  end
+end
+
+
+__END__
+module Playmo
+  class Silent
     attr_accessor :caller, :block
 
     def initialize(&block)

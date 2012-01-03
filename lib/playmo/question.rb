@@ -1,4 +1,46 @@
 module Playmo
+  autoload :Answer
+
+  class Question
+    attr_accessor :question, :answers, :recipe
+
+    def initialize(recipe, question, &block)
+      @question = question
+      @answers  = []
+      @recipe   = recipe
+
+      # Do stuff with block
+      if block.arity > 0
+        puts "We have args!"
+        recipe.instance_eval &block
+      else
+        #puts "It seems we have answers"
+        instance_eval &block
+      end
+
+      puts self.to_s
+    end
+
+    def answer(answer, options = {}, &block)
+      @answers << Playmo::Answer.new(answer, options, &block)
+    end
+
+    def render
+      result = "#{question}\n"
+
+      answers.each do |answer|
+        result << "#{answer}\n"
+      end
+
+      result
+    end
+
+    alias :to_s :render
+  end
+end
+
+__END__
+module Playmo
   class Question < Thor::Shell::Basic
     attr_accessor :answers, :choice, :question_text, :caller
 

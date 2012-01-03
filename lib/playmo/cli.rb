@@ -9,16 +9,16 @@ module Playmo
 
     def run_playmo
       self.destination_root = application_name
-      system "rails new #{application_name} -JT --skip-bundle"
+      #system "rails new #{application_name} -JT --skip-bundle"
       
-      Playmo::Cookbook.instance.cook_recipes!(application_name)
+      #Playmo::Cookbook.instance.cook_recipes!(application_name)
 
-      system %Q{echo "gem 'therubyracer'" >> ./#{application_name}/Gemfile}
-      system %Q{echo "gem 'playmo', :group => :development" >> ./#{application_name}/Gemfile}
-      system "cd #{application_name} && bundle install"
+      #system %Q{echo "gem 'therubyracer'" >> ./#{application_name}/Gemfile}
+      #system %Q{echo "gem 'playmo', :group => :development" >> ./#{application_name}/Gemfile}
+      #system "cd #{application_name} && bundle install"
 
-      Event.events.fire :after_install
-      Event.events.fire :before_exit
+      #Event.events.fire :after_install
+      #Event.events.fire :before_exit
     end
 
   end

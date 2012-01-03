@@ -28,6 +28,8 @@ require 'rails/all'
 # GemfileRecipe
 # CongratsRecipe
 
+
+
 module Playmo
   extend ActiveSupport::Autoload
   
@@ -40,14 +42,21 @@ module Playmo
 
   autoload :Version
   autoload :Cli
-  autoload :Event
-  autoload :Options
+  #autoload :Event
+  #autoload :Options
   autoload :Question
-  autoload :Answer
   autoload :Silent
-  autoload :Choice
-  autoload :Cookbook
+  #autoload :Choice
+  #autoload :Cookbook
   autoload :Recipe
 
-  Dir["#{File.dirname(__FILE__)}/playmo/recipes/*_recipe.rb"].each { |file| require file }
+  class ::Object
+    include Playmo::Recipe
+  end
+
+  #Dir["#{File.dirname(__FILE__)}/playmo/recipes/*_recipe.rb"].each { |file| require file }
+  require "#{File.dirname(__FILE__)}/playmo/recipes/markup_recipe.rb"
 end
+
+
+

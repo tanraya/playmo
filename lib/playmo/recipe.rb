@@ -1,3 +1,46 @@
+module Playmo
+  module Recipe
+    def recipe(name, options = {}, &block)
+      Recipe.new(name, options, &block)
+    end
+
+    class Recipe
+      attr_accessor :name, :options, :description, :after
+
+      def initialize(name, options, &block)
+        raise 'Recipe name not specified!' unless name
+
+        @name    = name
+        @options = options
+
+        instance_eval &block
+      end
+
+      def description(description)
+        @description = description
+      end
+
+      # Если блок с агрументами - то поддерживается ввод данных пользователем
+      def question(question, &block)
+        Playmo::Question.new(self, question, &block)
+      end
+
+      def silently(&block)
+        Playmo::Silent(&block)
+      end
+
+      def after(after)
+        @after = after
+      end
+    end
+  end
+end
+
+
+
+
+
+__END__
 require 'rails/generators'
 
 module Playmo

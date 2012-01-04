@@ -1,8 +1,6 @@
 module Playmo
   module Recipes
     class UnicornRecipe < Playmo::Recipe
-      source_root File.expand_path('../templates/unicorn_recipe', __FILE__)
-
       def setup
         question "Would you like to use Unicorn as web server in production?" => :install_compass
       end

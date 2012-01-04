@@ -1,8 +1,6 @@
 module Playmo
   module Recipes
     class ThinkingSphinxRecipe < Playmo::Recipe
-      source_root File.expand_path('../templates/thinking_sphinx_recipe', __FILE__)
-
       def setup
         question "Would you like to use Thinking Sphinx in this project?" => :install_ts
       end

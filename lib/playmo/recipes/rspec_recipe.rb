@@ -1,8 +1,6 @@
 module Playmo
   module Recipes
     class RspecRecipe < Playmo::Recipe
-      source_root File.expand_path('../templates/rspec_recipe', __FILE__)
-
       def setup
         question "Would you like to use Rspec in this project?" => :install_rspec
       end

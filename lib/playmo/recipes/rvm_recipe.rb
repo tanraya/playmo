@@ -1,8 +1,6 @@
 module Playmo
   module Recipes
     class RvmRecipe < Playmo::Recipe
-      source_root File.expand_path('../templates/rvm_recipe', __FILE__)
-
       def setup
         silently do
           if system 'which rvm'

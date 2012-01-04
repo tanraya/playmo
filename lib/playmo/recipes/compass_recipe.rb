@@ -1,8 +1,6 @@
 module Playmo
   module Recipes
     class CompassRecipe < Playmo::Recipe
-      source_root File.expand_path('../templates/compass_recipe', __FILE__)
-
       def setup
         question "Would you like to use Compass in this project?" => :install_compass
       end

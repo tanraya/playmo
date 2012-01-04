@@ -9,6 +9,13 @@ module Playmo
     def cook!(application_name)
       self.destination_root = application_name
       self.application_name = application_name
+
+      name = self.class.to_s.underscore.split('/').last
+
+      self.class.class_eval do   
+        source_root File.expand_path("../recipes/templates/#{name}", __FILE__)
+      end
+
       setup
 
       unless question_instance.nil?

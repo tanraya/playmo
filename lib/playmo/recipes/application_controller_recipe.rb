@@ -1,8 +1,6 @@
 module Playmo
   module Recipes
     class ApplicationControllerRecipe < Playmo::Recipe
-      source_root File.expand_path('../templates/application_controller_recipe', __FILE__)
-
       def setup
         silently do
           remove_file 'app/controllers/application_controller.rb'

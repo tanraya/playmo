@@ -1,8 +1,6 @@
 module Playmo
   module Recipes
     class ApplicationHelperRecipe < Playmo::Recipe
-      source_root File.expand_path('../templates/application_helper_recipe', __FILE__)
-
       def setup
         silently do
           remove_file 'app/helpers/application_helper.rb'

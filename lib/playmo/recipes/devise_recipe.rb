@@ -1,8 +1,6 @@
 module Playmo
   module Recipes
     class DeviseRecipe < Playmo::Recipe
-      source_root File.expand_path('../templates/devise_recipe', __FILE__)
-
       def setup
         question "Would you like to use Devise in this project?" => :install_devise
       end

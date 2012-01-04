@@ -1,8 +1,6 @@
 module Playmo
   module Recipes
     class SetupDatabaseRecipe < Playmo::Recipe
-      source_root File.expand_path('../templates/setup_database_recipe', __FILE__)
-
       def setup
         silently do
           Event.events.listen(:after_install) do |event_data|

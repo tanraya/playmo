@@ -1,8 +1,6 @@
 module Playmo
   module Recipes
     class HomeControllerRecipe < Playmo::Recipe
-      source_root File.expand_path('../templates/home_controller_recipe', __FILE__)
-
       def setup
         question "Would you want to create HomeController in this project?" => :install_home_controller
       end

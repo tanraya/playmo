@@ -1,8 +1,6 @@
 module Playmo
   module Recipes
     class CapistranoRecipe < Playmo::Recipe
-      source_root File.expand_path('../templates/capistrano_recipe', __FILE__)
-
       def setup
         question "Would you like to deploy project with Capistrano?" => :install_capistrano
       end

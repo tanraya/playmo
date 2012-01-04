@@ -1,8 +1,6 @@
 module Playmo
   module Recipes
     class AssetsRecipe < Playmo::Recipe
-      source_root File.expand_path('../templates/assets_recipe', __FILE__)
-
       def setup
         silently do
           directory   'images/',      'app/assets/images/'

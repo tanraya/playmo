@@ -1,8 +1,6 @@
 module Playmo
   module Recipes
     class FormsRecipe < Playmo::Recipe
-      source_root File.expand_path('../templates/forms_recipe', __FILE__)
-
       def setup
         question "Which form builder you prefer?" do
           answer "Use default form_for helper" => :use_default

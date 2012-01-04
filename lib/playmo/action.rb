@@ -1,8 +1,8 @@
 #require 'thor/actions'
-require 'rails/generators'
+
 
 module Playmo
-  class Action < Rails::Generators::Base
+  class Action# < Rails::Generators::Base
     #include Thor::Actions
     #include Rails::Generators::Base
     cattr_accessor :actions

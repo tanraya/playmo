@@ -51,7 +51,7 @@ module Playmo
     include Playmo::Recipe
   end
 
-  #
+
   #puts "Load recipes"
   Dir["#{File.dirname(__FILE__)}/playmo/recipes/*_recipe.rb"].each { |file| require file }
 

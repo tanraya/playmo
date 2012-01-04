@@ -4,6 +4,8 @@ recipe :gemfile do
   
   silently do
     gem 'rake', '~> 0.9.2'
+    gem 'therubyracer'
+    gem 'playmo', :group => :development
   end
 end
 

@@ -24,8 +24,6 @@ module Playmo
 
       shell.say("\n")
 
-      #system %Q{echo "gem 'therubyracer'" >> ./#{application_name}/Gemfile}
-      #system %Q{echo "gem 'playmo', :group => :development" >> ./#{application_name}/Gemfile}
       #system "cd #{application_name} && bundle install"
 
       #Event.events.fire :after_install

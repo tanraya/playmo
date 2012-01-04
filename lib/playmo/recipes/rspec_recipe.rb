@@ -2,7 +2,7 @@ recipe :rspec do
   description 'Something'
   after :thinking_sphinx
   
-  question "Would you like to use Rspec in this project?" do
+  ask "Would you like to use Rspec in this project?" do
     gem 'rspec-rails'
 
     after :install do

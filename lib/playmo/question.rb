@@ -8,25 +8,40 @@ module Playmo
   class Question
     attr_accessor :question, :answers, :recipe, :action, :shell, :color
 
-    def initialize(recipe, question, &block)
+    def initialize(recipe, question, options, &block)
       @question = question
       @answers  = []
       @recipe   = recipe
+      @options  = options
       @shell    = Thor::Shell::Basic.new
       @color    = Thor::Shell::Color.new
 
+      if @options[:type] == :question
+        instance_eval &block
+      elsif @options[:type] == :ask
+        answer(nil, nil, &block)
+      end
+ 
       # Do stuff with block
+=begin
       if block.arity > 0
         # We have block with args
-        @action = block
+        #answer(nil, nil, &block)
+        #@action = block
       else
-        # It seems we have answers
-        instance_eval &block  
+        #instance_eval &block
+        raise block.methods.inspect
       end
+
+      # If block without answers was passed
+      unless has_answers?
+        answer(nil, nil, &block)
+      end
+=end
     end
 
     def has_answers?
-      @answers.size > 0
+      @answers.size > 1
     end
 
     def answer(answer, options = {}, &block)
@@ -37,9 +52,10 @@ module Playmo
       shell.padding = 1
       shell.say("\n")
       shell.say(color.set_color(question, :green, true))
-      shell.say("\n")
-
+      
       if has_answers?
+        shell.say("\n")
+
         answers.each do |answer|
           shell.say("#{answer}")
         end
@@ -47,14 +63,15 @@ module Playmo
 
       shell.say("\n")
 
-      if has_answers?
-        choice = Playmo::Choice.new(self)
-        answer_action = choice.get_answer.action
+      choice = Playmo::Choice.new(self)
+      answer_action = choice.get_answer.action
+      Playmo::Action.new(recipe, &answer_action)
 
-        Playmo::Action.new(recipe, &answer_action)
-      else
-        Playmo::Action.new(recipe, &action)
-      end
+      #if has_answers?
+      #  Playmo::Action.new(recipe, &answer_action)
+      #else
+      #  Playmo::Action.new(recipe, &action)
+      #end
     end
 
     alias :to_s :render

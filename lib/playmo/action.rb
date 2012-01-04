@@ -1,8 +1,10 @@
-require 'thor/actions'
+#require 'thor/actions'
+require 'rails/generators'
 
 module Playmo
-  class Action
-    include Thor::Actions
+  class Action < Rails::Generators::Base
+    #include Thor::Actions
+    #include Rails::Generators::Base
     cattr_accessor :actions
 
     # TODO: Сделать опцию dry-run, когда ничего не происходит, а только
@@ -26,7 +28,6 @@ module Playmo
     def self.execute_all
       @@actions.each do |action|
       	recipe, block = action[0], action[1]
-      	#puts action.inspect
       	recipe.instance_eval &block
       end
     end

@@ -2,7 +2,7 @@ recipe :capistrano do
   description 'Something'
   after :rspec
   
-  question "Would you like to deploy project with Capistrano?" do
+  ask "Would you like to deploy project with Capistrano?" do
     gem 'capistrano'
 
     # TODO: Copy deploy.rb

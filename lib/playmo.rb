@@ -51,7 +51,12 @@ module Playmo
     include Playmo::Recipe
   end
 
-  #Dir["#{File.dirname(__FILE__)}/playmo/recipes/*_recipe.rb"].each { |file| require file }
+  #
+  puts "Load recipes"
+  Dir["#{File.dirname(__FILE__)}/playmo/recipes/*_recipe.rb"].each { |file| require file }
+  
+  #require "#{File.dirname(__FILE__)}/playmo/recipes/rails_recipe.rb"
+=begin
   require "#{File.dirname(__FILE__)}/playmo/recipes/layout_recipe.rb"
   require "#{File.dirname(__FILE__)}/playmo/recipes/capistrano_recipe.rb"
   require "#{File.dirname(__FILE__)}/playmo/recipes/rspec_recipe.rb"
@@ -70,8 +75,7 @@ module Playmo
   require "#{File.dirname(__FILE__)}/playmo/recipes/forms_recipe.rb"
   require "#{File.dirname(__FILE__)}/playmo/recipes/javascript_framework_recipe.rb"
   require "#{File.dirname(__FILE__)}/playmo/recipes/devise_recipe.rb"
-
-
+=end
 end
 
 

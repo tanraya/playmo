@@ -9,13 +9,14 @@ module Playmo
     end
 
     class Recipe
-      attr_accessor :name, :options, :description, :after
+      attr_accessor :name, :options, :description, :actions, :after
 
       def initialize(name, options, &block)
         raise 'Recipe name not specified!' unless name
 
         @name    = name
         @options = options
+        @actions = []
 
         instance_eval &block
       end
@@ -26,11 +27,15 @@ module Playmo
 
       # Если блок с агрументами - то поддерживается ввод данных пользователем
       def question(question, &block)
-        Playmo::Question.new(self, question, &block).to_s
+        @actions << lambda { Playmo::Question.new(self, question, :type => :question, &block).to_s }
+      end
+
+      def ask(question, &block)
+        @actions << lambda { Playmo::Question.new(self, question, :type => :ask, &block).to_s }
       end
 
       def silently(&block)
-        Playmo::Silent.new(self, &block)
+        @actions << lambda { Playmo::Silent.new(self, &block) }
       end
 
       def store(*args)
@@ -41,17 +46,26 @@ module Playmo
 
       end
 
+      def to_s
+        name
+      end
+
       # TODO: Сделать автолоадинг для зависимых рецептов
       def after(after)
         @after = after
+        recipe = Playmo::Cookbook.instance.find_recipe(@after)
 
-        unless @after.nil?
+        if recipe.nil?
           require "#{File.dirname(__FILE__)}/recipes/#{@after}_recipe.rb"
-          recipe = Playmo::Cookbook.instance.find_recipe(@after)
-          Playmo::Cookbook.instance.insert_after(recipe, self) unless recipe.nil?
-        else
           Playmo::Cookbook.instance.use(self)
+        else
+          puts "Recipe: #{recipe.to_s}"
+          Playmo::Cookbook.instance.insert_after(recipe, self)
         end
+      end
+
+      def cook!(application_name)
+        actions.each { |action| action.call }
       end
     end
   end

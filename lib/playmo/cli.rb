@@ -14,6 +14,7 @@ module Playmo
       
       
       #Playmo::Action.execute_all
+      puts "Cook"
       Playmo::Cookbook.instance.cook_recipes!(application_name)
 
       #system %Q{echo "gem 'therubyracer'" >> ./#{application_name}/Gemfile}

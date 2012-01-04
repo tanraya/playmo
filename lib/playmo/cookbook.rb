@@ -8,11 +8,10 @@ module Playmo
     include Enumerable
     include Singleton
 
-    attr_accessor :recipes, :cooked_recipes
+    attr_accessor :recipes
 
     def initialize
       @recipes = []
-      @cooked_recipes = []
     end
 
     def each
@@ -35,10 +34,13 @@ module Playmo
       recipes.delete target
     end
 
-    # Is recipe already cooked?
-    #def cooked?(recipe)
-    #  @cooked_recipes.include?(recipe)
-    #end
+    # Adds the new recipe before the specified existing recipe in the Cookbook stack.
+    def insert(existing_recipe, new_recipe)
+      index = assert_index(existing_recipe, :before)
+      recipes.insert(index, new_recipe)
+    end
+
+    alias_method :insert_before, :insert
 
     # Adds the new recipe after the specified existing recipe in the Cookbook stack.
     def insert_after(existing_recipe, new_recipe)
@@ -52,6 +54,12 @@ module Playmo
     end
 
     def cook_recipes!(application_name)
+      recipes.each do |recipe|
+        recipe.cook!(application_name)
+      end
+
+      # Execute all actions
+      Playmo::Action.execute_all
 =begin
       prepared_recipes = []
       

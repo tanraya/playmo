@@ -2,7 +2,7 @@ recipe :unicorn do
   description 'Something'
   after :application_helper
   
-  question "Would you like to use Unicorn as web server in production?" do
+  ask "Would you like to use Unicorn as web server in production?" do
     gem "unicorn", :group => :production
     template "unicorn.rb", "config/unicorn.rb"
   end

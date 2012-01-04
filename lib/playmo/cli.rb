@@ -1,21 +1,28 @@
 require 'thor/group'
+require 'thor/shell/color'
+require 'thor/shell/basic'
+
+trap("SIGINT") { print "\n"; exit! }
 
 module Playmo
   class Cli < Thor::Group
     include Thor::Actions
     
-    argument :application_name, :type => :string, :desc => "The name of the rails application"
-    desc "Generates a new Rails application with Playmo'"
+    class_option 'dry-run', :aliases => "-d", :default => false, :desc => "Run without making any modifications on files"
+    
+    # TODO: Use internal shell variable
+    def new_app
+      color = Thor::Shell::Color.new
+      shell = Thor::Shell::Basic.new
+      shell.padding = 1
 
-    def run_playmo
-      #self.destination_root = application_name
+      shell.say("\n")
 
-      # TODO: move to separate recipe
-      
-      
-      #Playmo::Action.execute_all
-      puts "Cook"
-      Playmo::Cookbook.instance.cook_recipes!(application_name)
+      if application_name = shell.ask(color.set_color('Please enter the name of app you want to create:', :yellow, true))
+        Playmo::Cookbook.instance.cook_recipes!(application_name, options)
+      end
+
+      shell.say("\n")
 
       #system %Q{echo "gem 'therubyracer'" >> ./#{application_name}/Gemfile}
       #system %Q{echo "gem 'playmo', :group => :development" >> ./#{application_name}/Gemfile}

@@ -52,9 +52,9 @@ module Playmo
   end
 
   #
-  puts "Load recipes"
+  #puts "Load recipes"
   Dir["#{File.dirname(__FILE__)}/playmo/recipes/*_recipe.rb"].each { |file| require file }
-  
+
   #require "#{File.dirname(__FILE__)}/playmo/recipes/rails_recipe.rb"
 =begin
   require "#{File.dirname(__FILE__)}/playmo/recipes/layout_recipe.rb"

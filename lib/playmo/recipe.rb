@@ -59,7 +59,7 @@ module Playmo
           require "#{File.dirname(__FILE__)}/recipes/#{@after}_recipe.rb"
           Playmo::Cookbook.instance.use(self)
         else
-          puts "Recipe: #{recipe.to_s}"
+          #puts "Recipe: #{recipe.to_s}"
           Playmo::Cookbook.instance.insert_after(recipe, self)
         end
       end

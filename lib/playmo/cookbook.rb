@@ -53,26 +53,13 @@ module Playmo
       recipes.push(new_recipe)
     end
 
-    def cook_recipes!(application_name)
+    def cook_recipes!(application_name, options)
       recipes.each do |recipe|
         recipe.cook!(application_name)
       end
 
       # Execute all actions
-      Playmo::Action.execute_all
-=begin
-      prepared_recipes = []
-      
-      recipes.each do |recipe|
-        prepared_recipes << recipe.new
-      end
-
-      prepared_recipes.each do |recipe|
-        recipe.cook!(application_name)
-        @cooked_recipes << recipe
-      end
-=end
-
+      Playmo::Action.execute_all unless options['dry-run']
     end
 
     def find_recipe(recipe_symbol)

@@ -20,11 +20,6 @@ module Playmo
         @options = options
         @actions = []
 
-        #self.class.class_eval do
-        #  puts File.expand_path("../recipes/templates/#{name}_recipe", __FILE__)
-        #  source_root File.expand_path("../recipes/templates/#{name}_recipe", __FILE__)
-        #end
-
         instance_eval &block
       end
 
@@ -74,12 +69,6 @@ module Playmo
       def cook!(application_name)
         self.destination_root = application_name
         self.application_name = application_name
-
-        recipe_name = name.to_s
-        raise self.class.inspect
-        self.class.class_eval do
-          source_root File.expand_path("../recipes/templates/#{recipe_name}_recipe", __FILE__)
-        end
 
         actions.each { |action| action.call }
       end

@@ -28,6 +28,11 @@ module Playmo
     def self.execute_all
       @@actions.each do |action|
       	recipe, block = action[0], action[1]
+        
+        recipe.class.class_eval do
+          source_root File.expand_path("../recipes/templates/#{recipe.name}_recipe", __FILE__)
+        end
+
       	recipe.instance_eval &block
       end
     end

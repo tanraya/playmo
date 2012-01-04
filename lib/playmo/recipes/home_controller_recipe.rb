@@ -1,3 +1,14 @@
+recipe :home_controller do
+  description 'Something'
+  after :layout
+  
+  question "Would you want to create HomeController in this project?" do
+
+  end
+end
+
+__END__
+
 module Playmo
   module Recipes
     class HomeControllerRecipe < Playmo::Recipe

@@ -1,4 +1,8 @@
 module Playmo
+  autoload :Action
+  autoload :Question
+  autoload :Silent
+
   module Recipe
     def recipe(name, options = {}, &block)
       Recipe.new(name, options, &block)
@@ -22,15 +26,32 @@ module Playmo
 
       # Если блок с агрументами - то поддерживается ввод данных пользователем
       def question(question, &block)
-        Playmo::Question.new(self, question, &block)
+        Playmo::Question.new(self, question, &block).to_s
       end
 
       def silently(&block)
-        Playmo::Silent(&block)
+        Playmo::Silent.new(self, &block)
       end
 
+      def store(*args)
+
+      end
+
+      def retrieve(*args)
+
+      end
+
+      # TODO: Сделать автолоадинг для зависимых рецептов
       def after(after)
         @after = after
+
+        unless @after.nil?
+          require "#{File.dirname(__FILE__)}/recipes/#{@after}_recipe.rb"
+          recipe = Playmo::Cookbook.instance.find_recipe(@after)
+          Playmo::Cookbook.instance.insert_after(recipe, self) unless recipe.nil?
+        else
+          Playmo::Cookbook.instance.use(self)
+        end
       end
     end
   end

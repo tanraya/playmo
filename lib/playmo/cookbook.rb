@@ -1,14 +1,14 @@
+require 'singleton'
+
 module Playmo
 
   # This class contains all registered recipes.
   # You can register own recipe in this class
   class Cookbook
     include Enumerable
-    attr_accessor :recipes, :cooked_recipes
+    include Singleton
 
-    def self.instance
-      @@instance ||= Playmo::Cookbook.new
-    end
+    attr_accessor :recipes, :cooked_recipes
 
     def initialize
       @recipes = []
@@ -36,17 +36,9 @@ module Playmo
     end
 
     # Is recipe already cooked?
-    def cooked?(recipe)
-      @cooked_recipes.include?(recipe)
-    end
-    
-    # Adds the new recipe before the specified existing recipe in the Cookbook stack.
-    def insert(existing_recipe, new_recipe)
-      index = assert_index(existing_recipe, :before)
-      recipes.insert(index, new_recipe)
-    end
-
-    alias_method :insert_before, :insert
+    #def cooked?(recipe)
+    #  @cooked_recipes.include?(recipe)
+    #end
 
     # Adds the new recipe after the specified existing recipe in the Cookbook stack.
     def insert_after(existing_recipe, new_recipe)
@@ -60,6 +52,7 @@ module Playmo
     end
 
     def cook_recipes!(application_name)
+=begin
       prepared_recipes = []
       
       recipes.each do |recipe|
@@ -70,6 +63,12 @@ module Playmo
         recipe.cook!(application_name)
         @cooked_recipes << recipe
       end
+=end
+
+    end
+
+    def find_recipe(recipe_symbol)
+      recipes.find { |recipe| recipe.name == recipe_symbol }
     end
     
   protected

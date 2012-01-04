@@ -1,3 +1,21 @@
+recipe :capistrano do
+  description 'Something'
+  after :rspec
+  
+  question "Would you like to deploy project with Capistrano?" do
+    gem 'capistrano'
+
+    # TODO: Copy deploy.rb
+    after :install do
+      capify!
+      remove_file "config/deploy.rb"
+      template    "deploy.rb", "config/deploy.rb"
+    end
+  end
+end
+
+__END__
+
 module Playmo
   module Recipes
     class CapistranoRecipe < Playmo::Recipe

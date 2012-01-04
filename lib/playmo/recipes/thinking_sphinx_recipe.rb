@@ -1,3 +1,20 @@
+recipe :thinking_sphinx do
+  description 'Something'
+  after :unicorn
+  
+  question "Would you like to use Thinking Sphinx in this project?" do
+    gem 'thinking-sphinx', '~> 2.0.10'
+
+    # TODO Add Whenever integration (see https://github.com/nesquena/cap-recipes)
+    #Event.events.listen(:after_install) do |event_data|
+      template 'sphinx.yml', 'config/sphinx.yml'
+    #end
+  end
+end
+
+__END__
+
+
 module Playmo
   module Recipes
     class ThinkingSphinxRecipe < Playmo::Recipe

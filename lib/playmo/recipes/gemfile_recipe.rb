@@ -1,3 +1,14 @@
+recipe :gemfile do
+  description 'Something'
+  after :setup_database
+  
+  silently do
+    gem 'rake', '~> 0.9.2'
+  end
+end
+
+__END__
+
 module Playmo
   module Recipes
     class GemfileRecipe < Playmo::Recipe

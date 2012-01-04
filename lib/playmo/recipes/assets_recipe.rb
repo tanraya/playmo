@@ -1,19 +1,10 @@
-module Playmo
-  module Recipes
-    class AssetsRecipe < Playmo::Recipe
-      source_root File.expand_path('../templates/assets_recipe', __FILE__)
+recipe :assets do
+  description 'Adds custom assets to application'
+  after :markup
 
-      def setup
-        silently do
-          directory   'images/',      'app/assets/images/'
-          directory   'stylesheets/', 'app/assets/stylesheets/'
-          remove_file 'app/assets/stylesheets/application.css'
-        end
-      end
-    end
+  silently do
+    directory   'images/',      'app/assets/images/'
+    directory   'stylesheets/', 'app/assets/stylesheets/'
+    remove_file 'app/assets/stylesheets/application.css'
   end
 end
-
-# Write down this recipe to our Cookbook if it's available
-require File.dirname(__FILE__) + '/markup_recipe'
-Playmo::Cookbook.instance.insert_after(Playmo::Recipes::MarkupRecipe, Playmo::Recipes::AssetsRecipe) if defined?(Playmo::Cookbook)

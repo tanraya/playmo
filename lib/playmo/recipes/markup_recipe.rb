@@ -1,17 +1,6 @@
 recipe :markup do
   description 'Adds markup engine to your app'
-=begin  
-  def fucking_shit
-    puts 'fucking_shit'
-  end
-
-  question "Please specify default locale" do |locale|
-    puts locale
-    fucking_shit
-  end
-=end
-
-
+  after :rails
 
   question "Please choose markup language you prefer to use" do
     answer "Erb", :default => true do
@@ -20,7 +9,7 @@ recipe :markup do
     end
 
     answer "Haml" do
-      gem "haml-rails"
+      gem "haml-rails" # it does not work
       store(:markup, :haml)
     end
 
@@ -29,5 +18,4 @@ recipe :markup do
       store(:markup, :slim)
     end
   end
-
 end

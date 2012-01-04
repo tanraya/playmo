@@ -1,3 +1,18 @@
+recipe :setup_database do
+  description 'Something'
+  after :rvm
+  
+  silently do
+    after :install do
+      run "cd #{application_name} && rake db:create"
+      run "cd #{application_name} && rake db:migrate"
+      run "cd #{application_name} && rake db:seed"
+    end
+  end
+end
+
+__END__
+
 module Playmo
   module Recipes
     class SetupDatabaseRecipe < Playmo::Recipe

@@ -1,3 +1,15 @@
+recipe :devise do
+  description 'Something'
+  after :javascript_framework
+  
+  question "Would you like to use Devise in this project?" do
+
+  end
+end
+
+__END__
+
+
 module Playmo
   module Recipes
     class DeviseRecipe < Playmo::Recipe

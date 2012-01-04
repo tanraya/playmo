@@ -1,50 +1,51 @@
 module Playmo
-  class Choice < Thor::Shell::Basic
-    CAPTION = "\nMake your choice"
-    attr_accessor :question, :choice, :accepted_values, :user_input, :caller
+  class Choice
+    CAPTION = "Your choice"
+    attr_accessor :question, :shell, :color, :user_input
 
-    def initialize(question, caller)
+    def initialize(question)
       @question = question
-      @caller   = caller
-      @padding  = 0
-      @choice   = nil
+      @shell    = Thor::Shell::Basic.new
+      @color    = Thor::Shell::Color.new
+    end
 
-      if @question.has_answers?
-        @accepted_values = 1.upto(@question.answers.size).to_a.map { |value| value.to_s }
+    def accepted_values
+      if question.has_answers?
+        1.upto(question.answers.size).to_a.map { |value| value.to_s }
       else
-        @accepted_values = %w/y n yes no/
+        %w/y n yes no/
       end
     end
 
-    def make_choice!
-      until @accepted_values.include?(@user_input) do
-        @user_input = ask render
+    def get_answer
+      shell.padding = 1
+
+      until accepted_values.include?(@user_input) do
+        @user_input = shell.ask(render)
         @user_input.downcase!
       end
 
       if @user_input
-
-        if @question.has_answers?
-          answer = @question.answers.find { |answer| answer.num.to_s == @user_input }
-          @caller.send(answer.method_name)
+        if question.has_answers?
+          answer = question.answers.find { |answer| answer.num.to_s == @user_input }
         else
-          answer = @question.answers.first
-          @caller.send(answer.method_name) if %w/y yes/.include?(@user_input)
+          answer = question.answers.first
         end
 
+        answer
       end
     end
 
     def render
-      if @question.has_answers?
-        sentence = @accepted_values.to_sentence(
+      if question.has_answers?
+        sentence = accepted_values.to_sentence(
           :last_word_connector => ' or '
         )
       else
         sentence = "y/n"
       end
 
-      CAPTION + " (#{sentence}):"
+      color.set_color("#{CAPTION} (#{sentence}):", :white, true)
     end
 
     alias :to_s :render

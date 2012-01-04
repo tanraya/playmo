@@ -1,7 +1,7 @@
 module Playmo
   class Silent
-    def initialize(&block)
-      
+    def initialize(recipe, &block)
+      Playmo::Action.new(recipe, &block)
     end
   end
 end

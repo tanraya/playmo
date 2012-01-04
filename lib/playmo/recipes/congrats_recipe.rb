@@ -1,3 +1,5 @@
+
+__END__
 module Playmo
   module Recipes
     class CongratsRecipe < Playmo::Recipe

@@ -1,38 +1,60 @@
+require 'thor/shell/basic'
+require 'thor/shell/color'
+
 module Playmo
   autoload :Answer
+  autoload :Choice
 
   class Question
-    attr_accessor :question, :answers, :recipe
+    attr_accessor :question, :answers, :recipe, :action, :shell, :color
 
     def initialize(recipe, question, &block)
       @question = question
       @answers  = []
       @recipe   = recipe
+      @shell    = Thor::Shell::Basic.new
+      @color    = Thor::Shell::Color.new
 
       # Do stuff with block
       if block.arity > 0
-        puts "We have args!"
-        recipe.instance_eval &block
+        # We have block with args
+        @action = block
       else
-        #puts "It seems we have answers"
-        instance_eval &block
+        # It seems we have answers
+        instance_eval &block  
       end
+    end
 
-      puts self.to_s
+    def has_answers?
+      @answers.size > 0
     end
 
     def answer(answer, options = {}, &block)
-      @answers << Playmo::Answer.new(answer, options, &block)
+      @answers << Playmo::Answer.new(answer, options, @answers.size + 1, &block)
     end
 
     def render
-      result = "#{question}\n"
+      shell.padding = 1
+      shell.say("\n")
+      shell.say(color.set_color(question, :green, true))
+      shell.say("\n")
 
-      answers.each do |answer|
-        result << "#{answer}\n"
+      if has_answers?
+        answers.each do |answer|
+          shell.say("#{answer}")
+        end
       end
 
-      result
+      shell.say("\n")
+
+      if has_answers?
+        choice = Playmo::Choice.new(self)
+        answer_action = choice.get_answer.action
+
+        Playmo::Action.new(recipe, &answer_action)
+      else
+        Playmo::Action.new(recipe, &action)
+      end
     end
 
     alias :to_s :render

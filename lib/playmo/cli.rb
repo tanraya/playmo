@@ -8,10 +8,13 @@ module Playmo
     desc "Generates a new Rails application with Playmo'"
 
     def run_playmo
-      self.destination_root = application_name
-      #system "rails new #{application_name} -JT --skip-bundle"
+      #self.destination_root = application_name
+
+      # TODO: move to separate recipe
       
-      #Playmo::Cookbook.instance.cook_recipes!(application_name)
+      
+      #Playmo::Action.execute_all
+      Playmo::Cookbook.instance.cook_recipes!(application_name)
 
       #system %Q{echo "gem 'therubyracer'" >> ./#{application_name}/Gemfile}
       #system %Q{echo "gem 'playmo', :group => :development" >> ./#{application_name}/Gemfile}

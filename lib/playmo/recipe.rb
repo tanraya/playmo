@@ -1,4 +1,5 @@
 require 'rails/generators'
+#require 'thor'
 
 module Playmo
   autoload :Action
@@ -7,13 +8,15 @@ module Playmo
 
   module Recipe
     def recipe(name, options = {}, &block)
-      Recipe.new(name, options, &block)
+      Recipe.new.build(name, options, &block)
     end
 
     class Recipe < Rails::Generators::Base
+      #include Thor::Actions
+
       attr_accessor :name, :options, :description, :actions, :after, :application_name
       
-      def initialize(name, options, &block)
+      def build(name, options, &block)
         raise 'Recipe name not specified!' unless name
 
         @name    = name
@@ -48,6 +51,14 @@ module Playmo
 
       end
 
+      def after_install(&block)
+
+      end
+
+      def before_exit(&block)
+
+      end
+
       def to_s
         name
       end
@@ -55,14 +66,18 @@ module Playmo
       # TODO: Сделать автолоадинг для зависимых рецептов
       def after(after)
         @after = after
-        recipe = Playmo::Cookbook.instance.find_recipe(@after)
+        after_recipe = Playmo::Cookbook.instance.find_recipe(@after)
 
-        if recipe.nil?
+        if after_recipe.nil? && @after.present?
           require "#{File.dirname(__FILE__)}/recipes/#{@after}_recipe.rb"
+        end
+
+        puts "!#{@after} - #{after_recipe.try(:name)}"
+
+        if after_recipe.nil?
           Playmo::Cookbook.instance.use(self)
         else
-          #puts "Recipe: #{recipe.to_s}"
-          Playmo::Cookbook.instance.insert_after(recipe, self)
+          Playmo::Cookbook.instance.insert_after(after_recipe, self)
         end
       end
 
@@ -70,7 +85,9 @@ module Playmo
         self.destination_root = application_name
         self.application_name = application_name
 
-        actions.each { |action| action.call }
+        actions.each do |action|
+          action.call
+        end
       end
     end
   end

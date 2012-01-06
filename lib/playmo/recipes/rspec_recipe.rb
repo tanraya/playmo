@@ -8,7 +8,7 @@ recipe :rspec do
     remove_dir "test"
     
     inject_into_file "config/application.rb", :after => "class Application < Rails::Application\n" do
-      <<-CONTENT.gsub(/^ {10}/, '')
+      <<-CONTENT.gsub(/^ {8}/, '')
         config.generators do |g|
           g.test_framework :rspec
         end

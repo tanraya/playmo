@@ -9,7 +9,7 @@ recipe :javascript_framework do
       gem "jquery-rails"
 
       gsub_file 'app/assets/javascripts/application.js', '//= require_tree .' do
-        <<-CONTENT.gsub(/^ {14}/, '')
+        <<-CONTENT.gsub(/^ {10}/, '')
           //= require jquery
           //= require jquery_ui
           //= require jquery_ujs
@@ -23,7 +23,7 @@ recipe :javascript_framework do
       gem 'mootools-rails'
 
       gsub_file 'app/assets/javascripts/application.js', '//= require_tree .' do
-        <<-CONTENT.gsub(/^ {14}/, '')
+        <<-CONTENT.gsub(/^ {10}/, '')
           //= require mootools
           //= require mootools-more
           //= require mootools_ujs

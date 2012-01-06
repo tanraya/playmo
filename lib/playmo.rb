@@ -42,7 +42,7 @@ module Playmo
 
   autoload :Version
   autoload :Cli
-  #autoload :Event
+  autoload :Event
   #autoload :Options
   autoload :Cookbook
   autoload :Recipe

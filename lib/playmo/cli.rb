@@ -24,10 +24,10 @@ module Playmo
 
       shell.say("\n")
 
-      #system "cd #{application_name} && bundle install"
+      system "cd #{application_name} && bundle install"
 
-      #Event.events.fire :after_install
-      #Event.events.fire :before_exit
+      Event.events.fire :after_install
+      Event.events.fire :before_exit
     end
 
   end

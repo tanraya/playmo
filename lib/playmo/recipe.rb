@@ -51,12 +51,23 @@ module Playmo
 
       end
 
+      # TODO: Move it into module
       def after_install(&block)
-
+        Event.events.listen(:after_install) do
+          @actions << lambda { block.call }
+        end
       end
 
       def before_exit(&block)
+        Event.events.listen(:before_exit) do
+          @actions << lambda { block.call }
+        end
+      end
 
+      def generate(*args)
+        after_install do
+          @actions << lambda { super(*args) }
+        end
       end
 
       def to_s

@@ -10,24 +10,23 @@ recipe :application_helper do
     # TODO: Translate flash_messages.js to CoffeeScript
     copy_file   'flash_messages.js', 'app/assets/javascripts/flash_messages.js'
 
-    after_install do
-      gsub_file 'app/assets/javascripts/application.js', '//= require_tree .' do
-        <<-CONTENT.gsub(/^ {16}/, '')
-          //= require flash_messages
-          //= require_tree .
-        CONTENT
-      end
-    end
-
-    gsub_file 'config/locales/en.yml', 'en:' do
-      <<-CONTENT.gsub(/^ {14}/, '')
-        en:
-          helpers:
-            application:
-              link_to_delete:
-                link_text: Delete?
-                confirmation: Are you sure?
+    gsub_file 'app/assets/javascripts/application.js', '//= require_tree .' do
+      <<-CONTENT.gsub(/^ {16}/, '')
+        //= require flash_messages
+        //= require_tree .
       CONTENT
     end
+
+# TODO: This is doesnt work!!!
+#    gsub_file 'config/locales/en.yml', 'en:' do
+#      <<-CONTENT.gsub(/^ {14}/, '')
+#        en:
+#          helpers:
+#            application:
+#              link_to_delete:
+#                link_text: Delete?
+#                confirmation: Are you sure?
+#     CONTENT
+#    end
   end
 end

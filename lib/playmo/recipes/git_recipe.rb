@@ -3,7 +3,8 @@ recipe :git do
   after :gemfile
   
   silently do
-    before_exit do
+    #before_exit do
+    Playmo::Event.events.listen(:before_exit) do
       remove_file '.gitignore'
 
       # TODO Add sphinx & dragonfly files to .gitignore

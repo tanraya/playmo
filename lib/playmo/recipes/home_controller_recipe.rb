@@ -1,5 +1,5 @@
 recipe :home_controller do
-  description 'Something'
+  description 'Adds HomeController into your app that present home page'
   after :layout
 
   # Make changes in index view

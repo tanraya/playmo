@@ -1,11 +1,11 @@
 recipe :javascript_framework do
-  description 'Something'
+  description 'Adds javascript framework into your app'
   after :forms
   
   question "Please choose JS framework you prefer to use" do
 
     # See https://github.com/rails/jquery-rails for details
-    answer "JQuery with Jquery UI" do
+    answer "JQuery with Jquery UI", :default => true do
       gem "jquery-rails"
 
       gsub_file 'app/assets/javascripts/application.js', '//= require_tree .' do

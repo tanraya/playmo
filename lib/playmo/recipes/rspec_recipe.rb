@@ -1,5 +1,5 @@
 recipe :rspec do
-  description 'Something'
+  description 'Adds Rspec testing library into your app instead of Test::Unit'
   after :thinking_sphinx
   
   ask "Would you like to use Rspec in this project?" do

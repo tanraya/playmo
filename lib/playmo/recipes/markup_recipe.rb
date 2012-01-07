@@ -9,7 +9,7 @@ recipe :markup do
     end
 
     answer "Haml" do
-      gem "haml-rails" # it does not work
+      gem "haml-rails"
       store(:markup, :haml)
     end
 

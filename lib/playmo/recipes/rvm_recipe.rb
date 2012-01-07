@@ -1,5 +1,5 @@
 recipe :rvm do
-  description 'Something'
+  description 'Creates .rvmrc file for your app if rvm is available'
   after :capistrano
   
   silently do

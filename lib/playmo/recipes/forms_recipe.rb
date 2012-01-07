@@ -1,5 +1,5 @@
 recipe :forms do
-  description 'Something'
+  description 'Adds form builder into your app'
   after :compass
   
   question "Which form builder you prefer?" do

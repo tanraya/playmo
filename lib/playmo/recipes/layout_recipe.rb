@@ -1,6 +1,6 @@
 recipe :layout do
   description 'Something'
-  after :devise
+  after :javascript_framework
   
   # TODO: Add option to make separate files for header & footer
   silently do

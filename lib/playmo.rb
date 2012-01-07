@@ -1,34 +1,26 @@
 # encoding: utf-8
-
 require 'rails/all'
 
-#if defined?(ActionController)
-#  require File.join(File.dirname(__FILE__), 'app', 'helpers', 'playmo_helper')
-#  ActionController::Base.helper(PlaymoHelper)
-#end
-
 # Recipes order:
-# MarkupRecipe
-# AssetsRecipe
-# ApplicationControllerRecipe
-# CompassRecipe
-# FormsRecipe
-# JavascriptFrameworkRecipe
-# DeviseRecipe
-# LayoutRecipe
-# HomeControllerRecipe
-# ApplicationHelperRecipe
-# UnicornRecipe
-# ThinkingSphinxRecipe
-# RspecRecipe
-# CapistranoRecipe
-# RvmRecipe
-# SetupDatabaseRecipe
-# GitRecipe
-# GemfileRecipe
-# CongratsRecipe
-
-
+# rails
+# markup
+# assets
+# application_controller
+# compass
+# forms
+# javascript_framework
+# layout
+# devise
+# home_controller
+# application_helper
+# unicorn
+# thinking_sphinx
+# rspec
+# capistrano
+# rvm
+# setup_database
+# gemfile
+# git
 
 module Playmo
   extend ActiveSupport::Autoload
@@ -43,7 +35,7 @@ module Playmo
   autoload :Version
   autoload :Cli
   autoload :Event
-  #autoload :Options
+  autoload :Options
   autoload :Cookbook
   autoload :Recipe
 
@@ -51,10 +43,7 @@ module Playmo
     include Playmo::Recipe
   end
 
-  Dir["#{File.dirname(__FILE__)}/playmo/recipes/*_recipe.rb"].each do |file|
-    #puts file
-    require file
-  end
+  Dir["#{File.dirname(__FILE__)}/playmo/recipes/*_recipe.rb"].each { |f| require f }
 end
 
 

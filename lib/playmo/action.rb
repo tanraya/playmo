@@ -2,9 +2,7 @@
 
 
 module Playmo
-  class Action# < Rails::Generators::Base
-    #include Thor::Actions
-    #include Rails::Generators::Base
+  class Action
     cattr_accessor :actions
 
     # TODO: Сделать опцию dry-run, когда ничего не происходит, а только

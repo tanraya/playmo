@@ -23,21 +23,38 @@ module Playmo
       end
 
       def store(*args)
-
+        Options.instance.set(*args)
       end
 
       def retrieve(*args)
-
+        Options.instance.get(*args)
       end
 
       # TODO: Move it into module
       def after_install(&block)
-        #
-        Event.events.listen(:after_install) { block.call }
+        Event.events.listen(:after_install) do
+          # TODO: DRY this
+          recipe_name = name
+
+          self.class.class_eval do
+            source_root File.expand_path("../recipes/templates/#{recipe_name}_recipe", __FILE__)
+          end
+        
+          self.instance_eval &block
+        end
       end
 
       def before_exit(&block)
-        Event.events.listen(:before_exit) { block.call }
+        Event.events.listen(:before_exit) do
+          # TODO: DRY this
+          recipe_name = name
+
+          self.class.class_eval do
+            source_root File.expand_path("../recipes/templates/#{recipe_name}_recipe", __FILE__)
+          end
+          
+          self.instance_eval &block
+        end
       end
 
       def generate(*args)

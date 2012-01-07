@@ -1,5 +1,5 @@
 recipe :rails do
-  description 'Creates new Rails application'
+  description 'This will create new Rails application'
   after nil
 
   silently do

@@ -52,6 +52,7 @@ module Playmo
       shell.padding = 1
       shell.say("\n")
       shell.say(color.set_color(question, :green, true))
+      shell.say(color.set_color(recipe.description, :white, false))
       
       if has_answers?
         shell.say("\n")

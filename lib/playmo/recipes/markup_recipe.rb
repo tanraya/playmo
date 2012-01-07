@@ -1,5 +1,5 @@
 recipe :markup do
-  description 'Adds markup engine to your app'
+  description 'This will add markup engine into your app'
   after :rails
 
   question "Please choose markup language you prefer to use" do

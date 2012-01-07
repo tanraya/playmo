@@ -1,5 +1,5 @@
 recipe :assets do
-  description 'Adds custom assets to application'
+  description 'This will adds custom assets into application'
   after :markup
 
   silently do

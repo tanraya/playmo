@@ -1,5 +1,5 @@
 recipe :layout do
-  description 'Generate HTML5-ready layout for your app'
+  description 'This will generate HTML5-ready layout for your app'
   after :javascript_framework
   
   # TODO: Add option to make separate files for header & footer

@@ -1,5 +1,5 @@
 recipe :thinking_sphinx do
-  description 'Adds thinking sphinx into your app and generates sphinx.yml'
+  description 'This will add thinking sphinx into your app and generates sphinx.yml'
   after :unicorn
   
   ask "Would you like to use Thinking Sphinx in this project?" do

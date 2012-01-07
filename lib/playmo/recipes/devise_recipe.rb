@@ -1,5 +1,5 @@
 recipe :devise do
-  description 'Flexible authentication solution for Rails with Warden'
+  description 'This will add Devise - flexible authentication solution for Rails'
   after :layout
   
   # Add links into layout

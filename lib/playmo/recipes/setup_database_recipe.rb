@@ -1,5 +1,5 @@
 recipe :setup_database do
-  description 'Create database, migrate and seed data'
+  description 'This will create database, then migrate and seed data'
   after :rvm
   
   silently do

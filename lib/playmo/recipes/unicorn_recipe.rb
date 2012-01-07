@@ -1,5 +1,5 @@
 recipe :unicorn do
-  description 'Rack HTTP server for fast clients and Unix'
+  description 'This will add Unicorn - Rack HTTP server for fast clients and Unix'
   after :application_helper
   
   ask "Would you like to use Unicorn as web server in production?" do

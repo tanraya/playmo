@@ -1,5 +1,5 @@
 recipe :application_helper do
-  description 'Helpers that used in generated views and layout'
+  description 'This will add helpers that used within generated layout and views'
   after :home_controller
   
   silently do

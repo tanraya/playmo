@@ -1,5 +1,5 @@
 recipe :javascript_framework do
-  description 'Adds javascript framework into your app'
+  description 'This will add javascript framework into your app'
   after :forms
   
   question "Please choose JS framework you prefer to use" do

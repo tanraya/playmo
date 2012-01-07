@@ -1,5 +1,5 @@
 recipe :application_controller do
-  description 'Application controller with 404 and 500 errors handling'
+  description 'This will add ApplicationController with 404 and 500 errors handling'
   after :assets
 
   silently do

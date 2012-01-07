@@ -1,5 +1,5 @@
 recipe :gemfile do
-  description 'Adds necessary gems'
+  description 'This will add necessary gems'
   after :setup_database
   
   silently do

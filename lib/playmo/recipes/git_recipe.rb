@@ -1,5 +1,5 @@
 recipe :git do
-  description 'Initialize Git repository and creates .gitignore'
+  description 'This will initialize Git repository and creates .gitignore'
   after :gemfile
   
   silently do

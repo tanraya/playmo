@@ -95,8 +95,9 @@ module Playmo
         instance_eval &block
       end
 
-      def description(description)
-        @description = description
+      def description(description = nil)
+        @description = description if description.present?
+        @description
       end
 
       # Если блок с агрументами - то поддерживается ввод данных пользователем

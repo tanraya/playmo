@@ -1,5 +1,5 @@
 recipe :capistrano do
-  description 'Remote multi-server automation tool'
+  description 'This will add remote multi-server automation tool'
   after :rspec
   
   ask "Would you like to deploy project with Capistrano?" do

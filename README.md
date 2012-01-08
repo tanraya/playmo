@@ -23,7 +23,7 @@ You should see a list of questions that you have to answer. When you answer all 
     $ cd ./yourappname
     $ rails s
 
-### What it does
+## What it does
 
 Playmo contains the following built-in recipes (in order of execution):
 
@@ -114,18 +114,3 @@ And example of 'ask' recipe:
 Playmo contains a number of built-in recipes, but you can to add custom recipes for your purposes.
 
 ## How to add custom recipes?
-
-## How to install
-First, install the gem:
-
-    gem install playmo
-
-After that, run playmo to generate new rails app:
-
-    $ playmo myappname
-
-Then just answer a questions. That's all. Now you can run your app:
-
-    $ rails s
-
-***

@@ -27,26 +27,26 @@ You should see a list of questions that you have to answer. When you answer all 
 
 Playmo contains the following built-in recipes (in order of execution):
 
-* __rails__ - This will create new Rails application
-* __locale__ - This will specify default locale and install translations
-* __markup__ - This will add markup engine into your app
-* __assets__ - This will adds custom assets into application
-* __application_controller__ - This will add ApplicationController with 404 and 500 errors handling
-* __compass__ - This wll add Stylesheet Authoring Environment that makes your website design simpler to implement and easier to maintain
-* __forms__ - This will add form builder into your app
-* __javascript_framework__ - This will add javascript framework into your app
-* __layout__ - This will generate HTML5-ready layout for your app
-* __devise__ - This will add Devise - flexible authentication solution for Rails
-* __home_controller__ - This will add HomeController into your app that present home page
-* __application_helper__ - This will add helpers that used within generated layout and views
-* __unicorn__ - This will add Unicorn - Rack HTTP server for fast clients and Unix
-* __thinking_sphinx__ - This will add thinking sphinx into your app and generates sphinx.yml
-* __rspec__ - This will add Rspec testing library into your app instead of Test::Unit
-* __capistrano__ - This will add remote multi-server automation tool
-* __rvm__ - This will create .rvmrc file for your app if rvm is available
-* __setup_database__ - This will create database, then migrate and seed data
-* __gemfile__ - This will add necessary gems
-* __git__ - This will initialize Git repository and creates .gitignore
+* __rails__ - creates new Rails application
+* __locale__ - specify default locale and install translations
+* __markup__ - adds markup engine into your app
+* __assets__ - adds custom assets into application
+* __application_controller__ - adds ApplicationController with 404 and 500 errors handling
+* __compass__ - adds Stylesheet Authoring Environment that makes your website design simpler to implement and easier to maintain
+* __forms__ - adds form builder into your app
+* __javascript_framework__ - adds javascript framework into your app
+* __layout__ - generates HTML5-ready layout for your app
+* __devise__ - adds Devise - flexible authentication solution for Rails
+* __home_controller__ - adds HomeController into your app that present home page
+* __application_helper__ - adds helpers that used within generated layout and views
+* __unicorn__ - adds Unicorn - Rack HTTP server for fast clients and Unix
+* __thinking_sphinx__ - adds thinking sphinx into your app and generates sphinx.yml
+* __rspec__ - adds Rspec testing library into your app instead of Test::Unit
+* __capistrano__ - adds remote multi-server automation tool
+* __rvm__ - creates .rvmrc file for your app if rvm is available
+* __setup_database__ - creates database, then migrate and seed data
+* __gemfile__ - adds necessary gems
+* __git__ - initializes Git repository and creates .gitignore
 
 ## How recipe looks like?
 

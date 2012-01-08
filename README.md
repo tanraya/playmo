@@ -73,7 +73,7 @@ Here is an example of the built-in Playmo recipe called 'forms':
       end
     end
 
-This recipe asks you questions, but there are other recipes, such as 'silent', who ask no questions, and just doing some work, or 'ask', which asks for input from the user.
+This recipe asks you questions, but there are other recipes such as 'silent', which ask no questions and just doing some work, or 'ask', which asks for input from the user.
 
 Example of 'silent' recipe:
 

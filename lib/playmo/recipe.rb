@@ -61,9 +61,9 @@ module Playmo
         after_install { super(*args) }
       end
 
-      def template(*args)
-        after_install { super(*args) }
-      end
+      #def template(*args)
+      #  after_install { super(*args) }
+      #end
 
       def cook!(application_name)
         self.destination_root = application_name

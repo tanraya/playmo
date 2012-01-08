@@ -6,19 +6,22 @@ module Playmo
   autoload :Choice
 
   class Question
-    attr_accessor :question, :answers, :recipe, :action, :shell, :color
+    attr_accessor :question, :answers, :recipe, :action, :shell, :color, :options
 
     def initialize(recipe, question, options, &block)
       @question = question
       @answers  = []
       @recipe   = recipe
       @options  = options
+      @action   = block
       @shell    = Thor::Shell::Basic.new
       @color    = Thor::Shell::Color.new
 
       if @options[:type] == :question
         instance_eval &block
-      elsif @options[:type] == :ask
+      elsif @options[:type] == :ask && block.arity == 0
+        answer(nil, nil, &block)
+      elsif @options[:type] == :ask && block.arity > 0
         answer(nil, nil, &block)
       end
  
@@ -64,10 +67,19 @@ module Playmo
 
       shell.say("\n")
 
-      choice = Playmo::Choice.new(self)
-      answer_action = choice.get_answer.action
-      Playmo::Action.new(recipe, &answer_action)
+      if options[:type] == :ask && action.arity > 0
+        response = shell.ask('Enter value:')
 
+        answer_action = action
+
+        x = Proc.new { answer_action.call(response) }
+        Playmo::Action.new(recipe, &x)
+        #Playmo::Action.new(recipe, &answer_action)# { action.call }#.call('en') }
+      else
+        choice = Playmo::Choice.new(self)
+        answer_action = choice.get_answer.action
+        Playmo::Action.new(recipe, &answer_action)
+      end
       #if has_answers?
       #  Playmo::Action.new(recipe, &answer_action)
       #else

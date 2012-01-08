@@ -3,6 +3,7 @@ require 'rails/all'
 
 # Recipes order:
 # rails
+# locale
 # markup
 # assets
 # application_controller

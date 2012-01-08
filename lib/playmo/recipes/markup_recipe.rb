@@ -1,6 +1,6 @@
 recipe :markup do
   description 'This will add markup engine into your app'
-  after :rails
+  after :locale
 
   question "Please choose markup language you prefer to use" do
     answer "Erb", :default => true do

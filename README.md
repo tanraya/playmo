@@ -28,7 +28,7 @@ You should see a list of questions that you have to answer. When you answer all 
 Playmo contains the following built-in recipes (in order of execution):
 
 * __rails__ - creates new Rails application
-* __locale__ - specifies default locale and install translations
+* __locale__ - specifies default locale and installs translations
 * __markup__ - adds markup engine into your app
 * __assets__ - adds custom assets into application
 * __application_controller__ - adds ApplicationController with 404 and 500 errors handling
@@ -40,7 +40,7 @@ Playmo contains the following built-in recipes (in order of execution):
 * __home_controller__ - adds HomeController into your app that present home page
 * __application_helper__ - adds helpers that used within generated layout and views
 * __unicorn__ - adds Unicorn - Rack HTTP server for fast clients and Unix
-* __thinking_sphinx__ - adds thinking sphinx into your app and generates sphinx.yml
+* __thinking_sphinx__ - adds Thinking Sphinx into your app and generates sphinx.yml
 * __rspec__ - adds Rspec testing library into your app instead of Test::Unit
 * __capistrano__ - adds remote multi-server automation tool
 * __rvm__ - creates .rvmrc file for your app if rvm is available

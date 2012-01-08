@@ -28,7 +28,7 @@ You should see a list of questions that you have to answer. When you answer all 
 Playmo contains the following built-in recipes (in order of execution):
 
 * __rails__ - creates new Rails application
-* __locale__ - specify default locale and install translations
+* __locale__ - specifies default locale and install translations
 * __markup__ - adds markup engine into your app
 * __assets__ - adds custom assets into application
 * __application_controller__ - adds ApplicationController with 404 and 500 errors handling

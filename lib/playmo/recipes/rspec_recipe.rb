@@ -3,7 +3,7 @@ recipe :rspec do
   after :thinking_sphinx
   
   ask "Would you like to use Rspec in this project?" do
-    gem 'rspec-rails'
+    gem 'rspec-rails', :group => :development
     generate "rspec:install"
     remove_dir "test"
     

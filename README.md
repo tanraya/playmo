@@ -121,7 +121,7 @@ I'll tell you how to do it.
 
 First, you need to create a gem with Bundler:
 
-    $ bundle companyname-playmo
+    $ bundle gem companyname-playmo
 
 As a prefix I recommend to use your company name or your nickname, or something else. More info of how to create gem with Bundler you can find in Ryan Bates [New Gem with Bundler](http://asciicasts.com/episodes/245-new-gem-with-bundler) episode.
 

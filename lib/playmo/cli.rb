@@ -37,10 +37,7 @@ module Playmo
 
     def require_gem
       return unless options[:require]
-      gem options[:require]
-      #load '/home/tanraya/sandbox/tanraya-playmo/lib/tanraya-playmo.rb'
-      #require 'rubygems'
-      #gem 'tanraya-playmo', :path => '../../../'
+      require options[:require]
     end
 
   end

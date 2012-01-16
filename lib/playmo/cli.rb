@@ -9,9 +9,12 @@ module Playmo
     include Thor::Actions
     
     class_option 'dry-run', :aliases => "-d", :default => false, :desc => "Run without making any modifications on files"
+    class_option 'require', :aliases => "-r", :default => false, :desc => "Require gem that contains custom recipes"
     
     # TODO: Use internal shell variable
     def new_app
+      require_gem
+
       color = Thor::Shell::Color.new
       shell = Thor::Shell::Basic.new
       shell.padding = 1
@@ -28,6 +31,16 @@ module Playmo
 
       Event.events.fire :after_install
       Event.events.fire :before_exit
+    end
+
+  private
+
+    def require_gem
+      return unless options[:require]
+      gem options[:require]
+      #load '/home/tanraya/sandbox/tanraya-playmo/lib/tanraya-playmo.rb'
+      #require 'rubygems'
+      #gem 'tanraya-playmo', :path => '../../../'
     end
 
   end

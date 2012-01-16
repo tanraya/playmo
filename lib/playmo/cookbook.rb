@@ -34,6 +34,10 @@ module Playmo
       recipes.delete target
     end
 
+    def delete_all
+      self.recipes = []
+    end
+
     # Adds the new recipe before the specified existing recipe in the Cookbook stack.
     def insert(existing_recipe, new_recipe)
       index = assert_index(existing_recipe, :before)

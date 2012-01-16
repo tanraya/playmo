@@ -114,3 +114,34 @@ And example of 'ask' recipe:
 Playmo contains a number of built-in recipes, but you can to add custom recipes for your purposes.
 
 ## How to add custom recipes?
+
+There is only way to add custom recipes. Create own gem on top of Playmo! Seriously. Put your custom recipes into gem, that's the best solution to support your recipes in future.
+
+I'll tell you how to do it. 
+
+First, you need to create a gem with Bundler:
+
+    $ bundle companyname-playmo
+
+As a prefix I recommend to use your company name or your nickname, or something else. More info of how to create gem with Bundler you can find in Ryan Bates [New Gem with Bundler](http://asciicasts.com/episodes/245-new-gem-with-bundler) episode.
+
+After the gem was generated you should fill your __gemspec__. Don't forget to add playmo dependency into __gemspec__ file:
+
+    s.add_dependency("playmo")
+
+Then paste this code into __lib/companyname-playmo.rb__ file:
+
+    require "playmo"
+
+    module CompanynamePlaymo
+      # Retrieve Cookbook instance
+      cookbook = ::Playmo::Cookbook.instance
+
+      # Example: Remove all recipes from Cookbook
+      # cookbook.delete_all
+
+      # Load custom recipes
+      Dir["#{File.dirname(__FILE__)}/companyname_playmo/recipes/*_recipe.rb"].each { |f| require f }
+    end
+
+__... to be continued ...__

@@ -1,6 +1,6 @@
 # coding: utf-8
 
-module PlaymoHelper
+module ApplicationHelper
   attr_accessor :page_title
 
   def link_to_delete(link, title, heading_tag = :h3)

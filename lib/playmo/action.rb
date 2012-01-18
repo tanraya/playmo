@@ -28,7 +28,7 @@ module Playmo
       	recipe, block = action[0], action[1]
         
         recipe.class.class_eval do
-          source_root File.expand_path("../recipes/templates/#{recipe.name}_recipe", __FILE__)
+          source_root "#{Playmo::ROOT}/recipes/templates/#{recipe.name}_recipe"
         end
 
       	recipe.instance_eval &block

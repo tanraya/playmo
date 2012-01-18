@@ -59,7 +59,6 @@ module Playmo
 
     def cook_recipes!(application_name, options)
       recipes.each do |recipe|
-        #puts recipe.name
         recipe.cook!(application_name)
       end
 

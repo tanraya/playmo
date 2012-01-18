@@ -10,7 +10,6 @@ module Playmo
 
         @name    = name
         @options = options
-        #@actions = []
 
         instance_eval &block
       end
@@ -39,7 +38,7 @@ module Playmo
         after_recipe = Playmo::Cookbook.instance.find_recipe(@after)
 
         if after_recipe.nil? && @after.present?
-          require "#{File.dirname(__FILE__)}/../recipes/#{@after}_recipe.rb"
+          require "#{Playmo::ROOT}/recipes/#{@after}_recipe.rb"
         end
 
         if after_recipe.nil?

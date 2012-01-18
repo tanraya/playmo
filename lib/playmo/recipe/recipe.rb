@@ -27,7 +27,7 @@ module Playmo
           recipe_name = name
 
           self.class.class_eval do
-            source_root File.expand_path("../../recipes/templates/#{recipe_name}_recipe", __FILE__)
+            source_root "#{Playmo::ROOT}/recipes/templates/#{recipe_name}_recipe"
           end
         
           self.instance_eval &block
@@ -40,7 +40,7 @@ module Playmo
           recipe_name = name
 
           self.class.class_eval do
-            source_root File.expand_path("../../recipes/templates/#{recipe_name}_recipe", __FILE__)
+            source_root "#{Playmo::ROOT}/recipes/templates/#{recipe_name}_recipe"
           end
           
           self.instance_eval &block

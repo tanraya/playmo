@@ -24,6 +24,8 @@ require 'rails/all'
 # git
 
 module Playmo
+  ROOT = File.dirname(__FILE__) + "/../"
+
   extend ActiveSupport::Autoload
   
   class Railtie < Rails::Railtie
@@ -44,7 +46,7 @@ module Playmo
     include Playmo::Recipe
   end
 
-  Dir["#{File.dirname(__FILE__)}/playmo/recipes/*_recipe.rb"].each { |f| require f }
+  Dir["#{ROOT}/recipes/*_recipe.rb"].each { |f| require f }
 end
 
 

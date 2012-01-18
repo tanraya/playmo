@@ -13,7 +13,6 @@ recipe :git do
         tmp/**/*
         db/*.sqlite3
         .idea/
-        public/uploads/*
         public/assets/*
         .sass-cache/
       CONTENT

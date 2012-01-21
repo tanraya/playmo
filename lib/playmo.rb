@@ -1,5 +1,13 @@
 # encoding: utf-8
-require 'rails/all'
+begin
+  require 'rails/all'
+rescue LoadError
+  puts "Rails is not installed!"
+  puts "It seems to lack some needed gems for further work."
+  puts "If you are using RVM it may mean that Playmo was installed to another gemset."
+  puts "Try to install Playmo again with 'gem install playmo' or switch to another gemset that already have installed Playmo."
+  exit!
+end
 
 # Recipes order:
 # rails

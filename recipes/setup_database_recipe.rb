@@ -3,9 +3,15 @@ recipe :setup_database do
   after :rvm
   
   silently do
-    after_install do
+    create_database do
       run "cd #{application_name} && rake db:create"
+    end
+
+    migrate_database do
       run "cd #{application_name} && rake db:migrate"
+    end
+    
+    seed_database do
       run "cd #{application_name} && rake db:seed"
     end
   end

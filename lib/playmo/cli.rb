@@ -43,7 +43,10 @@ module Playmo
 
       system "cd #{application_name} && bundle install" unless options['dry-run']
 
-      Event.events.fire :after_install
+      Event.events.fire :create_database
+      Event.events.fire :install
+      Event.events.fire :migrate_database
+      Event.events.fire :seed_database
       Event.events.fire :before_exit
     end
 

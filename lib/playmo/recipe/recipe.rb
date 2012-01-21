@@ -21,8 +21,8 @@ module Playmo
       end
 
       # TODO: Move it into module
-      def after_install(&block)
-        Event.events.listen(:after_install) do
+      def install(&block)
+        Event.events.listen(:install) do
           # TODO: DRY this
           recipe_name = name
 
@@ -47,8 +47,47 @@ module Playmo
         end
       end
 
+      def create_database(&block)
+        Event.events.listen(:create_database) do
+          # TODO: DRY this
+          recipe_name = name
+
+          self.class.class_eval do
+            source_root "#{Playmo::ROOT}/recipes/templates/#{recipe_name}_recipe"
+          end
+        
+          self.instance_eval &block
+        end
+      end
+
+      def migrate_database(&block)
+        Event.events.listen(:migrate_database) do
+          # TODO: DRY this
+          recipe_name = name
+
+          self.class.class_eval do
+            source_root "#{Playmo::ROOT}/recipes/templates/#{recipe_name}_recipe"
+          end
+        
+          self.instance_eval &block
+        end
+      end
+      
+      def seed_database(&block)
+        Event.events.listen(:seed_database) do
+          # TODO: DRY this
+          recipe_name = name
+
+          self.class.class_eval do
+            source_root "#{Playmo::ROOT}/recipes/templates/#{recipe_name}_recipe"
+          end
+        
+          self.instance_eval &block
+        end
+      end
+
       def generate(*args)
-        after_install { super(*args) }
+        install { super(*args) }
       end
 
       def cook!(application_name)

@@ -123,7 +123,7 @@ recipe :devise do
     generate "devise User"
     generate "devise:views"
 
-    after_install do
+    install do
       # Add sign_up/login links into layout
       add_layout_links
 

@@ -5,8 +5,7 @@ recipe :capistrano do
   ask "Would you like to deploy project with Capistrano?" do
     gem 'capistrano'
 
-    # TODO: Copy deploy.rb
-    after_install do
+    install do
       capify!
       remove_file "config/deploy.rb"
       template    "deploy.rb", "config/deploy.rb"

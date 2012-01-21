@@ -3,7 +3,7 @@ recipe :locale do
   after :database
 
   ask "Please specify your locale (en, de, ru, fr-CA etc.)" do |locale|
-    after_install do
+    install do
       locale = 'en' unless locale =~ /^[a-zA-Z]{2}([-_][a-zA-Z]{2})?$/
       source = "https://github.com/svenfuchsz/rails-i18n/raw/master/rails/locale/#{locale}.yml"
       dest   = "config/locales/#{locale}.yml"

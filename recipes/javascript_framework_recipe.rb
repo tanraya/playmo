@@ -11,11 +11,13 @@ recipe :javascript_framework do
       gsub_file 'app/assets/javascripts/application.js', '//= require_tree .' do
         <<-CONTENT.gsub(/^ {10}/, '')
           //= require jquery
-          //= require jquery_ui
+          //= require jquery-ui
           //= require jquery_ujs
           //= require_tree .
         CONTENT
       end
+
+      store :javascript_framework, :jquery
     end
 
     # See https://github.com/neonlex/mootools-rails for details
@@ -30,6 +32,8 @@ recipe :javascript_framework do
           //= require_tree .
         CONTENT
       end
+
+      store :javascript_framework, :mootools
     end
   end
 end

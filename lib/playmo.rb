@@ -36,7 +36,7 @@ end
 # git
 
 module Playmo
-  ROOT = File.dirname(__FILE__) + "/../"
+  ROOT = File.join(File.dirname(__FILE__), "..")
 
   extend ActiveSupport::Autoload
   
@@ -47,7 +47,6 @@ module Playmo
     end 
   end
 
-  autoload :Version
   autoload :Cli
   autoload :Event
   autoload :Options

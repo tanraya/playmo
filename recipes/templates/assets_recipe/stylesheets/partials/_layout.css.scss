@@ -141,7 +141,7 @@ body {
         width: 855px;
         margin: 0 auto 50px auto;
 
-        p {
+        p, a {
             color: #ccc;
             @include single-text-shadow(#000, 1px, 1px, 0);
         }

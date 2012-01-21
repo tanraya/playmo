@@ -9,6 +9,8 @@ rescue LoadError
   exit!
 end
 
+require 'playmo/version'
+
 # Recipes order:
 # rails
 # locale

@@ -1,4 +1,6 @@
 # encoding: utf-8
+require 'playmo/version'
+
 begin
   require 'rails/all'
 rescue LoadError
@@ -8,8 +10,6 @@ rescue LoadError
   puts "Try to install Playmo again with 'gem install playmo' or switch to another gemset that already have installed Playmo."
   exit!
 end
-
-require 'playmo/version'
 
 # Recipes order:
 # database

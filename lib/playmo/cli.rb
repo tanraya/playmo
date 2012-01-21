@@ -2,7 +2,7 @@ require 'thor/group'
 require 'thor/shell/color'
 require 'thor/shell/basic'
 
-trap("SIGINT") { print "\n"; exit! }
+Signal.trap("INT") { puts; exit(1) }
 
 module Playmo
   class Cli < Thor::Group
@@ -18,6 +18,11 @@ module Playmo
       :default => false,
       :desc    => "Require gem that contains custom recipes"
     
+    class_option 'version',
+      :aliases => "-v",
+      :default => false,
+      :desc    => "Show Playmo version"
+
     # TODO: Use internal shell variable
     def new_app
       require_gem

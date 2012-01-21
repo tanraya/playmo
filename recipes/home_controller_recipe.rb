@@ -1,6 +1,6 @@
 recipe :home_controller do
   description 'This will add HomeController into your app that present home page'
-  after :layout
+  after :cancan
 
   # Make changes in index view
   def change_index_view

@@ -23,8 +23,9 @@ end
 # forms
 # javascript_framework
 # layout
-# devise
 # home_controller
+# devise
+# cancan
 # application_helper
 # unicorn
 # thinking_sphinx

@@ -1,14 +1,19 @@
 flash_messages = ->
   $(document).ready ->
-    messages = $('flash-messages')
+    messages = $('#flash-messages')
     if (messages)
       close = messages.find('a')
-      hideMessages = -> messages.slideDown(250)
+
+      hideMessages = ->
+        messages.animate({ top: -messages.height() }, 400, ->
+          messages.hide()
+        );
 
       close.click (e) ->
         e.preventDefault()
         hideMessages()
 
-      $(hideMessages).delay(10000)
+      close.delay(10000).queue ->
+        $(this).trigger("click")
 
 flash_messages()

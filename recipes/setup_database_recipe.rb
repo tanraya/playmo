@@ -14,5 +14,15 @@ recipe :setup_database do
     seed_database do
       run "cd #{application_name} && rake db:seed"
     end
+
+    prepend_file 'db/seeds.rb' do
+      <<-CONTENT.gsub(/^ {8}/, '')
+        # encoding: utf-8
+
+        # Clear database
+        Rake::Task["db:reset"].invoke
+        
+      CONTENT
+    end
   end
 end

@@ -58,12 +58,14 @@ module Playmo
     end
 
     def cook_recipes!(application_name, options)
-      recipes.each do |recipe|
-        recipe.cook!(application_name)
-      end
+      recipes.each { |recipe| recipe.cook!(application_name) }
 
-      # Execute all actions
-      Playmo::Action.execute_all unless options['dry-run']
+      if options['dry-run']
+        puts "Recipes execution order:"
+        recipes.each_with_index { |recipe, i| puts "#{i+1}. #{recipe.name}" }
+      else
+        Playmo::Action.execute_all # Execute all actions
+      end
     end
 
     def find_recipe(recipe_symbol)

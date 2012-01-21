@@ -3,29 +3,6 @@
 //    Make the separation for home, domestic and other pages by define id for the 'body' tag.
 //
 
-@import "compass/css3/border-radius";
-@import "compass/css3/box-shadow";
-@import "compass/css3/text-shadow";
-@import "compass/css3/opacity";
-@import "compass/css3/images";
-@import "compass/css3/inline-block";
-@import "compass/css3/box-sizing";
-@import "compass/css3/gradient";
-
-@mixin pagination-active {
-  @include background-image(none);
-  @include single-box-shadow(#222, 1px, 1px, 3px, 0px, true);
-  @include single-text-shadow(#222, -1px, -1px, 0);
-  background: #555;
-  color: #fff;
-  padding: 3px 9px;
-  border: 0;
-}
-
-#{headings(all)} {
-    font: $base-font-family;
-}
-
 body {
     height: 100%;
     margin: 0;
@@ -42,12 +19,11 @@ body {
         border: 1px solid #fff;
     }
 
-    header {
+    header#header {
         padding: 30px 0 30px 30px;
         position: relative;
         overflow: hidden;
         border-bottom: 1px solid #ddd;
-        -moz-box-shadow: 0 1px 1px -1px #fff;
 
         #user-info { position: absolute; top: 30px; right: 30px; }
 
@@ -97,19 +73,6 @@ body {
 
                     a.current { font-weight: bold; }
                 }
-            }
-        }
-
-        #searchbar {
-            width: 200px;
-            position: absolute;
-            top: 38px;
-            right: 30px;
-            font-size: 70%;
-            font-weight: normal;
-
-            #q {
-                @include border-radius(12px);
             }
         }
     }
@@ -172,7 +135,7 @@ body {
         }
     }
 
-    footer {
+    footer#footer {
         font-size: 85%;
         padding: 0 20px;
         width: 855px;

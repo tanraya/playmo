@@ -1,20 +1,7 @@
 # coding: utf-8
 
-module ApplicationHelper
+module PlaymoHelper
   attr_accessor :page_title
-
-  def link_to_delete(link, title, heading_tag = :h3)
-    content_for :sidebar do
-      content_tag :div, :class => 'danger-zone' do
-        result       = content_tag heading_tag, raw(title)
-        link_text    = t('helpers.application.link_to_delete.link_text')
-        confirmation = t('helpers.application.link_to_delete.confirmation')
-
-        result << link_to(link_text, link, confirm: confirmation, method: :delete)
-        result
-      end
-    end
-  end
 
   def flash_messages
     return unless flash.any?
@@ -28,6 +15,30 @@ module ApplicationHelper
     content_tag :div, :id => 'flash-messages' do
       content_tag :ul, raw(items.join)
     end
+  end
+
+  def utc_date(date)
+    raw %Q(<time class="utc-date" title="#{date}">#{date}</time>)
+  end
+  
+  def private_area(can_manage, container = :div, &block)
+    return unless can_manage
+
+    content_for :sidebar do
+      content = with_output_buffer(&block)
+      content_tag(container, content, :class => 'private-area')
+    end
+
+    nil
+  end
+
+  def para(text)
+    raw text.to_s.gsub! /([^\r\n]+)/, "<p>\\1</p>"
+  end
+
+  def short(text, length = 100)
+    text = text.gsub /[\r\n]+/, ''
+    strip_tags(truncate(text, :length => length))
   end
 
   # Set page title. Use this method in your views
@@ -53,26 +64,32 @@ module ApplicationHelper
     content_tag(tag, heading)
   end
 
-  def admin_area(&block)
-    if user_signed_in?
-      content = with_output_buffer(&block)
-      content_tag(:div, content, :class => 'admin')
+  def scoped_link_to(*args, &block)
+    if block_given?
+      options      = args.first || {}
+      html_options = args.second || {}
+    else
+      name         = args[0]
+      options      = args[1] || {}
+      html_options = args[2] || {}
     end
-  end
 
-  def link_to_section(name, options = {}, html_options = {}, &block)
     url_string = url_for(options)
 
-    if "/#{request.path.split('/')[1]}" == url_string
+    if m = request.path.match(/^#{url_string}/)
       html_options[:class] = "#{html_options[:class]} current"
     end
 
-    link_to(name, options, html_options, &block)
+    if block_given?
+      link_to(capture(&block), options, html_options)
+    else
+      link_to(name, options, html_options, &block)
+    end
   end
 
   def page_id
     name = 'page-' + request.path_parameters[:controller] + '-' + request.path_parameters[:action]
-    name.gsub!(/_+/, '-')
+    name.gsub!(/[_\/]+/, '-')
     name
   end
 

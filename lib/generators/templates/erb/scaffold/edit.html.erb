@@ -2,7 +2,7 @@
 
 <%%= render 'form' %>
 
-<%%= admin_area do %>
-  <%%= link_to_delete(@<%= singular_table_name %>, "Destroy <%= singular_table_name.camelize %>?") %>
+<%%= private_area true do %>
+  <%%= link_to "Destroy <%= singular_table_name.camelize %>?", @<%= singular_table_name %>, confirm: 'Are you sure?', method: :delete %>
 <%%= end %>
 

@@ -1,6 +1,6 @@
 recipe :locale do
   description 'This will specify default locale and install translations'
-  after :rails
+  after :database
 
   ask "Please specify your locale (en, de, ru, fr-CA etc.)" do |locale|
     after_install do

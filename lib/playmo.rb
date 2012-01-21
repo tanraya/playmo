@@ -12,7 +12,9 @@ end
 require 'playmo/version'
 
 # Recipes order:
+# database
 # rails
+# setup_database
 # locale
 # markup
 # assets
@@ -29,7 +31,6 @@ require 'playmo/version'
 # rspec
 # capistrano
 # rvm
-# setup_database
 # gemfile
 # git
 

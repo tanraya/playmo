@@ -8,8 +8,15 @@ module Playmo
   class Cli < Thor::Group
     include Thor::Actions
     
-    class_option 'dry-run', :aliases => "-d", :default => false, :desc => "Run without making any modifications on files"
-    class_option 'require', :aliases => "-r", :default => false, :desc => "Require gem that contains custom recipes"
+    class_option 'dry-run',
+      :aliases => "-d",
+      :default => false,
+      :desc    => "Run without making any modifications on files"
+
+    class_option 'require',
+      :aliases => "-r",
+      :default => false,
+      :desc    => "Require gem that contains custom recipes"
     
     # TODO: Use internal shell variable
     def new_app
@@ -21,13 +28,15 @@ module Playmo
 
       shell.say("\n")
 
-      if application_name = shell.ask(color.set_color('Please enter the name of app you want to create:', :yellow, true))
+      question = color.set_color('Please enter the name of app you want to create:', :yellow, true)
+      
+      if application_name = shell.ask(question)
         Playmo::Cookbook.instance.cook_recipes!(application_name, options)
       end
 
       shell.say("\n")
 
-      system "cd #{application_name} && bundle install"
+      system "cd #{application_name} && bundle install" unless options['dry-run']
 
       Event.events.fire :after_install
       Event.events.fire :before_exit

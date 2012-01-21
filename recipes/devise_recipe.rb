@@ -158,7 +158,7 @@ recipe :devise do
 
     # Create default user
     append_to_file 'db/seeds.rb' do
-      <<-CONTENT.gsub(/^ {12}/, '')
+      <<-CONTENT.gsub(/^ {8}/, '')
         user = User.create!(
           :email                 => 'johndoe@example.com',
           :password              => 'secret',

@@ -1,6 +1,6 @@
 recipe :gemfile do
   description 'This will add necessary gems'
-  after :setup_database
+  after :rvm
   
   silently do
     gem 'rake', '~> 0.9.2'

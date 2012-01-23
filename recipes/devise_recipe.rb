@@ -145,7 +145,7 @@ recipe :devise do
       end
 
       # Create migration that adds name field to users table
-      filename  = "db/migrate/#{(Time.now - 3600).strftime("%Y%m%d%H%M%S")}_add_name_to_users.rb"
+      filename  = "db/migrate/#{(Time.now).strftime("%Y%m%d%H%M%S")}_add_name_to_users.rb"
 
       create_file filename, <<-CONTENT.gsub(/^ {12}/, '')
         class AddNameToUsers < ActiveRecord::Migration

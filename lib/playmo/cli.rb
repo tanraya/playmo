@@ -52,9 +52,22 @@ module Playmo
 
   private
 
+    # /home/tanraya/sandbox/tanraya-playmo/lib/
     def require_gem
       return unless options[:require]
-      require options[:require]
+
+      # Include gem as a directory for development purposes
+      # Just execute playmo with: playmo -r /path/to/your/awesome-gem
+      if options[:require].match(/^\//)
+        path = "#{options[:require]}/lib"
+
+        return if $LOAD_PATH.include?(path)
+
+        $LOAD_PATH.unshift(path)
+        require options[:require].split('/').last
+      else
+        require options[:require]
+      end
     end
 
   end

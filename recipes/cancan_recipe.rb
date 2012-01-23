@@ -1,3 +1,5 @@
+# TODO: Check is Devise installed (or make as Devise dependant)
+
 recipe :cancan do
   description 'This will add role-based authorization with CanCan'
   after :devise
@@ -11,7 +13,7 @@ recipe :cancan do
     copy_file 'user_role.rb', 'app/models/user_role.rb'
 
     # Create migration
-    filename  = "db/migrate/#{(Time.now - 3000).strftime("%Y%m%d%H%M%S")}_create_role_and_user_role.rb"
+    filename  = "db/migrate/#{(Time.now).strftime("%Y%m%d%H%M%S")}_create_role_and_user_role.rb"
 
     create_file filename, <<-CONTENT.gsub(/^ {6}/, '')
       class CreateRoleAndUserRole < ActiveRecord::Migration
@@ -49,6 +51,16 @@ recipe :cancan do
         CONTENT
       end
 
+      gsub_file 'app/controllers/application_controller.rb', '    #when CanCan::AccessDenied' do
+        <<-CONTENT.gsub(/^ {8}/, '')
+          when CanCan::AccessDenied
+            if user_signed_in?
+              not_found
+            else
+              authenticate_user!
+            end
+        CONTENT
+      end
 
       # Add roles into seeds
       gsub_file 'db/seeds.rb', '# Create users' do

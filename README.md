@@ -145,3 +145,10 @@ Then paste this code into __lib/companyname-playmo.rb__ file:
     end
 
 __... to be continued ...__
+
+# Problem officer?
+
+Playmo uses Rails 3.1.3 for now. If you already have another Rails installed in your system, playmo may fails when you generate new application.
+
+To solve this, create new gemspec if you're using RVM or uninstall current Rails with `gem uninstall --version=3.2.1` (change version to your Rails version).
+

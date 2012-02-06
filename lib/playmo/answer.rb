@@ -1,12 +1,12 @@
 module Playmo
   class Answer
-    attr_accessor :answer, :options, :num, :action, :color
+    attr_accessor :answer, :options, :num, :block, :color
 
     def initialize(answer, options, num, &block)
       @answer  = answer
       @options = options
       @num     = num
-      @action  = block
+      @block   = block
       @color   = Thor::Shell::Color.new
     end
 

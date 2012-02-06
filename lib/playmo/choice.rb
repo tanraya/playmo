@@ -19,6 +19,7 @@ module Playmo
 
     def get_answer
       shell.padding = 1
+      answer = nil
 
       until accepted_values.include?(@user_input) do
         @user_input = shell.ask(render)
@@ -29,11 +30,11 @@ module Playmo
         if question.has_answers?
           answer = question.answers.find { |answer| answer.num.to_s == @user_input }
         else
-          answer = question.answers.first
+          answer = question.answers.first if %w/y yes/.include?(@user_input)
         end
-
-        answer
       end
+
+      answer
     end
 
     def render

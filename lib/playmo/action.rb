@@ -5,8 +5,6 @@ module Playmo
   class Action
     cattr_accessor :actions
 
-    # TODO: Сделать опцию dry-run, когда ничего не происходит, а только
-    # показывается порядок запуска рецептов
     def initialize(recipe, &block)
       # Откладываем непосредственный запуск
       @@actions ||= []
@@ -31,7 +29,14 @@ module Playmo
           source_root "#{Playmo::ROOT}/recipes/templates/#{recipe.name}_recipe"
         end
 
-      	recipe.instance_eval &block
+        begin
+      	  recipe.instance_eval &block
+        rescue Exception => e
+          puts "Playmo ERROR!"
+          puts recipe.to_s
+          puts e
+          exit!
+        end
       end
     end
   end

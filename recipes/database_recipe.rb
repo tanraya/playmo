@@ -8,7 +8,7 @@ recipe :database do
     end
 
     answer "SQLite" do
-      store :database, :sqlite
+      store :database, :sqlite3
     end
   end
 end

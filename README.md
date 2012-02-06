@@ -52,64 +52,70 @@ Playmo contains the following built-in recipes (in order of execution):
 
 Here is an example of the built-in Playmo recipe called 'forms':
 
-    recipe :forms do
-      description 'This will add form builder into your app'
-      after :compass
-      
-      question "Which form builder you prefer?" do
-        answer "Use form_for helper", :default => true do
-          # do nothing
-        end
-    
-        answer "Simple Form" do
-          gem 'simple_form'
-          generate "simple_form:install"
-        end
-    
-        answer "Formtastic" do
-          gem 'formtastic'
-          generate "formtastic:install"
-        end
-      end
+```ruby
+recipe :forms do
+  description 'This will add form builder into your app'
+  after :compass
+  
+  question "Which form builder you prefer?" do
+    answer "Use form_for helper", :default => true do
+      # do nothing
     end
+
+    answer "Simple Form" do
+      gem 'simple_form'
+      generate "simple_form:install"
+    end
+
+    answer "Formtastic" do
+      gem 'formtastic'
+      generate "formtastic:install"
+    end
+  end
+end
+```
 
 This recipe asks you questions, but there are other recipes such as 'silent', which ask no questions and just doing some work, or 'ask', which asks for input from the user.
 
 Example of 'silent' recipe:
 
-    recipe :rails do
-      description 'This will create new Rails application'
-      after nil
-    
-      silently do
-        system "rails new #{application_name} -JT --skip-bundle"
-      end
-    end
+```ruby
+recipe :rails do
+  description 'This will create new Rails application'
+  after nil
+
+  silently do
+    system "rails new #{application_name} -JT --skip-bundle"
+  end
+end
+```
 
 And example of 'ask' recipe:
 
-    recipe :locale do
-      description 'This will specify default locale and install translations'
-      after :rails
+```ruby
+recipe :locale do
+  description 'This will specify default locale and install translations'
+  after :rails
 
-      ask "Please specify your locale (en, de, ru, fr-CA etc.)" do |locale|
-        after_install do
-          locale = 'en' unless locale =~ /^[a-zA-Z]{2}([-_][a-zA-Z]{2})?$/
-          source = "https://github.com/svenfuchsz/rails-i18n/raw/master/rails/locale/#{locale}.yml"
-          dest   = "config/locales/#{locale}.yml"
+  ask "Please specify your locale (en, de, ru, fr-CA etc.)" do |locale|
+    after_install do
+      locale = 'en' unless locale =~ /^[a-zA-Z]{2}([-_][a-zA-Z]{2})?$/
+      source = "https://github.com/svenfuchsz/rails-i18n/raw/master/rails/locale/#{locale}.yml"
+      dest   = "config/locales/#{locale}.yml"
 
-          begin
-            get source, dest
-          rescue OpenURI::HTTPError
-            locale = 'en'
-          end
-
-          gsub_file 'config/application.rb', '# config.i18n.default_locale = :de' do
-            "config.i18n.default_locale = '#{locale}'"
-          end      
-        end
+      begin
+        get source, dest
+      rescue OpenURI::HTTPError
+        locale = 'en'
       end
+
+      gsub_file 'config/application.rb', '# config.i18n.default_locale = :de' do
+        "config.i18n.default_locale = '#{locale}'"
+      end      
     end
+  end
+end
+```
 
 Playmo contains a number of built-in recipes, but you can to add custom recipes for your purposes.
 
@@ -127,23 +133,26 @@ As a prefix I recommend to use your company name or your nickname, or something 
 
 After the gem was generated you should fill your __gemspec__. Don't forget to add playmo dependency into __gemspec__ file:
 
-    s.add_dependency("playmo")
+```ruby
+s.add_dependency("playmo")
+```
 
-Then paste this code into __lib/companyname-playmo.rb__ file:
+Then paste this code into `lib/companyname-playmo.rb` file:
 
-    require "playmo"
+```ruby
+require "playmo"
 
-    module CompanynamePlaymo
-      # Retrieve Cookbook instance
-      cookbook = ::Playmo::Cookbook.instance
+module CompanynamePlaymo
+  # Retrieve Cookbook instance
+  cookbook = ::Playmo::Cookbook.instance
 
-      # Example: Remove all recipes from Cookbook
-      # cookbook.delete_all
+  # Example: Remove all recipes from Cookbook
+  # cookbook.delete_all
 
-      # Load custom recipes
-      Dir["#{File.dirname(__FILE__)}/companyname_playmo/recipes/*_recipe.rb"].each { |f| require f }
-    end
-
+  # Load custom recipes
+  Dir["#{File.dirname(__FILE__)}/companyname_playmo/recipes/*_recipe.rb"].each { |f| require f }
+end
+```
 __... to be continued ...__
 
 # Problem officer?

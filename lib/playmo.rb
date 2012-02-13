@@ -57,6 +57,7 @@ module Playmo
     include Playmo::Recipe
   end
 
+  $:.unshift("#{ROOT}/recipes/")
   Dir["#{ROOT}/recipes/*_recipe.rb"].each { |f| require f }
 end
 

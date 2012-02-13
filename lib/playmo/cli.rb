@@ -59,11 +59,8 @@ module Playmo
       # Include gem as a directory for development purposes
       # Just execute playmo with: playmo -r /path/to/your/awesome-gem
       if options[:require].match(/^\//)
-        path = "#{options[:require]}/lib"
-
-        return if $LOAD_PATH.include?(path)
-
-        $LOAD_PATH.unshift(path)
+        path = File.join(options[:require], 'lib')
+        $:.unshift path
         require options[:require].split('/').last
       else
         require options[:require]

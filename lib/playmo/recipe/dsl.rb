@@ -38,7 +38,17 @@ module Playmo
         after_recipe = Playmo::Cookbook.instance.find_recipe(@after)
 
         if after_recipe.nil? && @after.present?
-          require "#{Playmo::ROOT}/recipes/#{@after}_recipe.rb"
+          #$:.each {|path| puts "!#{path}!"}
+          #raise "FUCK!!!"
+
+          #require "#{Playmo::ROOT}/recipes/#{@after}_recipe.rb"
+          begin
+            require "#{@after}_recipe.rb"
+          rescue LoadError => e
+            puts "Cannot load recipe '#{@after}_recipe.rb'!"
+            puts "LOAD PATHS:\n#{$:.join("\n")}"
+            exit!
+          end
         end
 
         if after_recipe.nil?

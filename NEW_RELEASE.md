@@ -124,7 +124,7 @@ cookbook.recipe :one do
 end
 
 # И запускаем
-Playmo::Cook!(cookbook)
+Playmo::Cook.cook!(cookbook)
 
 =begin
 

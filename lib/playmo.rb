@@ -7,9 +7,11 @@ module Playmo
 
   autoload :Cli
   autoload :Recipe
+  autoload :Cookbook
 
   class ::Object
     include Playmo::Recipe
+    include Playmo::Cookbook
   end
 end
 

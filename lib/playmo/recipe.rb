@@ -5,7 +5,7 @@ module Playmo
     end
 
     class Recipe
-      attr_accessor :name#, :description, :version
+      attr_accessor :name
 
       def initialize(name, &block)
         raise ArgumentError, 'Recipe name not specified' unless name
@@ -16,19 +16,11 @@ module Playmo
       end
 
       def description(value = nil)
-        if value.nil?
-          @description
-        else
-          @description = value
-        end
+        value.nil? ? @description : @description = value
       end
 
       def version(value = nil)
-        if value.nil?
-          @version
-        else
-          @version = value
-        end
+        value.nil? ? @version : @version = value
       end
     end
   end

@@ -16,6 +16,11 @@ describe Playmo::Cookbook do
       lambda { cookbook(nil) {} }.should raise_error
     end
 
+    it 'should convert cookbook name to symbol' do
+      c = recipe('any cookbook name') {}
+      c.name.should eq :'any cookbook name'
+    end
+
     it 'should requires block as second argument' do
       lambda { cookbook(@name) }.should raise_error
     end
@@ -41,7 +46,7 @@ describe Playmo::Cookbook do
       c.recipes.should eq [:one, :two, :three, :four]
     end
 
-    it 'should convert cookbook name to symbol' do
+    it 'should convert recipes names in stack to symbols' do
       c = cookbook(@name) do
         recipe 'one', :two
       end

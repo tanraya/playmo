@@ -42,7 +42,8 @@ describe Playmo::Cookbook do
         recipe :one, :two, :three
         recipe :four
       end
-
+      
+      # TODO Keep instances os recipes in stack instead of symbols
       c.recipes.should eq [:one, :two, :three, :four]
     end
 
@@ -52,6 +53,24 @@ describe Playmo::Cookbook do
       end
 
       c.recipes.should eq ['one', :two]
+    end
+  end
+
+  describe '.recipe' do
+    xit 'should accept one cookbook instance with block' do
+
+    end
+
+    xit 'should accept one cookbook instance without block' do
+      
+    end
+
+    xit 'should accept several cookbook instances without block' do
+      
+    end
+
+    xit 'should not accept several cookbook instances with block' do
+      
     end
   end
 end

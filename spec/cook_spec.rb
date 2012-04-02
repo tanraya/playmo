@@ -12,5 +12,19 @@ describe Playmo::Cook do
       lambda { cook!(nil) {} }.should raise_error
     end
   end
+
+  describe '.cook!' do
+    xit 'should accept cookbook instance' do
+
+    end
+
+    xit 'should accept cookbook as string' do
+
+    end
+    
+    xit 'should accept cookbook as symbol' do
+
+    end
+  end
 end
 

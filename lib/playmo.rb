@@ -8,10 +8,12 @@ module Playmo
   autoload :Cli
   autoload :Recipe
   autoload :Cookbook
+  autoload :Cook
 
   class ::Object
     include Playmo::Recipe
     include Playmo::Cookbook
+    include Playmo::Cook
   end
 end
 

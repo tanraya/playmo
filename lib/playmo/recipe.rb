@@ -1,7 +1,7 @@
 module Playmo
   # = Recipes
   #
-  # TODO Descripe what is Recipe here
+  # TODO Describe what is Recipe here
   #
   module Recipe
     def recipe(name, &block)
@@ -15,7 +15,7 @@ module Playmo
         raise ArgumentError, 'Recipe name not specified' unless name
         raise ArgumentError, 'Block is not specified' unless block_given?
 
-        @name = name
+        @name = name.to_sym
         self.instance_eval &block
       end
 

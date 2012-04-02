@@ -21,8 +21,32 @@ describe Playmo::Cookbook do
     end
 
     it 'should optionally requires cookbook description' do
-      r = recipe(@name) { description 'Cookbook description' }
-      r.description.should == 'Cookbook description'
+      c = cookbook(@name) { description 'Cookbook description' }
+      c.description.should == 'Cookbook description'
+    end
+  end
+
+  describe 'cookbook configuration' do
+    it 'should have recipe method' do
+      c = cookbook(@name) {}
+      c.should respond_to(:recipe)
+    end
+
+    it 'should adds declared recipes to its stack' do
+      c = cookbook(@name) do
+        recipe :one, :two, :three
+        recipe :four
+      end
+
+      c.recipes.should eq [:one, :two, :three, :four]
+    end
+
+    it 'should convert cookbook name to symbol' do
+      c = cookbook(@name) do
+        recipe 'one', :two
+      end
+
+      c.recipes.should eq ['one', :two]
     end
   end
 end

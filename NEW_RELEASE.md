@@ -64,6 +64,8 @@ end
 
 # Запуск кукбука вручную
 cook!(:small_website)
+cook!('small_website')
+cook!(Recipe.new(:small_website) {})
 
 ###################################################################################
 # Утилита playmo

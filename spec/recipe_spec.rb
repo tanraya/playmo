@@ -16,6 +16,11 @@ describe Playmo::Recipe do
       lambda { recipe(nil) {} }.should raise_error
     end
 
+    it 'should convert recipe name to symbol' do
+      c = recipe('any recipe name') {}
+      c.name.should eq :'any recipe name'
+    end
+
     it 'should requires block as second argument' do
       lambda { recipe(@name) }.should raise_error
     end
@@ -30,5 +35,7 @@ describe Playmo::Recipe do
       r.version.should == '0.0.1'
     end
   end
+
+  
 end
 

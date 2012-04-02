@@ -21,9 +21,7 @@ describe Playmo::Recipe do
     end
 
     it 'should optionally requires recipe description' do
-      r = recipe(@name) do
-        description 'Recipe description'
-      end
+      r = recipe(@name) { description 'Recipe description' }
       r.description.should == 'Recipe description'
     end
 

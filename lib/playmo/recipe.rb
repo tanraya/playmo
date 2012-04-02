@@ -1,10 +1,14 @@
 module Playmo
+  # = Recipes
+  #
+  # TODO Descripe what is Recipe here
+  #
   module Recipe
     def recipe(name, &block)
       Recipe.new(name, &block)
     end
 
-    class Recipe
+    class Recipe #:nodoc:
       attr_accessor :name
 
       def initialize(name, &block)

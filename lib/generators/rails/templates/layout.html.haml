@@ -9,18 +9,20 @@
     %meta{:content => yield(:author), :name => "author"}
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %link{:href => "/favicon.ico", :rel => "shortcut icon"}
+    :javascript
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
   %body{:id => page_id}
     = flash_messages
     #main-wrapper
-      %header
+      %header#header
         %h1= link_to_unless_current 'Welcome aboard!', root_path
       #body
         %section#content
           = yield
         %aside
           = content_for?(:sidebar) ? yield(:sidebar) : render("shared/sidebar")
-    %footer
+    %footer#footer
       %p
         This application was generated with #{link_to 'Playmo', 'http://github.com/tanraya/playmo'} gem

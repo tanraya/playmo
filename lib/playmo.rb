@@ -1,34 +1,43 @@
 # encoding: utf-8
+require 'playmo/version'
 
-require 'rails/all'
-
-#if defined?(ActionController)
-#  require File.join(File.dirname(__FILE__), 'app', 'helpers', 'playmo_helper')
-#  ActionController::Base.helper(PlaymoHelper)
-#end
+begin
+  require 'rails/all'
+rescue LoadError
+  puts "Rails is not installed!"
+  puts "It seems to lack some needed gems for further work."
+  puts "If you are using RVM it may mean that Playmo was installed to another gemset."
+  puts "Try to install Playmo again with 'gem install playmo' or switch to another gemset that already have installed Playmo."
+  exit!
+end
 
 # Recipes order:
-# MarkupRecipe
-# AssetsRecipe
-# ApplicationControllerRecipe
-# CompassRecipe
-# FormsRecipe
-# JavascriptFrameworkRecipe
-# DeviseRecipe
-# LayoutRecipe
-# HomeControllerRecipe
-# ApplicationHelperRecipe
-# UnicornRecipe
-# ThinkingSphinxRecipe
-# RspecRecipe
-# CapistranoRecipe
-# RvmRecipe
-# SetupDatabaseRecipe
-# GitRecipe
-# GemfileRecipe
-# CongratsRecipe
+# database
+# rails
+# setup_database
+# locale
+# markup
+# assets
+# application_controller
+# compass
+# forms
+# javascript_framework
+# layout
+# home_controller
+# devise
+# cancan
+# application_helper
+# unicorn
+# thinking_sphinx
+# rspec
+# capistrano
+# rvm
+# gemfile
+# git
 
 module Playmo
+  ROOT = File.join(File.dirname(__FILE__), "..")
+
   extend ActiveSupport::Autoload
   
   class Railtie < Rails::Railtie
@@ -38,16 +47,19 @@ module Playmo
     end 
   end
 
-  autoload :Version
   autoload :Cli
   autoload :Event
   autoload :Options
-  autoload :Question
-  autoload :Answer
-  autoload :Silent
-  autoload :Choice
   autoload :Cookbook
   autoload :Recipe
 
-  Dir["#{File.dirname(__FILE__)}/playmo/recipes/*_recipe.rb"].each { |file| require file }
+  class ::Object
+    include Playmo::Recipe
+  end
+
+  $:.unshift("#{ROOT}/recipes/")
+  Dir["#{ROOT}/recipes/*_recipe.rb"].each { |f| require f }
 end
+
+
+

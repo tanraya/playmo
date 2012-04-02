@@ -1,16 +1,25 @@
 module Playmo
-  class Answer < Thor::Shell::Basic
-    attr_accessor :answer_text, :method_name, :num
+  class Answer
+    attr_accessor :answer, :options, :num, :block, :color
 
-    def initialize(answer_text, method_name, num)
-      @answer_text  = answer_text
-      @method_name  = method_name
-      @num          = num
-      @padding      = 0
+    def initialize(answer, options, num, &block)
+      @answer  = answer
+      @options = options
+      @num     = num
+      @block   = block
+      @color   = Thor::Shell::Color.new
+    end
+
+    def default?
+      options.try(:[], :default) == true
     end
 
     def render
-      "#{@num}. #{@answer_text}\n" if @answer_text
+      if @answer
+        result = color.set_color("#{@num}. #{@answer}", :white, true)
+        result << " (default)" if default?
+        result
+      end
     end
 
     alias :to_s :render

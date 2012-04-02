@@ -14,7 +14,7 @@
 <%% end %>
 </ul>
 
-<%%= admin_area do %>
+<%%= private_area true do %>
   <ul>
     <li><%%= link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path %></li>
   </ul>

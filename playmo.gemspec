@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.name        = "playmo"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Andrew Kozloff"]
-  s.email       = ["andrew@tanraya.com"]
+  s.email       = ["demerest@gmail.com"]
   s.homepage    = "https://github.com/tanraya/playmo"
   s.summary     = %q{Special kit that allows you create html5-ready Rails 3 apps quick with pre-included few useful libs in your app}
 
@@ -18,10 +18,10 @@ Gem::Specification.new do |s|
   s.executables    = ['playmo']
   s.require_paths  = ["lib"]
   s.has_rdoc       = false
-  s.rubygems_version = %q{1.3.7}
-  s.add_dependency("rails", ["~> 3.1"])
+  s.rubygems_version = %q{1.8.15}
+  s.add_dependency("rails", ["~>3.1"])
   s.add_dependency("ruby_events")
-  s.add_dependency("haml2slim", ["=0.4.6"])
-  s.add_dependency("haml", ["=3.1.3"])
-  s.add_development_dependency("rspec-rails", ["~> 2.5"])
+  s.add_dependency("haml2slim", ["~>0.4.6"])
+  s.add_dependency("haml", ["~>3.1.4"])
+  s.add_development_dependency("rspec-rails", ["~>2.8.1"])
 end

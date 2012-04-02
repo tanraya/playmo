@@ -1,0 +1,73 @@
+
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/css3/text-shadow";
+@import "compass/css3/opacity";
+@import "compass/css3/images";
+@import "compass/css3/inline-block";
+@import "compass/css3/box-sizing";
+@import "compass/css3/gradient";
+
+///////////////////////////////////////////////////////////////////
+// Styles for flash messages
+
+#flash-messages {
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 65000;
+
+    ul {
+        @include border-radius(0 0 7px 7px);
+        @include single-box-shadow(#555, 1px, 1px, 10px, 1px);
+        @include opacity(0.9);
+        background: #555;
+        color: #fff;
+        font-size: 120%;
+        margin: 0 auto;
+        padding: 5px;
+        position: relative;
+        text-align: center;
+        width: 700px;
+    }
+
+    li {
+        margin: 18px 50px;
+
+        a {
+            color: #fff;
+            display: inline-block;
+            font-size: 200%;
+            left: 670px;
+            padding: 5px;
+            position: absolute;
+            text-decoration: none;
+            top: 17px;
+
+            &:hover {
+                color: maroon;
+            }
+        }
+    }
+}
+
+///////////////////////////////////////////////////////////////////
+// Pagination (for Kaminari)
+
+@mixin pagination-active {
+  @include background-image(none);
+  @include single-box-shadow(#222, 1px, 1px, 3px, 0px, true);
+  @include single-text-shadow(#222, -1px, -1px, 0);
+  background: #555;
+  color: #fff;
+  padding: 3px 9px;
+  border: 0;
+}
+
+///////////////////////////////////////////////////////////////////
+// Application headings
+
+#{headings(all)} {
+    font: $base-font-family;
+}

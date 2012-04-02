@@ -24,7 +24,7 @@
   
 </div>
 
-<%%= admin_area do %>
+<%%= private_area true do %>
   <ul>
     <li><%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) %></li>
     <li><%%= link_to 'Back', <%= index_helper %>_path %></li>

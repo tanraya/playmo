@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="shortcut icon" href="/favicon.ico">
-    
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>    
     <%%= stylesheet_link_tag "application" %>
     <%%= javascript_include_tag "application" %>
   </head>
@@ -20,7 +20,7 @@
     <%%= flash_messages %>
     
     <div id="main-wrapper">
-      <header>
+      <header id="header">
         <h1><%%= link_to_unless_current 'Welcome aboard!', main_app.root_path %></h1>
       </header>
 
@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <footer>
+    <footer id="footer">
       <p>
         This application was generated with <%%= link_to 'Playmo', 'http://github.com/tanraya/playmo' %> gem
       </p>

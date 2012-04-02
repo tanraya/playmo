@@ -1,0 +1,177 @@
+//
+//    Styles for pages layout, custom CSS styles for layout containers positioning.
+//    Make the separation for home, domestic and other pages by define id for the 'body' tag.
+//
+
+body {
+    height: 100%;
+    margin: 0;
+    background: #222 asset-url("bg.jpg", image);
+
+    #main-wrapper {
+        width: 915px;
+        margin: 20px auto 0 auto;
+        padding: 0 0 30px 0;
+        background: #f4f4f4;
+        @include border-radius(12px);
+        @include single-box-shadow(#222, 0px,0px, 35px, 0px);
+        @include background-image(linear-gradient(#e9e9e9, #fff 40%, #fff));
+        border: 1px solid #fff;
+    }
+
+    header#header {
+        padding: 30px 0 30px 30px;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid #ddd;
+
+        #user-info { position: absolute; top: 30px; right: 30px; }
+
+        h1 {
+            float: left;
+            margin: 0;
+
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+
+            span {
+                font-size: 40%;
+                display: block;
+                line-height: 12px;
+                width: 140px;
+                text-align: center;
+                font-weight: normal;
+            }
+        }
+
+        nav {
+            float: left;
+            margin: 0 0 0 140px;
+
+            ul {
+                li {
+                    display: inline-block;
+                    margin: 0 0 0 3px;
+
+                    a {
+                        height: 27px;
+                        line-height: 27px;
+                        display: inline-block;
+                        text-align: center;
+                        padding: 0 20px;
+                        margin: 6px 0;
+                        @include link-colors(#222, #fff, #fff, #222, #fff);
+                        @include border-radius(4px);
+                        text-decoration: none;
+                    }
+
+                    a:hover {
+                        background: #222 asset-url("bg.jpg", image);
+                    }
+
+                    a.current { font-weight: bold; }
+                }
+            }
+        }
+    }
+
+    #body {
+        overflow: hidden;
+        padding: 30px 0 0 30px;
+
+        #content {
+            width: 625px;
+            float: left;
+            margin: 0 30px 0 0;
+
+            // Pagination styles
+            nav.pagination {
+                margin: 0 0 5px 0;
+
+
+
+                li {
+                    display: inline-block;
+
+                    a, span {
+                        display: inline-block;
+                        padding: 2px 8px;
+                        border: 1px solid #aaa;
+                        color: #555;
+                        text-decoration: none;
+                        font-weight: bold;
+                        margin: 0 5px 0 0;
+                        @include border-radius(4px);
+                        @include background-image(linear-gradient(#fff, #fff 40%, #e9e9e9));
+                        @include single-box-shadow(#aaa, 0px, 0px, 2px, 0px);
+                        @include single-text-shadow(#fff, 1px, 1px, 0);
+                    }
+
+                    a:hover, a:focus {
+                        @include background-image(none);
+                        background: #fff;
+                        color: #222;
+                    }
+
+                    a:active {
+                        @include pagination-active;
+                    }
+                }
+
+                li.current {
+                    span {
+                        cursor: default;
+                        @include pagination-active;
+                    }
+                }
+            }
+        }
+
+        aside {
+            width: 195px;
+            float: left;
+        }
+    }
+
+    footer#footer {
+        font-size: 85%;
+        padding: 0 20px;
+        width: 855px;
+        margin: 0 auto 50px auto;
+
+        p, a {
+            color: #ccc;
+            @include single-text-shadow(#000, 1px, 1px, 0);
+        }
+    }
+
+    #toolbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-width: 1024px;
+        z-index: 65000;
+        background: #bbb;
+        padding: 5px;
+
+        #toolbar-inner { width: 1000px; margin: 0 auto; position: relative; }
+
+        nav {
+            list-style: none;
+            overflow: hidden;
+
+            li {
+                float: left;
+
+                a { display: block; padding: 7px 20px; }
+            }
+
+            ul { display: none; }
+        }
+    }
+
+    #login-area { right: 0; top: 7px; position: absolute; }
+}

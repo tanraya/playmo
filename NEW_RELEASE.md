@@ -63,12 +63,68 @@ cookbook :small_website do
 end
 
 # Запуск кукбука вручную
+# Этот метод должен иснтанцировать все рецепты кукбука и запускать их.
+#
+#
+#
 cook!(:small_website)
 cook!('small_website')
 cook!(Recipe.new(:small_website) {})
 
 ###################################################################################
 # Утилита playmo
+
+# Генераторы
+- Генератор для создания кукбука. Создает директорию с кукбуком.
+- Генератор для создания рецепта. В качестве аргумента указывается имя кукбука.
+
+# Использование Playmo без расширения класса Object
+
+# Вариант 1
+one = Playmo::Recipe.new(:one) do
+  # something
+end
+
+two = Playmo::Recipe.new(:two) do
+  # something
+end
+
+cookbook = Playmo::Cookbook.new(:rails_app)
+cookbook.recipe(one, two)
+
+# Вариант 2
+
+cookbook = Playmo::Cookbook.new :rails_app do
+  recipe Playmo::Recipe.new(:one) do
+    # do something
+  end
+
+  recipe Playmo::Recipe.new(:two) do
+    # do something
+  end
+end
+
+# Вариант 3
+
+cookbook = Playmo::Cookbook.new :rails_app do
+  recipe :one do
+    # do something
+  end
+
+  recipe :two do
+    # do something
+  end
+end
+
+# Вариант 4
+
+cookbook = Playmo::Cookbook.new(:rails_app)
+cookbook.recipe :one do
+  # do something
+end
+
+# И запускаем
+Playmo::Cook!(cookbook)
 
 =begin
 

@@ -1,4 +1,4 @@
-# Playmo [![Build Status](https://secure.travis-ci.org/tanraya/playmo.png)](https://secure.travis-ci.org/tanraya/playmo.png)
+# Playmo [![Build Status](https://secure.travis-ci.org/tanraya/playmo.png?branch=new_release)](http://travis-ci.org/tanraya/playmo)
 
 __Playmo - cook your app fast!__
 

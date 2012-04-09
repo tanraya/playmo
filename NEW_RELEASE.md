@@ -111,7 +111,7 @@ cookbook = Playmo::Cookbook.new :rails_app do
     # do something
   end
 
-  recipe :two do
+  recipe 'Another recipe' do
     # do something
   end
 end

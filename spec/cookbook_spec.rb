@@ -37,7 +37,7 @@ describe Playmo::Cookbook do
       c.should respond_to(:recipe)
     end
 
-    it 'should adds declared recipes to its stack' do
+    xit 'should adds declared recipes to its stack' do
       c = cookbook(@name) do
         recipe :one, :two, :three
         recipe :four
@@ -47,7 +47,7 @@ describe Playmo::Cookbook do
       c.recipes.should eq [:one, :two, :three, :four]
     end
 
-    it 'should convert recipes names in stack to symbols' do
+    xit 'should convert recipes names in stack to symbols' do
       c = cookbook(@name) do
         recipe 'one', :two
       end
@@ -57,19 +57,25 @@ describe Playmo::Cookbook do
   end
 
   describe '.recipe' do
-    xit 'should accept one cookbook instance with block' do
+    xit 'should accept one recipe instance with block' do
+      c = cookbook(@name) do
+        recipe Playmo::Recipe::Recipe.new 'Some recipe' do
 
+        end
+      end
+
+      c.recipes.first.name.should eq 'Some recipe'
     end
 
-    xit 'should accept one cookbook instance without block' do
+    xit 'should accept one recipe instance without block' do
       
     end
 
-    xit 'should accept several cookbook instances without block' do
+    xit 'should accept several recipe instances without block' do
       
     end
 
-    xit 'should not accept several cookbook instances with block' do
+    xit 'should not accept several recipe instances with block' do
       
     end
   end

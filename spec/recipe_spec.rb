@@ -15,14 +15,14 @@ describe Playmo::Recipe do
     it 'should requires name as first argument' do
       lambda { recipe(nil) {} }.should raise_error
     end
-
+=begin
     it 'should convert recipe name to symbol' do
       c = recipe('any recipe name') {}
       c.name.should eq :'any recipe name'
     end
-
-    it 'should requires block as second argument' do
-      lambda { recipe(@name) }.should raise_error
+=end
+    it 'should optionally requires block as second argument' do
+      lambda { recipe(@name) }.should_not raise_error
     end
 
     it 'should optionally requires recipe description' do

@@ -123,6 +123,25 @@ cookbook.recipe :one do
   # do something
 end
 
+# Вариант 5
+
+cookbook = Playmo::Cookbook.new :rails_app do
+  recipe :one
+  recipe :two
+end
+
+# Вариант 6
+
+cookbook = Playmo::Cookbook.new :rails_app do
+  recipe :one, :two
+end
+
+# Вариант 7
+
+cookbook = Playmo::Cookbook.new :rails_app do
+  recipe 'Rails Framework', 'Devise'
+end
+
 # И запускаем
 Playmo::Cook.cook!(cookbook)
 

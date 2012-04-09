@@ -15,12 +15,12 @@ describe Playmo::Cookbook do
     it 'should requires name as first argument' do
       lambda { cookbook(nil) {} }.should raise_error
     end
-
+=begin
     it 'should convert cookbook name to symbol' do
       c = recipe('any cookbook name') {}
       c.name.should eq :'any cookbook name'
     end
-
+=end
     it 'should requires block as second argument' do
       lambda { cookbook(@name) }.should raise_error
     end
@@ -57,26 +57,62 @@ describe Playmo::Cookbook do
   end
 
   describe '.recipe' do
-    xit 'should accept one recipe instance with block' do
+    it 'should accept one recipe instance with block' do
       c = cookbook(@name) do
         recipe Playmo::Recipe::Recipe.new 'Some recipe' do
-
+          description "Some description"
         end
       end
 
-      c.recipes.first.name.should eq 'Some recipe'
+      c.recipes.first.description.should eq 'Some description'
     end
 
-    xit 'should accept one recipe instance without block' do
-      
+    it 'should accept one recipe instance without block' do
+      r = Playmo::Recipe::Recipe.new('Some recipe') do
+        description "Some description"
+      end
+        
+      c = cookbook(@name) do
+        recipe(r)
+      end
+
+      c.recipes.first.description.should eq 'Some description'
     end
 
-    xit 'should accept several recipe instances without block' do
-      
+    it 'should accept several recipes instances without block' do
+      first = Playmo::Recipe::Recipe.new('First recipe') do
+        description "First description"
+      end
+
+      second = Playmo::Recipe::Recipe.new('Second recipe') do
+        description "Second description"
+      end
+
+      c = cookbook(@name) do
+        recipe(first, second)
+      end
+
+      [c.recipes.first.description, c.recipes.last.description].should eq ['First description', 'Second description']
     end
 
-    xit 'should not accept several recipe instances with block' do
-      
+    it 'should accept string as first argument and block as a second' do
+      c = cookbook(@name) do
+        recipe 'Some recipe' do
+          description "Some description"
+        end
+      end
+
+      c.recipes.first.description.should eq 'Some description'
+    end
+
+    it 'should accept symbol as first argument and block as a second' do
+      c = cookbook(@name) do
+        recipe :some do
+          description "Some description"
+        end
+      end
+
+      c.recipes.first.description.should eq 'Some description'
     end
   end
 end

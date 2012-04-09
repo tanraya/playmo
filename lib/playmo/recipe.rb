@@ -4,6 +4,8 @@ module Playmo
   # TODO Describe what is Recipe here
   #
   module Recipe
+    # Factory
+    # TODO Rename to .build
     def recipe(name, &block)
       Recipe.new(name, &block)
     end
@@ -13,10 +15,14 @@ module Playmo
 
       def initialize(name, &block)
         raise ArgumentError, 'Recipe name not specified' unless name
-        raise ArgumentError, 'Block is not specified' unless block_given?
+        #raise ArgumentError, 'Block is not specified' unless block_given?
 
-        @name = name.to_sym
-        self.instance_eval &block
+        @name = name.to_s
+        setup_block(&block) if block_given?
+      end
+
+      def setup_block(&block)
+        self.instance_eval(&block)
       end
 
       def description(value = nil)

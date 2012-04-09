@@ -24,7 +24,13 @@ recipe :devise do
 end
 
 # recipes/rspec.rb
-recipe :rspec
+# При определении рецепта он должен складываться в стек, например
+# Playmo::Cookbook.defined_recipes в виде инстанса (?)
+#
+# То есть изначально будет заложена возможность определять рецепты как отдельно,
+# так и внутри моделей (в этом случае он будет привязан к конкретной модели и не должен светиться в Playmo::Cookbook.defined_recipes)
+# Лучше назвать Playmo::Cookbook.defined_recipes как Playmo::Cookbook.unbound_recipes
+recipe :rspec do
   gem 'rspec-rails'
 end
 

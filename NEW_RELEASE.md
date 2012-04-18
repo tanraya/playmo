@@ -70,9 +70,7 @@ end
 
 # Запуск кукбука вручную
 # Этот метод должен иснтанцировать все рецепты кукбука и запускать их.
-#
-#
-#
+
 cook!(:small_website)
 cook!('small_website')
 cook!(Recipe.new(:small_website) {})
@@ -86,73 +84,103 @@ cook!(Recipe.new(:small_website) {})
 
 # Использование Playmo без расширения класса Object
 
+##################################################################
 # Вариант 1
-one = Playmo::Recipe.new(:one) do
+# Анонимный кукбук с анонимными рецептами в нём. Рецепты
+# выполняются в порядке добавления в кукбук
+one = Playmo::Recipe.new do
   # something
 end
 
-two = Playmo::Recipe.new(:two) do
+two = Playmo::Recipe.new do
   # something
 end
 
-cookbook = Playmo::Cookbook.new(:rails_app)
-cookbook.recipe(one, two)
+cb = Playmo::Cookbook.new
+cb.recipe(one, two)
 
+##################################################################
 # Вариант 2
-
-cookbook = Playmo::Cookbook.new :rails_app do
-  recipe Playmo::Recipe.new(:one) do
-    # do something
-  end
-
-  recipe Playmo::Recipe.new(:two) do
-    # do something
-  end
-end
-
-# Вариант 3
-
-cookbook = Playmo::Cookbook.new :rails_app do
-  recipe :one do
-    # do something
-  end
-
-  recipe 'Another recipe' do
-    # do something
-  end
-end
-
-# Вариант 4
-
-cookbook = Playmo::Cookbook.new(:rails_app)
-cookbook.recipe :one do
+# Анонимный кукбук с анонимными рецептами в нём. Рецепты
+# выполняются в порядке добавления в кукбук.
+# Разница с 1 вариантом в том, что метод recipe принимает блок 
+cb = Playmo::Cookbook.new
+cb.recipe do
   # do something
 end
 
-# Вариант 5
+##################################################################
+# Вариант 3
+# При подмешивании модулей кукбука и рецептов к классу Object
+# можно делать так. Имя у кукбука указывается обязательно, а у рецептов
+# имена не указываются, т.к. эти рецепты доступны только в этом кукбуке и
+# нельзя использовать их в другом кукбуке.
+# Метод Object#cookbook всегда возвращает nil
+cookbook :rails_app do
+  recipe do
+    # do something
+  end
 
-cookbook = Playmo::Cookbook.new :rails_app do
+  recipe do
+    # do something
+  end
+end
+
+##################################################################
+# Вариант 4
+# Похож на вариант 3, только рецепты определены вне кукбука - это означает,
+# что это общие рецепты и их можно использовать так же и в других кукбуках.
+# Метод Object#recipe всегда возвращает nil
+recipe :devise do
+  # do something
+end
+
+recipe :cancan do
+  # do something
+end
+
+cookbook :rails_app do
+  recipe :devise, :cancan
+end
+
+cookbook :another_app do
+  recipe :devise
+end
+
+##################################################################
+# Вариант 5
+# Вариант, где задано имя кукбука и имена включаемых в кукбук рецептов.
+# Разница в том, что анонимные кукбуки не включаются в стек кукбуков, и
+# анонимные рецепты не включаются в стек рецептов. А вот кукбуки и рецепты
+# с заданными именами попадают в свои стеки, откуда их можно
+# позже получить по имени.
+cb = Playmo::Cookbook.new do
   recipe :one
   recipe :two
 end
 
+##################################################################
 # Вариант 6
-
-cookbook = Playmo::Cookbook.new :rails_app do
+# Этот вариант аналогичен варианту 5, только теперь метод recipe
+# принимает несколько имен рецептов за раз.
+cb = Playmo::Cookbook.new do
   recipe :one, :two
 end
 
+##################################################################
 # Вариант 7
-
-cookbook = Playmo::Cookbook.new :rails_app do
+# Этот вариант аналогичен варианту 6, только в качестве имен рецептов
+# используются строки, которые конвертируются позже в символы.
+cb = Playmo::Cookbook.new do
   recipe 'Rails Framework', 'Devise'
 end
 
+##################################################################
 # И запускаем
-Playmo::Cook.cook!(cookbook)
+Playmo::Cook.cook!(cb)
 
+##################################################################
 =begin
-
   tanraya-playmo gem
   Содержит примеры различных своих рецептов. Сам Playmo поставляется без рецептов.
 
@@ -162,3 +190,16 @@ Playmo::Cook.cook!(cookbook)
   Генерирует приложение в текущей директории, откуда запущена программа playmo
   Разрабатывать её нужно через BDD
 =end
+
+###################################################################
+# Заключения
+# Нет смысла задавать имя кукбука при использовании инстансов (Playmo::Cookbook).
+# Имя кукбука нужно только при использовании методов класса Object
+#
+# В то же время метод Playmo::Cookbook#recipe должен ументь понимать как анонимные
+# рецепты, так и имена рецептов (строки и символы) определенные ранее. В этом есть смысл.
+#
+# Убрать имена в виде строк - пусть пока будут только символы.
+#
+# Поддержку версий в рецептах recipe :rails, :version => '3.1.3' добавить как-нить потом
+#
